@@ -3,28 +3,7 @@
 @tailwind utilities;
 @import '@fortawesome/fontawesome-free/css/all.css';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  scroll-behavior: smooth;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  /* Removed unsupported text-wrap property */
-  .text-balance {
-    overflow-wrap: break-word; /* Fallback solution for better text wrapping */
-    word-wrap: break-word;
-  }
-}
+ 

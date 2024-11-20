@@ -10,22 +10,20 @@ export default function Login() {
   const [rememberMe, setRememberMe] = useState(false);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen flex-col md:flex-row">
       {/* Left Section */}
       <div className="w-full md:w-1/2 p-8 flex flex-col">
         <div className="mb-12">
-          <Image 
-            src="/imc-logo.png" 
-            alt="IMC Logo" 
-            width={40} 
-            height={40}
-            className="mb-4" 
+          <img
+            src="/logo.png"
+            alt="IMC Logo"
+            className="w-40 h-25 object-contain mb-4"
           />
         </div>
 
         <div className="max-w-md mx-auto w-full">
-          <h1 className="text-3xl font-bold mb-2">Welcome Back</h1>
-          <p className="text-gray-500 mb-8">Login into your account</p>
+          <h1 className="text-3xl font-bold mb-2 text-center">Welcome Back</h1>
+          <p className="text-gray-500 mb-8 text-center">Login into your account</p>
 
           <div className="space-y-4">
             <button className="w-full flex items-center justify-center gap-2 border rounded-lg p-3 hover:bg-gray-50">
@@ -80,7 +78,7 @@ export default function Login() {
 
             <p className="text-center">
               Don't have an account?{' '}
-              <Link href="/signup" className="text-blue-500">
+              <Link href="/register" className="text-blue-500">
                 Sign up!
               </Link>
             </p>

@@ -1,140 +1,161 @@
-// pages/signup.tsx
-import Link from "next/link";
-import Image from "next/image";
-import Head from "next/head";
-import { useState } from "react";
-import { RiFacebookCircleFill } from "react-icons/ri";
+import React, { useState } from "react";
+import { FcGoogle } from "react-icons/fc"; // Google Icon
+import { FaFacebookF } from "react-icons/fa"; // Facebook Icon
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"; 
+import Link from "next/link"; // Eye Icons for Password Toggle
+import Image from "next/image"; // Next.js Image component
 
-export default function Signup() {
+const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [confirmShowPassword, setConfirmShowPassword] = useState(false);
 
   return (
-    <div className="flex min-h-screen">
-      <Head>
-        <title>Sign Up - IMC</title>
-        <meta name="description" content="Create your IMC account to shop the best products." />
-      </Head>
-
+    <div className="flex flex-col md:flex-row min-h-screen bg-gray-50">
       {/* Left Section */}
-      <div className="w-1/2 p-8 flex flex-col">
-        <div className="mb-12">
+      <div className="flex flex-col justify-center w-full md:w-1/2 p-12">
+        {/* IMC Logo */}
+        <div className="mb-8">
           <Image
-            src="/imc-logo.png"
+            src="/logo.png"
             alt="IMC Logo"
-            width={120}
-            height={50}
+            width={128} // Set width and height for optimized loading
+            height={64}
             className="mb-4"
           />
-          <p>
+          <p className=" mt-4 text-gray-500 text-right">
             Have an account?{" "}
-            <Link href="/signin" className="text-blue-500">
+            <Link href="/login" className="text-blue-500">
               Sign in!
             </Link>
           </p>
         </div>
 
-        <div className="max-w-md mx-auto w-full">
-          <h1 className="text-3xl font-bold mb-2">Get Started With IMC</h1>
-          <p className="text-gray-500 mb-8">Getting started is easy</p>
+        {/* Form Section */}
+        <div className="max-w-md w-full mx-auto">
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">
+            Get Started With IMC
+          </h1>
+          <p className="text-gray-500 mb-6">Getting started is easy</p>
 
-          <div className="space-y-4">
-            <button className="w-full flex items-center justify-center gap-2 border rounded-lg p-3 hover:bg-gray-50">
-              <Image src="/google.png" alt="Google" width={20} height={20} />
-              <span>Google</span>
+          {/* Social Buttons */}
+          <div className="flex justify-between mb-6">
+            <button className="flex items-center justify-center gap-2 w-1/2 px-4 py-3 border rounded-lg hover:bg-gray-50">
+              <FcGoogle size={24} />
+              <span className="text-sm font-medium">Google</span>
             </button>
-
-            <button className="w-full flex items-center justify-center gap-2 border rounded-lg p-3 hover:bg-gray-50">
-              <Image src="/facebook.png" alt="Facebook" width={20} height={20} />
-              <span>Facebook</span>
+            <button className="flex items-center justify-center gap-2 w-1/2 px-4 py-3 border rounded-lg text-blue-600 hover:bg-gray-50">
+              <FaFacebookF size={24} />
+              <span className="text-sm font-medium">Facebook</span>
             </button>
+          </div>
 
-            <div className="flex items-center gap-4 my-6">
-              <div className="flex-1 h-px bg-gray-200"></div>
-              <span className="text-gray-500">Or continue with</span>
-              <div className="flex-1 h-px bg-gray-200"></div>
-            </div>
+          {/* Divider */}
+          <div className="flex items-center gap-4 mb-6">
+            <div className="h-px flex-1 bg-gray-300"></div>
+            <span className="text-sm text-gray-400">Or continue with</span>
+            <div className="h-px flex-1 bg-gray-300"></div>
+          </div>
 
+          {/* Input Fields */}
+          <form className="space-y-4">
             <input
               type="text"
               placeholder="Full Name"
-              className="w-full p-3 border rounded-lg"
+              className="w-full p-3 border rounded-lg focus:outline-none"
             />
-
             <input
               type="email"
               placeholder="Enter Email"
-              className="w-full p-3 border rounded-lg"
+              className="w-full p-3 border rounded-lg focus:outline-none"
             />
 
+            {/* Password Field */}
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
-                className="w-full p-3 border rounded-lg"
+                className="w-full p-3 border rounded-lg focus:outline-none"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                aria-label={showPassword ? "Hide password" : "Show password"}
-                className="absolute right-3 top-1/2 -translate-y-1/2"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                aria-label="Toggle password visibility"
               >
-                {showPassword ? "🙈" : "👁️"}
+                {showPassword ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
               </button>
             </div>
 
+            {/* Confirm Password Field */}
             <div className="relative">
               <input
-                type={showConfirmPassword ? "text" : "password"}
+                type={confirmShowPassword ? "text" : "password"}
                 placeholder="Confirm Password"
-                className="w-full p-3 border rounded-lg"
+                className="w-full p-3 border rounded-lg focus:outline-none"
               />
               <button
                 type="button"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
-                className="absolute right-3 top-1/2 -translate-y-1/2"
+                onClick={() =>
+                  setConfirmShowPassword(!confirmShowPassword)
+                }
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                aria-label="Toggle confirm password visibility"
               >
-                {showConfirmPassword ? "🙈" : "👁️"}
+                {confirmShowPassword ? (
+                  <AiFillEyeInvisible size={20} />
+                ) : (
+                  <AiFillEye size={20} />
+                )}
               </button>
             </div>
 
-            <button className="w-full bg-blue-500 text-white rounded-lg p-3 hover:bg-blue-600">
+            <button
+              type="submit"
+              className="w-full bg-blue-500 text-white p-3 rounded-lg font-medium hover:bg-blue-600"
+            >
               Create Account
             </button>
-          </div>
+          </form>
 
-          <p className="text-sm text-gray-500 mt-6">
-            By continuing you indicate that you read and agreed to the Terms of Use
+          <p className="text-center mt-4 text-gray-500 text-sm">
+            By continuing, you indicate that you read and agreed to the{" "}
+            <Link href="#" className="text-blue-500">
+              Terms of Use
+            </Link>
+            .
           </p>
         </div>
       </div>
 
       {/* Right Section */}
-      <div className="w-1/2 bg-gray-100 relative">
-        <div className="absolute inset-0">
-          <Image
-            src="/mall-image.jpg"
-            alt="Mall"
-            layout="fill"
-            objectFit="cover"
-          />
-          <div className="absolute inset-0 bg-black/20"></div>
-          <div className="absolute bottom-12 left-12 right-12 text-white">
-            <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="bg-blue-500 p-2 rounded">
-                  <Image src="/icon.png" alt="Icon" width={24} height={24} />
-                </div>
-                <span>IMC Stock</span>
-              </div>
-              <p className="text-lg">
-                Shop the Best Products from Across the Internet, Delivered to You Anytime, Anywhere.
-              </p>
+      <div className="w-full md:w-1/2 relative bg-gray-100 flex items-center justify-center">
+        <Image
+          src="/mall.png"
+          alt="Background"
+          fill
+          style={{ objectFit: "cover" }} // Use style for objectFit
+          className="absolute w-full h-full"
+        />
+        <div className="absolute inset-0 bg-black/20"></div>
+
+        {/* Floating Card (Centered Overlay Text) */}
+        <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="p-2 bg-blue-500 rounded-full">
+              <span role="img" aria-label="icon">
+                🔔
+              </span>
             </div>
+            <h3 className="font-bold ">Imc Stock</h3>
           </div>
+          <p className="text-sm">
+            Shop the Best Products from Across the Internet, Delivered to You
+            Anytime, Anywhere.
+          </p>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default SignUpPage;

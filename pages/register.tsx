@@ -157,5 +157,5 @@ const SignUpPage = () => {
     </div>
   );
 };
-
+uuuuuu
 export default SignUpPage;

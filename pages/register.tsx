@@ -22,31 +22,23 @@ const SignUpPage = () => {
             height={64}
             className="mb-4"
           />
-          <p className=" mt-4 text-gray-500 text-right">
-            Have an account?{" "}
-            <Link href="/login" className="text-blue-500">
-              Sign in!
-            </Link>
-          </p>
+        
         </div>
 
         {/* Form Section */}
         <div className="max-w-md w-full mx-auto">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
+          <h1 className="text-4xl font-bold text-gray-800 mb-2 text-center">
             Get Started With IMC
           </h1>
-          <p className="text-gray-500 mb-6">Getting started is easy</p>
+          <p className="text-gray-500 mb-6 text-center">Getting started is easy</p>
 
           {/* Social Buttons */}
-          <div className="flex justify-between mb-6">
-            <button className="flex items-center justify-center gap-2 w-1/2 px-4 py-3 border rounded-lg hover:bg-gray-50">
-              <FcGoogle size={24} />
-              <span className="text-sm font-medium">Google</span>
+          <div className="flex justify-center mb-6 text-center">
+          <button className="w-full flex items-center justify-center gap-2 border rounded-lg p-3 hover:bg-blue-200">
+              <FcGoogle size={20} />
+              <span>Google</span>
             </button>
-            <button className="flex items-center justify-center gap-2 w-1/2 px-4 py-3 border rounded-lg text-blue-600 hover:bg-gray-50">
-              <FaFacebookF size={24} />
-              <span className="text-sm font-medium">Facebook</span>
-            </button>
+            
           </div>
 
           {/* Divider */}
@@ -124,17 +116,23 @@ const SignUpPage = () => {
             </Link>
             .
           </p>
+            <p className=" mt-4 text-gray-500 text-center">
+            Have an account?{" "}
+            <Link href="/login" className="text-blue-500">
+              Sign in!
+            </Link>
+          </p>
         </div>
       </div>
 
       {/* Right Section */}
       <div className="w-full md:w-1/2 relative bg-gray-100 flex items-center justify-center">
-        <Image
+        <Image  className="absolute w-16 md:h-full object-cover lg:h-48 "
           src="/mall.png"
           alt="Background"
-          fill
+          layout="fill"
           style={{ objectFit: "cover" }} // Use style for objectFit
-          className="absolute w-full h-full"
+         
         />
         <div className="absolute inset-0 bg-black/20"></div>
 
@@ -156,6 +154,5 @@ const SignUpPage = () => {
       </div>
     </div>
   );
-};
-uuuuuu
+}
 export default SignUpPage;

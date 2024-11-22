@@ -4,19 +4,19 @@ import { useState, useEffect } from "react";
 
 const slides = [
   {
-    watchImage: "/images/hero1.jpg",
+    watchImage: "/images/watches.png",
     text: "Best Deal Online on Smart Watches",
     bgColor: "#1E3A5F",
   },
   {
-    watchImage: "/images/hero2.jpg",
-    text: "SMART WEARABLE. UP to 80% OFF",
+    watchImage: "/images/car.jpg",
+    text: "CAR RENTING. At affordable prices",
     bgColor: "#2B6CB0",
   },
   {
-    watchImage: "/images/hero3.jpg",
-    text: "Explore the New Era of Smart Wearables",
-    bgColor: "#4A5568",
+    watchImage: "/images/gifts.jpg",
+    text: "Buy gifts to your loved ones ",
+    bgColor: "#7D030A",
   },
 ];
 
@@ -47,38 +47,41 @@ export default function HeroSection() {
 
   return (
     <div
-      className="relative flex items-center justify-center text-white h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden transition-colors duration-500 m-4 rounded-lg"
+      id="heroSection"
+      className="relative flex flex-col-reverse sm:flex-row items-center mt-20 justify-center text-white sm:h-[350px] lg:h-[300px] overflow-visible transition-colors duration-500 mx-10 rounded-lg"
       style={{ backgroundColor: slides[currentIndex].bgColor }}
     >
       {/* Left Chevron */}
       <button
         onClick={handlePrev}
-        className="absolute left-2 md:left-4 flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-white shadow-lg z-10"
+        className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 flex items-center justify-center w-8 h-8 md:w-20 md:h-20 rounded-full bg-[#F3F9FB] shadow-lg"
         aria-label="Previous"
       >
-        <span className="text-blue-500 text-lg font-bold">&lt;</span>
+        <span className="flex justify-center items-center text-[#1E3A5F] text-3xl font-bold">
+          &lt;
+        </span>
       </button>
 
       {/* Main Content */}
-      <div className="flex flex-col-reverse sm:flex-row items-center justify-between w-full max-w-6xl px-6">
+      <div className="flex flex-col-reverse sm:flex-col md:flex-row items-center justify-between w-full max-w-6xl px-4 md:px-12">
         {/* Text Section */}
-        <div className="w-full sm:w-[60%] text-center sm:text-left mb-4 sm:mb-0">
-          <h2 className="text-lg sm:text-2xl lg:text-3xl font-semibold mb-2 sm:mb-4">
+        <div className="w-full text-start mb-4 md:mb-0">
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4">
             {slides[currentIndex].text}
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl">
             Experience the best deals and explore the world of smart wearables
             with our exclusive collection.
           </p>
         </div>
 
         {/* Watch Image Section */}
-        <div className="relative w-[70%] sm:w-[40%] h-[200px] sm:h-[250px] lg:h-[300px]">
+        <div className="relative w-[70%] sm:w-[50%] md:w-[40%] h-[200px] sm:h-[250px] lg:h-[300px]">
           <Image
             src={slides[currentIndex].watchImage}
             alt={`Watch ${currentIndex + 1}`}
             layout="fill"
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "contain" }}
             className="transition-transform duration-500 ease-in-out"
           />
         </div>
@@ -87,20 +90,22 @@ export default function HeroSection() {
       {/* Right Chevron */}
       <button
         onClick={handleNext}
-        className="absolute right-2 md:right-4 flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-white shadow-lg z-10"
+        className="absolute right-[-40px] top-1/2 transform -translate-y-1/2 flex items-center justify-center w-8 h-8 md:w-20 md:h-20 rounded-full bg-[#F3F9FB] shadow-lg"
         aria-label="Next"
       >
-        <span className="text-blue-500 text-lg font-bold">&gt;</span>
+        <span className="text-[#1E3A5F] text-3xl font-bold">&gt;</span>
       </button>
 
       {/* Indicator Circles */}
-      <div className="absolute bottom-4 flex space-x-2">
+      <div className="absolute left-[65px] bottom-20 flex space-x-1">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
-              currentIndex === index ? "bg-white" : "bg-gray-400"
+            className={` ${
+              currentIndex === index
+                ? "w-2 sm:w-5 h-1 bg-white rounded-lg"
+                : "w-2 sm:w-3 h-1 bg-white rounded-full"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           ></button>

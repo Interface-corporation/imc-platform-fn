@@ -1,5 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import {
+  GiftIcon,
+  InformationCircleIcon,
+  ShoppingBagIcon
+} from "@heroicons/react/24/solid";
 
 const Footer = () => {
   return (
@@ -116,46 +121,48 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <div className="mt-8 border-t pt-4 text-sm text-gray-500">
-        <div className="container mx-auto px-4 flex flex-wrap items-center justify-between">
-  <div className="flex flex-wrap space-x-4 justify-center md:justify-start mb-4 md:mb-0">
-    <Link
-      href="/"
-      className="hover:text-blue-600 transition-colors duration-300"
-    >
-      Become Seller
-    </Link>
-    <Link
-      href="/"
-      className="hover:text-blue-600 transition-colors duration-300"
-    >
-      Gift Cards
-    </Link>
-    <Link
-      href="/"
-      className="hover:text-blue-600 transition-colors duration-300"
-    >
-      Help Centre
-    </Link>
-    <Link
-      href="/"
-      className="hover:text-blue-600 transition-colors duration-300"
-    >
-      Terms of Use
-    </Link>
-    <Link
-      href="/"
-      className="hover:text-blue-600 transition-colors duration-300"
-    >
-      Privacy Policy
-    </Link>
-  </div>
+          <div className="container mx-auto px-4 flex flex-wrap items-center justify-between">
+            <div className="flex flex-wrap space-x-4 justify-center md:justify-start mb-4 md:mb-0">
+              <Link
+                href="/"
+                className="hover:text-blue-600 transition-colors duration-300 flex items-center"
+              >
+                <ShoppingBagIcon className="w-5 h-5 cursor-pointer text-[#1E3A5F]"/>
+                Become Seller
+              </Link>
+              <Link
+                href="/"
+                className="hover:text-blue-600 transition-colors duration-300 flex items-center"
+              >
+                <GiftIcon className="w-5 h-5 cursor-pointer text-[#1E3A5F]"/>
+                Gift Cards
+              </Link>
+              <Link
+                href="/"
+                className="hover:text-blue-600 transition-colors duration-300 flex items-center"
+              >
+                <InformationCircleIcon className="w-5 h-5 cursor-pointer text-[#1E3A5F]"/>
+                Help Centre
+              </Link>
+              <Link
+                href="/"
+                className="hover:text-blue-600 transition-colors duration-300 flex items-center"
+              >
+                Terms of Use
+              </Link>
+              <Link
+                href="/"
+                className="hover:text-blue-600 transition-colors duration-300 flex items-center"
+              >
+                Privacy Policy
+              </Link>
+            </div>
 
-  {/* Centering the text on small screens and aligning it right on medium screens */}
-  <p className="w-full text-center md:text-right mt-4 md:mt-0">
-    © 2024 All rights reserved by IMC
-  </p>
-</div>
-
+            {/* Centering the text on small screens and aligning it right on medium screens */}
+            <p className="w-full text-center md:text-right mt-4 md:mt-0">
+              © 2024 All rights reserved by IMC
+            </p>
+          </div>
         </div>
       </footer>
     </div>

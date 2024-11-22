@@ -4,6 +4,7 @@ import { FaFacebookF } from "react-icons/fa"; // Facebook Icon
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"; 
 import Link from "next/link"; // Eye Icons for Password Toggle
 import Image from "next/image"; // Next.js Image component
+import '../styles/globals.css';
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,7 +27,7 @@ const SignUpPage = () => {
         </div>
 
         {/* Form Section */}
-        <div className="max-w-md w-full mx-auto">
+        <div className="max-w-md w-full mx-auto " style={{zIndex:1000}}>
           <h1 className="text-4xl font-bold text-gray-800 mb-2 text-center">
             Get Started With IMC
           </h1>
@@ -130,7 +131,7 @@ const SignUpPage = () => {
         <Image  className="absolute w-16 md:h-full object-cover lg:h-48 "
           src="/mall.png"
           alt="Background"
-          layout="fill"
+        layout="fill"
           style={{ objectFit: "cover" }} // Use style for objectFit
          
         />

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { useState } from 'react';
 import { FcGoogle } from "react-icons/fc";
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'; 
@@ -105,7 +105,7 @@ export default function Login() {
           <Image
             src="/user.png"
             alt="Office"
-            fill
+            layout='fill'
             objectFit="cover"
             className="rounded-lg md:rounded-none"
           />

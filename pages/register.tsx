@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc"; // Google Icon
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"; 
 import Link from "next/link"; // Next.js Link component
-import Image from "next/image"; // Next.js Image component
+import Image from "next/legacy/image"; // Next.js Image component
 import '../styles/globals.css';
 
 const SignUpPage = () => {

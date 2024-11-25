@@ -4,6 +4,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import Link from "next/link"; // Next.js Link component
 import Image from "next/legacy/image"; // Next.js Image component
 import '../styles/globals.css';
+import { FiBell } from 'react-icons/fi';
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -137,17 +138,12 @@ const SignUpPage = () => {
         <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white">
       <div className="flex items-center gap-2 mb-2">
         {/* Replacing emoji with an image */}
-        <div className="p-2 bg-blue-500 rounded-full">
-          <Image
-            src="/icons/notification-icon.png" // Replace with the actual image path
-            alt="Notification Icon"
-            width={24}
-            height={24}
-            className="object-contain"
-          />
-        </div>
-        {/* Heading */}
-        <h3 className="font-bold">Imc Stock</h3>
+        <div>
+      {/* Use a notification icon from react-icons */}
+      <div className="p-2 bg-blue-500 rounded-full">
+        <FiBell size={24} color="white" />
+      </div>
+      <h3 className="font-bold">Imc Stock</h3>
       </div>
       {/* Description */}
       <p className="text-sm">
@@ -156,6 +152,7 @@ const SignUpPage = () => {
       </p>
     </div>
       </div>
+    </div>
     </div>
   );
 };

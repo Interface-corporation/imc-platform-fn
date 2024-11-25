@@ -135,19 +135,26 @@ const SignUpPage = () => {
 
         {/* Floating Card */}
         <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="p-2 bg-blue-500 rounded-full">
-              <span role="img" aria-label="icon">
-                🔔
-              </span>
-            </div>
-            <h3 className="font-bold">Imc Stock</h3>
-          </div>
-          <p className="text-sm">
-            Shop the Best Products from Across the Internet, Delivered to You
-            Anytime, Anywhere.
-          </p>
+      <div className="flex items-center gap-2 mb-2">
+        {/* Replacing emoji with an image */}
+        <div className="p-2 bg-blue-500 rounded-full">
+          <Image
+            src="/icons/notification-icon.png" // Replace with the actual image path
+            alt="Notification Icon"
+            width={24}
+            height={24}
+            className="object-contain"
+          />
         </div>
+        {/* Heading */}
+        <h3 className="font-bold">Imc Stock</h3>
+      </div>
+      {/* Description */}
+      <p className="text-sm">
+        Shop the Best Products from Across the Internet, Delivered to You
+        Anytime, Anywhere.
+      </p>
+    </div>
       </div>
     </div>
   );

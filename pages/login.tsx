@@ -90,7 +90,7 @@ export default function Login() {
             </Link>
 
             <p className="text-center text-sm md:text-base">
-              Don't have an account?{' '}
+            Don&#39;t have an account?
               <Link href="/register" className="text-blue-500">
                 Sign up!
               </Link>
@@ -105,7 +105,7 @@ export default function Login() {
           <Image
             src="/user.png"
             alt="Office"
-            layout="fill"
+            fill
             objectFit="cover"
             className="rounded-lg md:rounded-none"
           />

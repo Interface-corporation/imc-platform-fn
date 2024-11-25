@@ -13,12 +13,17 @@ export default function Login() {
     <div className="flex flex-col md:flex-row min-h-screen">
       {/* Left Section */}
       <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col">
-        <div className="mb-12">
-          <img
-            src="/logo.png"
-            alt="IMC Logo"
-            className="w-32 md:w-40 h-auto object-contain mb-4"
-          />
+        {/* Logo */}
+        <div className="mb-8">
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              alt="IMC Logo"
+              width={92} // Reduced width for a smaller logo
+              height={44}
+              className="cursor-pointer"
+            />
+          </Link>
         </div>
 
         <div className="max-w-md mx-auto w-full">
@@ -78,9 +83,11 @@ export default function Login() {
             </div>
 
             {/* Login Button */}
-            <button className="w-full bg-blue-500 text-white rounded-lg p-2 md:p-3 hover:bg-blue-600 text-sm md:text-base">
-              Log In
-            </button>
+            <Link href="/dashboard">
+              <button className="w-full bg-blue-500 text-white rounded-lg p-2 md:p-3 hover:bg-blue-600 text-sm md:text-base">
+                Log In
+              </button>
+            </Link>
 
             <p className="text-center text-sm md:text-base">
               Don't have an account?{' '}
@@ -93,7 +100,7 @@ export default function Login() {
       </div>
 
       {/* Right Section */}
-      <div className="w-full md:w-1/2 h-64 md:h-auto bg-gray-100 relative">
+      <div className="hidden md:block w-full md:w-1/2 h-64 md:h-auto bg-gray-100 relative">
         <div className="absolute inset-0">
           <Image
             src="/user.png"

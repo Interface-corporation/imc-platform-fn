@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc"; // Google Icon
-import { FaFacebookF } from "react-icons/fa"; // Facebook Icon
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"; 
-import Link from "next/link"; // Eye Icons for Password Toggle
+import Link from "next/link"; // Next.js Link component
 import Image from "next/image"; // Next.js Image component
 import '../styles/globals.css';
 
@@ -13,21 +12,22 @@ const SignUpPage = () => {
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-50">
       {/* Left Section */}
-      <div className="flex flex-col justify-center w-full md:w-1/2 p-12">
-        {/* IMC Logo */}
+      <div className="flex flex-col justify-start items-start w-full md:w-1/2 p-6 md:p-12">
+        {/* IMC Logo with Link */}
         <div className="mb-8">
-          <Image
-            src="/logo.png"
-            alt="IMC Logo"
-            width={128} // Set width and height for optimized loading
-            height={64}
-            className="mb-4"
-          />
-        
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              alt="IMC Logo"
+              width={92} // Reduced width for a smaller logo
+              height={44}
+              className="cursor-pointer"
+            />
+          </Link>
         </div>
 
         {/* Form Section */}
-        <div className="max-w-md w-full mx-auto " style={{zIndex:1000}}>
+        <div className="max-w-md w-full mx-auto" style={{ zIndex: 1000 }}>
           <h1 className="text-4xl font-bold text-gray-800 mb-2 text-center">
             Get Started With IMC
           </h1>
@@ -35,11 +35,10 @@ const SignUpPage = () => {
 
           {/* Social Buttons */}
           <div className="flex justify-center mb-6 text-center">
-          <button className="w-full flex items-center justify-center gap-2 border rounded-lg p-3 hover:bg-blue-200">
+            <button className="w-full flex items-center justify-center gap-2 border rounded-lg p-3 hover:bg-blue-200">
               <FcGoogle size={20} />
               <span>Google</span>
             </button>
-            
           </div>
 
           {/* Divider */}
@@ -88,9 +87,7 @@ const SignUpPage = () => {
               />
               <button
                 type="button"
-                onClick={() =>
-                  setConfirmShowPassword(!confirmShowPassword)
-                }
+                onClick={() => setConfirmShowPassword(!confirmShowPassword)}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
                 aria-label="Toggle confirm password visibility"
               >
@@ -117,7 +114,7 @@ const SignUpPage = () => {
             </Link>
             .
           </p>
-            <p className=" mt-4 text-gray-500 text-center">
+          <p className="mt-4 text-gray-500 text-center">
             Have an account?{" "}
             <Link href="/login" className="text-blue-500">
               Sign in!
@@ -127,17 +124,16 @@ const SignUpPage = () => {
       </div>
 
       {/* Right Section */}
-      <div className="w-full md:w-1/2 relative bg-gray-100 flex items-center justify-center">
-        <Image  className="absolute w-16 md:h-full object-cover lg:h-48 "
+      <div className="hidden md:flex w-full md:w-1/2 relative bg-gray-100 items-center justify-center">
+        <Image
           src="/mall.png"
           alt="Background"
-        layout="fill"
-          style={{ objectFit: "cover" }} // Use style for objectFit
-         
+          layout="fill"
+          style={{ objectFit: "cover" }}
         />
         <div className="absolute inset-0 bg-black/20"></div>
 
-        {/* Floating Card (Centered Overlay Text) */}
+        {/* Floating Card */}
         <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white">
           <div className="flex items-center gap-2 mb-2">
             <div className="p-2 bg-blue-500 rounded-full">
@@ -145,7 +141,7 @@ const SignUpPage = () => {
                 🔔
               </span>
             </div>
-            <h3 className="font-bold ">Imc Stock</h3>
+            <h3 className="font-bold">Imc Stock</h3>
           </div>
           <p className="text-sm">
             Shop the Best Products from Across the Internet, Delivered to You
@@ -155,5 +151,6 @@ const SignUpPage = () => {
       </div>
     </div>
   );
-}
+};
+
 export default SignUpPage;

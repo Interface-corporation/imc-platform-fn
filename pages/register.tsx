@@ -15,7 +15,7 @@ const SignUpPage = () => {
       <div className="flex flex-col justify-start items-start w-full md:w-1/2 p-6 md:p-12">
         {/* IMC Logo with Link */}
         <div className="mb-8">
-          <Link href="/">
+          <Link href="/homepage.tsx">
             <Image
               src="/logo.png"
               alt="IMC Logo"
@@ -27,7 +27,7 @@ const SignUpPage = () => {
         </div>
 
         {/* Form Section */}
-        <div className="max-w-md w-full mx-auto" style={{ zIndex: 1000 }}>
+        <div className="max-w-md w-full mx-auto" >
           <h1 className="text-4xl font-bold text-gray-800 mb-2 text-center">
             Get Started With IMC
           </h1>

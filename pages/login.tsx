@@ -15,7 +15,7 @@ export default function Login() {
       <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col">
         {/* Logo */}
         <div className="mb-8">
-          <Link href="/">
+          <Link href="/homepage.tsx">
             <Image
               src="/logo.png"
               alt="IMC Logo"

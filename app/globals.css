@@ -22,9 +22,9 @@ body {
 }
 
 @layer utilities {
-  /* Removed unsupported text-wrap property */
   .text-balance {
     overflow-wrap: break-word; /* Fallback solution for better text wrapping */
     word-wrap: break-word;
-  }
+    text-wrap: balance;
+}
 }

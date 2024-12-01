@@ -1,4 +1,4 @@
-/*import React from 'react';
+import React from 'react';
 
 interface FormInputProps {
   type: string;
@@ -14,4 +14,3 @@ const FormInput: React.FC<FormInputProps> = ({ type, placeholder }) => (
 );
 
 export default FormInput;
-*/

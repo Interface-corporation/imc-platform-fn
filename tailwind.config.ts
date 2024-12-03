@@ -9,9 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        primary: '#1E3A5F',
+        secondary: "#25aae1",
       },
     },
   },
-  plugins: [],
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  plugins: [require("@tailwindcss/line-clamp"),],
 };
 export default config;

@@ -25,7 +25,7 @@ const Header = () => {
     { label: "Whats New", href: "#categories" },
     { label: "Categories", href: "#categories" },
     { label: "Services", href: "#services" },
-    { label: "Products", href: "#product" },
+    { label: "Products", href: "/Products" },
   ];
 
   useEffect(() => {

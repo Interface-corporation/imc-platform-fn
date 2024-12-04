@@ -6,8 +6,10 @@ import { TbTelescope } from "react-icons/tb";
 
 const InfoSection = () => {
   return (
-    <div className="relative w-full h-full">
-      {/* Background Image */}
+    <div className="relative w-full h-full flex bg-[#000] flex-col
+justify-end
+items-end " >
+     {/*background image */}
       <Image
         src={userpic1}
         alt="Office Background"
@@ -15,11 +17,12 @@ const InfoSection = () => {
         height={700}
         className="md:rounded-none"
         style={{  height: "585px" }} 
-      />
-{/* Divider */}
+      /> 
+
 
       {/* Centered "Top Stock Resources" */}
-      <div className="absolute top-0 left-10 bottom-20 flex justify-center items-center">
+      <div className="absolute bottom-0 p-3 right-0 width-[300px]" >
+      <div className=" flex p-6 pb-2 items-center">
         <div className="flex items-center gap-2 p-4 bg-blue-500 text-white rounded-full">
           <IoFlashSharp className="w-6 h-6" />
           <span className="font-medium text-lg">Top Stock Resources</span>
@@ -27,7 +30,7 @@ const InfoSection = () => {
       </div>
 
       {/* Overlay only at the bottom */}
-      <div className="absolute bottom-10 left-4 right-4 bg-black/40 p-6 rounded-lg">
+      <div className=" bg-black/40 p-6 rounded-lg inline ">
         <div className="bg-white/40 backdrop-blur-md p-4 rounded-lg text-white">
         <div className="">
           <TbTelescope className="w-4 h-6 m-20"/> 
@@ -37,6 +40,7 @@ const InfoSection = () => {
             consumers face in their everyday lives.
           </p>
         </div>
+      </div>
       </div>
     </div>
   );

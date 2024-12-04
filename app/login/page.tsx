@@ -10,6 +10,7 @@ import userpic from "@/public/user.png";
 // Component for displaying the "Top Stock Resources" info
 const InfoSection = () => {
   return (
+
     <div className="relative w-full h-full">
       {/* Background Image */}
       <Image
@@ -21,24 +22,25 @@ const InfoSection = () => {
       />
 
       {/* Overlay only at the bottom */}
-      <div className="absolute bottom-10 right-4 left-2 w-full bg-black/40 p-6 md:p-8">
+      <div className="absolute  p-3 right-0 top-0 width-[300px]">
         {/* Content Section */}
-        <div className="bg-white/20 backdrop-blur-md p-4 md:p-6 rounded-lg text-white w-full md:w-3/4">
+
+        <div className=" flex p-6 pb-2 items-center">
           <div className="flex items-center gap-2 p-4 bg-blue-500 text-white rounded-full">
-            <div className="bg-yellow-400 text-black p-2 rounded-full">
-              👍
-            </div>
-            <span className="font-medium text-lg md:text-base">
-              Top Stock Resources
-            </span>
+            <span className="font-medium text-lg">Top Stock Resources</span>
           </div>
-          <p className="text-xl md:text-base">
-            Today, we create innovative solutions to the challenges that
-            consumers face in both their everyday lives.
-          </p>
+        </div>
+        <div className=" bg-black/40 p-6 rounded-lg inline ">
+          <div className="bg-white/40 backdrop-blur-md p-4 rounded-lg text-white">
+            <p className="text-base">
+              Today, we create innovative solutions to the challenges that
+              consumers face in their everyday lives.
+            </p>
+          </div>
         </div>
       </div>
     </div>
+
   );
 };
 

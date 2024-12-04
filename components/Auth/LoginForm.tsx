@@ -51,14 +51,13 @@ const LoginForm = () => {
         />
         <div className="relative">
           <input
-            type={showPassword ? "text" : "password"} // Toggle input type
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
-            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            className="w-full px-4 py-1 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
           />
-          {/* Toggle password visibility */}
           <button
             type="button"
-            className="absolute inset-y-0 right-0 flex items-center pr-4 focus:ring-2 focus:ring-blue-500"
+            className="absolute inset-y-0 right-0 flex items-center pr-4 cursor-pointer focus:ring-2 focus:ring-blue-500"
             onClick={togglePasswordVisibility}
             aria-label={showPassword ? "Hide password" : "Show password"}
           >

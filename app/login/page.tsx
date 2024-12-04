@@ -1,5 +1,5 @@
 "use client";
-
+//import LoginForm from "@/components/Auth/LoginForm";
 import Link from "next/link";
 import Image from "next/legacy/image";
 import { useState } from "react";
@@ -24,7 +24,7 @@ const InfoSection = () => {
       <div className="absolute bottom-10 right-4 left-2 w-full bg-black/40 p-6 md:p-8">
         {/* Content Section */}
         <div className="bg-white/20 backdrop-blur-md p-4 md:p-6 rounded-lg text-white w-full md:w-3/4">
-          <div className="flex items-center gap-2 mb-3 bg-blue-500 p-2 rounded-lg">
+          <div className="flex items-center gap-2 p-4 bg-blue-500 text-white rounded-full">
             <div className="bg-yellow-400 text-black p-2 rounded-full">
               👍
             </div>
@@ -58,7 +58,7 @@ const LoginForm = () => {
 
       <div className="space-y-4">
         {/* Google Login Button */}
-        <button className="w-full flex items-center justify-center gap-2 border rounded-lg p-2 md:p-3 hover:bg-blue-200">
+        <button className="bg-blue-500 w-full flex items-center justify-center gap-2 border rounded-lg p-2 md:p-3 hover:bg-blue-200">
           <FcGoogle size={20} />
           <span className="text-sm md:text-base">Google</span>
         </button>

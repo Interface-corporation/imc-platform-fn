@@ -16,6 +16,7 @@ const InfoSection = () => {
         className="md:rounded-none"
         style={{  height: "585px" }} 
       />
+{/* Divider */}
 
       {/* Centered "Top Stock Resources" */}
       <div className="absolute top-0 left-10 bottom-20 flex justify-center items-center">

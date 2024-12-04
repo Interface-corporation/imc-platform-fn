@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
 
 const SignupForm = () => {
@@ -29,15 +30,10 @@ const SignupForm = () => {
       <p className="text-gray-500 text-center mb-6">Getting started is easy</p>
 
       {/* Social Login Buttons */}
-      <div className="flex gap-2 justify-center mb-6">
-        <button
-          type="button"
-          className="flex items-center justify-center w-full bg-blue-500 text-white py-2 rounded-lg shadow hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 outline-none"
-        >
-          <FaGoogle className="text-white w-5 h-5 mr-2" />
-          Google
+      <button className="bg-blue-500 w-full flex items-center justify-center gap-2 border rounded-lg p-2 md:p-3 hover:bg-blue-200">
+          <FcGoogle size={20} />
+          <span className="text-sm md:text-base">Google</span>
         </button>
-      </div>
       <div className="text-center text-gray-500 mb-4">Or continue with</div>
 
       {/* Form */}

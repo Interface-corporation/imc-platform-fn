@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import Image from "next/image";
 
 const SignupForm = () => {
   // State for password visibility
@@ -12,41 +14,45 @@ const SignupForm = () => {
   const toggleConfirmPasswordVisibility = () => setShowConfirmPassword(!showConfirmPassword);
 
   return (
-    <div className="max-w-md w-full px-6 py-8 bg-white rounded-lg relative">
-      <h1 className="text-3xl font-semibold text-gray-800 text-center mt-20">
+    <div className="max-w-md pt-15 w-full px-6 bg-white rounded-lg relative">
+      <Link href="/">
+            <Image
+              src="/logo.png"
+              alt="IMC Logo"
+              width={64}
+              height={64}
+              className="cursor-pointer"
+            />
+          </Link>
+      <h1 className="text-3xl font-semibold text-gray-800 text-center">
         Get Started With IMC
       </h1>
       <p className="text-gray-500 text-center mb-6">Getting started is easy</p>
 
       {/* Social Login Buttons */}
-      <div className="flex gap-4 justify-center mb-6">
-        <button
-          type="button"
-          className="flex items-center justify-center w-full bg-blue-500 text-white py-2 rounded-lg shadow hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 outline-none"
-        >
-          <FaGoogle className="text-white w-5 h-5 mr-2" />
-          Google
+      <button className="bg-blue-500 w-full flex items-center justify-center gap-2 border rounded-lg p-2 md:p-3 hover:bg-blue-200">
+          <FcGoogle size={20} />
+          <span className="text-sm md:text-base">Google</span>
         </button>
-      </div>
       <div className="text-center text-gray-500 mb-4">Or continue with</div>
 
       {/* Form */}
-      <form className="space-y-4">
+      <form className="space-y-2">
         <input
           type="text"
           placeholder="Full Name"
-          className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-full px-4 py-1 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
         />
         <input
           type="email"
           placeholder="Enter Email"
-          className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-full px-4 py-1 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
         />
         <div className="relative">
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Password"
-            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            className="w-full px-4 py-1 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
           />
           <button
             type="button"
@@ -61,7 +67,7 @@ const SignupForm = () => {
           <input
             type={showConfirmPassword ? "text" : "password"}
             placeholder="Confirm Password"
-            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            className="w-full px-4 py-1 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
           />
           <button
             type="button"
@@ -74,7 +80,7 @@ const SignupForm = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-3 rounded-lg shadow hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 outline-none transition"
+          className="w-full bg-blue-500 text-white py-1 rounded-lg shadow hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 outline-none transition"
         >
           Create Account
         </button>

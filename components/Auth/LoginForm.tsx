@@ -31,12 +31,12 @@ const LoginForm = () => {
       </h1>
       <p className="text-gray-500 text-center mb-6">Login into your account</p>
 
-      <div className="flex gap-4 justify-center mb-6">
+      <div className="flex gap-4 justify-center mb-6 text-black">
         <button
           type="button"
-          className="flex items-center justify-center w-full bg-blue-500 text-white py-2 rounded-lg shadow hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 outline-none"
+          className="flex items-center justify-center w-full bg-blue-500  py-2 rounded-lg shadow hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 outline-none"
         >
-          <FaGoogle className="text-white w-5 h-5 mr-2" />
+          <FaGoogle className=" text-black w-5 h-5 mr-2" />
           Google
         </button>
       </div>
@@ -51,14 +51,13 @@ const LoginForm = () => {
         />
         <div className="relative">
           <input
-            type={showPassword ? "text" : "password"} // Toggle input type
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
-            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            className="w-full px-4 py-1 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
           />
-          {/* Toggle password visibility */}
           <button
             type="button"
-            className="absolute inset-y-0 right-0 flex items-center pr-4 focus:ring-2 focus:ring-blue-500"
+            className="absolute inset-y-0 right-0 flex items-center pr-4 cursor-pointer focus:ring-2 focus:ring-blue-500"
             onClick={togglePasswordVisibility}
             aria-label={showPassword ? "Hide password" : "Show password"}
           >

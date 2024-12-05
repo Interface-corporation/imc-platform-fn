@@ -18,22 +18,20 @@ const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const toggleSearch = () => setIsSearchOpen((prev) => !prev);
 
   const navLinks: NavLink[] = [
-    { label: "Whats New", href: "#categories" },
+    { label: "What's New", href: "#categories" },
     { label: "Categories", href: "#categories" },
     { label: "Services", href: "#services" },
     { label: "Products", href: "#product" },
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -48,10 +46,10 @@ const Header = () => {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-4">
-          <Link href={"#heroSection"}>
+          <Link href="#heroSection" aria-label="Go to Hero Section">
             <Image
               src="/images/logo.png"
-              alt="hero image"
+              alt="Logo"
               width={50}
               height={50}
               style={{ objectFit: "cover" }}
@@ -66,6 +64,7 @@ const Header = () => {
               key={link.href}
               href={link.href}
               className="hover:text-[#25aae1] transition-all duration-300"
+              aria-label={`Navigate to ${link.label}`}
             >
               {link.label}
             </Link>
@@ -83,6 +82,7 @@ const Header = () => {
             <select
               className="bg-transparent outline-none border-none text-gray-500 text-sm"
               defaultValue="all"
+              aria-label="Select category"
             >
               <option value="all">All Categories</option>
               <option value="electronics">Electronics</option>
@@ -95,10 +95,12 @@ const Header = () => {
               type="text"
               placeholder="Search items..."
               className="flex-grow bg-transparent outline-none text-sm text-gray-500"
+              aria-label="Search items"
             />
             <button
               onClick={() => setIsSearchOpen(false)}
               className="text-gray-400 lg:hidden"
+              aria-label="Close search bar"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +119,7 @@ const Header = () => {
             </button>
           </div>
           {!isSearchOpen && (
-            <button onClick={toggleSearch} className="lg:hidden text-white">
+            <button onClick={toggleSearch} className="lg:hidden text-white" aria-label="Open search bar">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -137,16 +139,18 @@ const Header = () => {
 
           {/* Language Dropdown */}
           <div className="hidden md:flex items-center space-x-1">
-            <button className="text-white">Eng</button>
+            <button className="text-white" aria-label="Language selection">
+              Eng
+            </button>
             <ChevronDownIcon className="w-5 h-5 cursor-pointer text-white" />
           </div>
 
           {/* Cart and User Icons */}
           <div className="hidden md:flex space-x-4">
-            <Link href="/cart">
+            <Link href="/cart" aria-label="View Cart">
               <ShoppingCartIcon className="w-5 h-5 cursor-pointer text-white" />
             </Link>
-            <Link href="/login">
+            <Link href="/login" aria-label="User Login">
               <UserIcon className="w-5 h-5 cursor-pointer text-white" />
             </Link>
           </div>
@@ -154,7 +158,7 @@ const Header = () => {
 
         {/* Mobile Menu Toggle */}
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-white">
+          <button onClick={toggleMenu} className="text-white" aria-label="Toggle mobile menu">
             {isMenuOpen ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -189,10 +193,10 @@ const Header = () => {
           </button>
         </div>
         <div className="flex items-center space-x-4 text-white md:hidden">
-          <Link href="/login">
+          <Link href="/cart" aria-label="View Cart">
             <ShoppingCartIcon className="w-6 h-6 cursor-pointer text-white" />
           </Link>
-          <Link href="/login">
+          <Link href="/login" aria-label="User Login">
             <UserIcon className="w-6 h-6 cursor-pointer text-white" />
           </Link>
         </div>
@@ -207,6 +211,7 @@ const Header = () => {
                 key={link.href}
                 href={link.href}
                 className="hover:text-blue-400"
+                aria-label={`Navigate to ${link.label}`}
               >
                 {link.label}
               </Link>

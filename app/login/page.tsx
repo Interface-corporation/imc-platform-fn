@@ -1,46 +1,38 @@
 "use client";
-//import LoginForm from "@/components/Auth/LoginForm";
+
 import Link from "next/link";
 import Image from "next/legacy/image";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import userpic from "@/public/user.png";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import userPic from "@/public/user.png";
 
 // Component for displaying the "Top Stock Resources" info
 const InfoSection = () => {
   return (
-
-    <div className="relative w-full h-full">
-      {/* Background Image */}
-      <Image
-        src={userpic}
-        alt="Office Background"
-        width={600}
-        height={580}
-        className="md:rounded-none object-cover w-full h-full"
-      />
-
+    <div className="flex flex-col justify-end items-center h-full bg-cover bg-center bg-no-repeat p-6">
       {/* Overlay only at the bottom */}
-      <div className="absolute  p-3 right-0 top-0 width-[300px]">
-        {/* Content Section */}
-
-        <div className=" flex p-6 pb-2 items-center">
-          <div className="flex items-center gap-2 p-4 bg-blue-500 text-white rounded-full">
-            <span className="font-medium text-lg">Top Stock Resources</span>
-          </div>
+      <div className="space-y-4 flex-col text-center items-end">
+        <div className="flex items-center bg-blue-500 text-white rounded-full p-3">
+          <span className="font-medium text-lg">Top Stock Resources</span>
         </div>
-        <div className=" bg-black/40 p-6 rounded-lg inline ">
-          <div className="bg-white/40 backdrop-blur-md p-4 rounded-lg text-white">
-            <p className="text-base">
-              Today, we create innovative solutions to the challenges that
-              consumers face in their everyday lives.
-            </p>
+        <div className="bg-black/40 rounded-lg p-4">
+          <div className="bg-white/40 backdrop-blur-md rounded-lg text-white p-4">
+            <div className="text-base space-y-2">
+              <div className="flex pl-2">
+                <span>Today, we create innovative solutions to the</span>
+              </div>
+              <div className="flex pl-2">
+                <span>challenges that consumers face in their</span>
+              </div>
+              <div className="flex pl-2">
+                <span>everyday lives.</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
   );
 };
 
@@ -48,6 +40,11 @@ const InfoSection = () => {
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+
+  // Define togglePasswordVisibility function
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
 
   return (
     <div className="w-full max-w-md mx-auto flex-1">
@@ -66,12 +63,12 @@ const LoginForm = () => {
         </button>
 
         {/* Divider */}
-        <div className="flex items-center gap-4 my-6">
-          <div className="flex-1 h-px bg-gray-200"></div>
-          <span className="text-sm md:text-base text-gray-500">
+        <div className="flex justify-center items-center my-6">
+          <div className="flex-1 h-px bg-gray-400"></div>
+          <span className="text-sm md:text-base text-gray-500 mx-4">
             Or continue with
           </span>
-          <div className="flex-1 h-px bg-gray-200"></div>
+          <div className="flex-1 h-px bg-gray-400"></div>
         </div>
 
         {/* Email Input */}
@@ -86,18 +83,15 @@ const LoginForm = () => {
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Password"
-            className="w-full p-2 md:p-3 border rounded-lg text-sm md:text-base"
+            className="w-full px-4 py-1 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
           />
           <button
-            onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
-            aria-label="Toggle password visibility"
+            type="button"
+            className="absolute inset-y-0 right-0 flex items-center pr-4 cursor-pointer focus:ring-2 focus:ring-blue-500"
+            onClick={togglePasswordVisibility}
+            aria-label={showPassword ? "Hide password" : "Show password"}
           >
-            {showPassword ? (
-              <AiFillEyeInvisible size={20} />
-            ) : (
-              <AiFillEye size={20} />
-            )}
+            {showPassword ? <FaEyeSlash className="text-gray-600" /> : <FaEye className="text-gray-600" />}
           </button>
         </div>
 
@@ -154,7 +148,13 @@ export default function Login() {
       </div>
 
       {/* Right Section */}
-      <div className="hidden md:flex w-full md:w-1/2 h-full relative">
+      <div
+        className="hidden mb-0 relative md:flex w-full md:w-1/2 h-screen bg-cover bg-no-repeat bg-center"
+        style={{
+          backgroundImage: `url(${userPic.src})`,
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <InfoSection />
       </div>
     </div>

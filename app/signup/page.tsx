@@ -1,46 +1,32 @@
-import Image from "next/image";
-import userpic1 from "@/public/mall.png";
+//import Image from "next/image";
+import userPic from "@/public/mall.png";
 import SignupForm from "@/components/Auth/SignupForm";
-import { IoFlashSharp } from "react-icons/io5";
-import { TbTelescope } from "react-icons/tb";
+//import { IoFlashSharp } from "react-icons/io5";
+//import { TbTelescope } from "react-icons/tb";
 
 const InfoSection = () => {
   return (
-    <div className="relative w-full h-full flex bg-[#000] flex-col
-justify-end
-items-end " >
-     {/*background image */}
-      <Image
-        src={userpic1}
-        alt="Office Background"
-        width={900}
-        height={700}
-        className="md:rounded-none"
-        style={{  height: "585px" }} 
-      /> 
-
-
-      {/* Centered "Top Stock Resources" */}
-      <div className="absolute bottom-0 p-3 right-0 width-[300px]" >
-      <div className=" flex p-6 pb-2 items-center">
-        <div className="flex items-center gap-2 p-4 bg-blue-500 text-white rounded-full">
-          <IoFlashSharp className="w-6 h-6" />
+    <div className="flex flex-col justify-end items-center h-full bg-cover bg-center bg-no-repeat p-6">
+      {/* Overlay only at the bottom */}
+      <div className="space-y-4 flex-col text-center items-end">
+        <div className="flex items-center bg-blue-500 text-white rounded-full p-3">
           <span className="font-medium text-lg">Top Stock Resources</span>
         </div>
-      </div>
-
-      {/* Overlay only at the bottom */}
-      <div className=" bg-black/40 p-6 rounded-lg inline ">
-        <div className="bg-white/40 backdrop-blur-md p-4 rounded-lg text-white">
-        <div className="">
-          <TbTelescope className="w-4 h-6 m-20"/> 
+        <div className="bg-blue rounded-lg p-4">
+          <div className="bg-black backdrop-blur-md rounded-lg text-white p-4">
+            <div className="text-base space-y-2">
+              <div className="flex pl-2">
+                <span>Today, we create innovative solutions to the</span>
+              </div>
+              <div className="flex pl-2">
+                <span>challenges that consumers face in their</span>
+              </div>
+              <div className="flex pl-2">
+                <span>everyday lives.</span>
+              </div>
+            </div>
+          </div>
         </div>
-          <p className="text-base">
-            Today, we create innovative solutions to the challenges that
-            consumers face in their everyday lives.
-          </p>
-        </div>
-      </div>
       </div>
     </div>
   );
@@ -59,7 +45,13 @@ export default function Signup() {
       </div>
 
       {/* Right Section */}
-      <div className="hidden w-full md:w-1/2 md:flex justify-center items-center">
+      <div
+        className="hidden mb-0 relative md:flex w-full md:w-1/2 h-screen bg-cover bg-no-repeat bg-center"
+        style={{
+          backgroundImage: `url(${userPic.src})`,
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <InfoSection />
       </div>
     </div>

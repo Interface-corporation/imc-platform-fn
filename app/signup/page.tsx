@@ -2,7 +2,7 @@
 import userPic from "@/public/mall.png";
 import SignupForm from "@/components/Auth/SignupForm";
 //import { IoFlashSharp } from "react-icons/io5";
-//import { TbTelescope } from "react-icons/tb";
+import { TbTelescope } from "react-icons/tb";
 
 const InfoSection = () => {
   return (
@@ -15,6 +15,10 @@ const InfoSection = () => {
         <div className="bg-blue rounded-lg p-4">
           <div className="bg-black backdrop-blur-md rounded-lg text-white p-4">
             <div className="text-base space-y-2">
+            <div className="">
+          <TbTelescope className="w-4 h-6 m-20"/> 
+        </div>
+
               <div className="flex pl-2">
                 <span>Today, we create innovative solutions to the</span>
               </div>

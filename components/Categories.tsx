@@ -68,6 +68,7 @@ const Categories = () => {
               <div className="absolute inset-0 bg-black bg-opacity-20">
                 <div className="absolute bottom-6 left-6 text-white">
                   <h3 className="text-3xl font-semibold mb-2">PlayStation 5</h3>
+                  {/* esling-disable-next-line react/no-unescaped-entities */}
                   <p className="text-lg mb-4">Black and White version of the PS5 coming out on sale.</p>
                   <button className="text-lg font-medium hover:underline">
                     Shop Now

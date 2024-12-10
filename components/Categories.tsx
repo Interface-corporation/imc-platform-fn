@@ -39,116 +39,108 @@ const Categories = () => {
                     className="object-contain"
                   />
                 </div>
-                <p className="text-xl font-medium">{category.name}</p>
+                <p className="text-sm font-medium">{category.name}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* New Arrivals Section */}
-        <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold text-[#25AAE1]">
-              NEW ARRIVAL
+        <section className="my-16">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl text-[#25AAE1] font-bold">
+              New Arrival
             </h2>
-            <Link href="/categories" className="text-[#25AAE1] text-sm">
+            <Link href="/new-arrivals" className="text-[#25AAE1] text-sm">
               View All
             </Link>
           </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
-          {/* Large Featured Product */}
-          <div className="md:col-span-2 relative">
-            <Image
-              src="/images/ps5.jpg"
-              alt="PlayStation 5"
-              width={600}
-              height={400}
-              className="w-full h-80 rounded-xl object-cover shadow-lg"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-4 flex flex-col justify-end rounded-xl">
-              <h3 className="text-lg font-semibold text-white">
-                PlayStation 5
-              </h3>
-              <p className="text-sm text-gray-300 mt-1">
-                Black and White version of the PS5 coming out on sale.
-              </p>
-              <Link
-                href="/product/ps5"
-                className="mt-2 px-3 py-1 bg-white text-black text-xl font-medium rounded-lg shadow-md hover:bg-gray-300"
-              >
-                Shop Now
-              </Link>
-            </div>
-          </div>
 
-          {/* Two Smaller Featured Products */}
-          <div className="grid grid-rows-2 gap-4">
-            {/* Women's Collection */}
-            <div className="relative p-4 bg-gradient-to-r from-pink-500 to-red-500 text-white rounded-xl shadow-lg flex flex-col justify-between">
-              <div>
-                <h3 className="text-base font-semibold">
-                  Women&apos;s Collection
-                </h3>
-                <p className="text-sm mt-1">
-                  Featured women’s collections that give you another vibe.
-                </p>
-              </div>
-              <Link
-                href="/category/womens-collection"
-                className="mt-2 px-3 py-1 bg-white text-black text-xl font-medium rounded-lg shadow-md hover:bg-gray-300"
-              >
-                Shop Now
-              </Link>
-            </div>
-
-            {/* Speakers */}
-            <div className="relative flex flex-col rounded-xl shadow-lg h-full">
+          <div className="flex flex-col md:flex-row gap-4">
+            {/* Left Half - PlayStation 5 */}
+            <div className="w-full md:w-1/2 relative h-[600px] rounded-xl overflow-hidden">
               <Image
-                src="/images/speakers.jpg"
-                alt="Speakers"
-                width={300}
-                height={200}
-                className="rounded-t-xl object-cover h-24 w-full"
+                src="/images/ps5.jpg"
+                alt="PlayStation 5"
+                fill
+                className="object-cover"
               />
-              <div className="p-4 flex flex-col justify-between bg-white rounded-b-xl">
-                <div>
-                  <h3 className="text-base font-semibold">Speakers</h3>
-                  <p className="text-sm text-gray-600">
-                    Amazon wireless speakers.
-                  </p>
+              <div className="absolute inset-0 bg-black bg-opacity-20">
+                <div className="absolute bottom-6 left-6 text-white">
+                  <h3 className="text-3xl font-semibold mb-2">PlayStation 5</h3>
+                  {/* esling-disable-next-line react/no-unescaped-entities */}
+                  <p className="text-lg mb-4">Black and White version of the PS5 coming out on sale.</p>
+                  <button className="text-lg font-medium hover:underline">
+                    Shop Now
+                  </button>
                 </div>
-                <Link
-                  href="/product/speakers"
-                  className="mt-2 px-3 py-1 bg-[#25AAE1] text-white text-xl font-medium rounded-lg hover:bg-[#1a82b2]"
-                >
-                  Shop Now
-                </Link>
               </div>
             </div>
-          </div>
 
-          {/* Single Small Featured Product */}
-          <div className="relative flex flex-col rounded-xl shadow-lg h-full">
-            <Image
-              src="/images/perfume.jpg"
-              alt="Perfume"
-              width={300}
-              height={200}
-              className="rounded-t-xl object-cover h-80 w-full"
-            />
-            <div className="p-4 flex flex-col justify-between bg-white rounded-b-xl">
-              <div>
-                <h3 className="text-base font-semibold">Perfume</h3>
-                <p className="text-sm text-gray-600">GUCCI INTENSE OUD EDP</p>
+            {/* Right Half - Other Products */}
+            <div className="w-full md:w-1/2 flex flex-col gap-4">
+              {/* Women's Collections */}
+              <div className="relative h-[292px] rounded-xl overflow-hidden">
+                <Image
+                  src="/images/women.jpg"
+                  alt="Women's Collections"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-20 p-6 flex flex-col justify-between">
+                  <div className="absolute bottom-6 left-6 text-white">
+                    <h3 className="text-2xl font-semibold text-white mb-2">Women's Collections</h3>
+                    <p className="text-white">Featured woman collections that give you another vibe.</p>
+                    <button className="text-lg font-medium text-white hover:underline">
+                      Shop Now
+                    </button>
+                  </div>
+                </div>
               </div>
-              <Link
-                href="/product/perfume"
-                className="mt-2 px-3 py-1 bg-[#25AAE1] text-white text-xl font-medium rounded-lg hover:bg-[#1a82b2]"
-              >
-                Shop Now
-              </Link>
+
+              {/* Bottom Row - Speakers and Perfume */}
+              <div className="flex gap-4 h-[292px]">
+                {/* Speakers */}
+                <div className="w-1/2 relative rounded-xl overflow-hidden">
+                  <Image
+                    src="/images/speakers.jpg"
+                    alt="Speakers"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-20 p-6 flex flex-col justify-between">
+                    <div className="absolute bottom-6 left-6 text-white">
+                      <h3 className="text-2xl font-semibold text-white mb-2">Speakers</h3>
+                      <p className="text-white">Amazon wireless speakers</p>
+                      <button className="text-lg font-medium text-white hover:underline">
+                        Shop Now
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Perfume */}
+                <div className="w-1/2 relative rounded-xl overflow-hidden">
+                  <Image
+                    src="/images/perfume.jpg"
+                    alt="Perfume"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-20 p-6 flex flex-col justify-between">
+                    <div className="absolute bottom-6 left-6 text-white">
+                      <h3 className="text-2xl font-semibold text-white mb-2">Perfume</h3>
+                      <p className="text-white">GUCCI INTENSE OUD EDP</p>
+                      <button className="text-lg font-medium text-white hover:underline">
+                        Shop Now
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

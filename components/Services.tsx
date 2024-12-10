@@ -58,28 +58,31 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description }) => (
 
 const Services: React.FC = () => (
   <div id="services">
-    <section className="my-10 grid md:grid-cols-2 gap-8 p-4 md:p-10">
-      <div className="flex flex-col space-y-6">
-        <h2 className="text-2xl font-bold text-[#25aae1]">Our Services</h2>
-        <p className="text-[#25aae1] text-lg leading-relaxed">
-          We are your one-stop-shop talent platform to access and manage all
-          types of workforce, on-demand.
-        </p>
-        <button className="px-6 py-3 bg-[#1E3A5F] text-white rounded-full shadow-md hover:bg-[#25aae1] transition-colors duration-300 w-max">
-          Find Qualified Individuals
-        </button>
+    <div className="container mx-auto px-4 py-10">
+      <div className="grid md:grid-cols-2 gap-8">
+        <div className="flex flex-col space-y-6">
+          <h2 className="text-3xl font-bold text-[#25aae1]">Our Services</h2>
+          <p className="text-[#25aae1] text-md lg:text-3xl lg:w-[50%] font-light leading-relaxed">
+            We are your one-stop-shop talent platform to access and manage all
+            types of workforce, on-demand.
+          </p>
+          <button className="px-6 py-3 bg-[#1E3A5F] text-white text-xl rounded-full shadow-md hover:bg-[#25aae1] transition-colors duration-300 w-max">
+            Find Qualified Individuals
+          </button>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {servicesData.map((service, index) => (
+            <ServiceCard
+              key={index}
+              title={service.title}
+              description={service.description}
+            />
+          ))}
+        </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {servicesData.map((service, index) => (
-          <ServiceCard
-            key={index}
-            title={service.title}
-            description={service.description}
-          />
-        ))}
-      </div>
-    </section>
+    </div>
   </div>
 );
+
 
 export default Services;

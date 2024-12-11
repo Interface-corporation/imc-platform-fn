@@ -1,59 +1,69 @@
-//import Image from "next/image";
+// Import necessary components and assets
 import userPic from "@/public/mall.png";
 import SignupForm from "@/components/Auth/SignupForm";
-//import { IoFlashSharp } from "react-icons/io5";
+import { IoFlashSharp } from "react-icons/io5";
 import { TbTelescope } from "react-icons/tb";
 
-const InfoSection = () => {
-  return (
-    <div className="flex flex-col justify-end items-center h-full bg-cover bg-center bg-no-repeat p-6">
-      {/* Overlay only at the bottom */}
-      <div className="space-y-4 flex-col text-center items-end">
-        <div className="flex items-center bg-blue-500 text-white rounded-full p-3">
-          <span className="font-medium text-lg">Top Stock Resources</span>
-        </div>
-        <div className="bg-blue rounded-lg p-4">
-          <div className="bg-black backdrop-blur-md rounded-lg text-white p-4">
-            <div className="text-base space-y-2">
-            <div className="">
-          <TbTelescope className="w-4 h-6 m-20"/> 
-        </div>
-
-              <div className="flex pl-2">
-                <span>Today, we create innovative solutions to the</span>
-              </div>
-              <div className="flex pl-2">
-                <span>challenges that consumers face in their</span>
-              </div>
-              <div className="flex pl-2">
-                <span>everyday lives.</span>
-              </div>
-            </div>
-          </div>
-        </div>
+const InfoSection = () => (
+  <div className="flex flex-col justify-end items-center h-full bg-cover bg-center bg-no-repeat p-6 relative">
+    {/* Flash Icon Section aligned with the overlay */}
+    <div
+      className="w-92 p-1 relative z-20"
+      style={{
+        bottom: "calc(33% + 2rem)", // Raise it above the overlay section
+        left: "110%",
+        transform: "translateX(-10%)",
+      }}
+    >
+      <div className="flex items-center gap-0 p-0 bg-blue-500 text-white rounded-full">
+        <IoFlashSharp className="w-6 h-6" />
+        <span className="font-medium text-lg">imc stock</span>
       </div>
     </div>
-  );
-};
 
+    {/* Overlay Section */}
+<div
+  className="backdrop-blur-md bg-black/40 rounded-lg text-white p-4 flex flex-col items-start space-y-2 absolute z-10"
+  style={{
+    bottom: "calc(1% + 1rem)", // Align with the Flash Icon Section
+    left: "80%",
+    transform: "translateX(0%)", // Center horizontally
+    width: "90%",
+    maxWidth: "450px",
+    minWidth: "250px",
+    padding: "1.5rem",
+  }}
+>
+  <div className="flex items-center gap-2 mb-4">
+    <TbTelescope className="w-6 h-6" />
+  </div>
+  <div className="text-base">
+    <p>shop the best products</p>
+    <p>from Across the internet,</p>
+    <p>Delivered to you Anytime,</p>
+    <p>Anywhere</p>
+  </div>
+</div>
 
-// Main signup component
+  </div>
+);
+
 export default function Signup() {
   return (
-    <div className="flex flex-col-2 md:flex-row h-screen">
+    <div className="flex flex-col md:flex-row h-screen">
       {/* Left Section */}
-      <div className="w-full md:w-1/2 flex flex-col justify-center items-center bg-white">
-        <div className="w-full max-w-lg px-6">
-          <SignupForm />
-        </div>
+      <div className="w-full md:w-1/2 flex flex-col justify-center items-center bg-white relative">
+        <SignupForm />
       </div>
 
       {/* Right Section */}
       <div
-        className="hidden mb-0 relative md:flex w-full md:w-1/2 h-screen bg-cover bg-no-repeat bg-center"
+        className="hidden md:flex w-full md:w-1/2 h-screen bg-cover bg-no-repeat relative"
         style={{
           backgroundImage: `url(${userPic.src})`,
           backgroundRepeat: "no-repeat",
+          backgroundPosition: "bottom",
+          backgroundSize: "cover",
         }}
       >
         <InfoSection />

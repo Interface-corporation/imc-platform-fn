@@ -12,12 +12,12 @@ const ForgotPasswordForm = () => {
   />
 </div>
 
-      <div className="flex justify-center items-center">
+<div className="flex justify-center items-center">
         <button
           type="submit"
-          className="w-full max-w-xs bg-blue-500 text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition duration-300"
+          className="w-full max-w-xs  bg-white text-black py-1 border border-gray-300  rounded-lg font-medium hover:bg-blue-600 transition duration-300"
         >
-          Continue
+         Submit
         </button>
       </div>
     </form>

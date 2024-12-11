@@ -21,18 +21,18 @@ const ResetPasswordForm: React.FC = () => {
           <div>
             <input
               type="password"
-              placeholder="Reenter password"
+              placeholder="Re-enter password"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="w-1/2 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            >
-              Reset
-            </button>
-          </div>
+          <div className="flex justify-center items-center">
+        <button
+          type="submit"
+          className="w-full max-w-xs  bg-white text-black py-2 border border-gray-300  rounded-lg font-medium hover:bg-blue-600 transition duration-300"
+        >
+         Reset
+        </button>
+      </div>
         </form>
       </div>
     </div>

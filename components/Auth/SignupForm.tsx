@@ -99,7 +99,7 @@ const SignupForm = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-600 text-black py-1 rounded-lg shadow hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 outline-none transition"
+          className="w-full bg-blue-600 text-black py-2 rounded-lg shadow hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 outline-none transition"
         >
           Create Account
         </button>

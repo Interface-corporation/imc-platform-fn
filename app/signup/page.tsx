@@ -23,14 +23,14 @@ const InfoSection = () => (
 
     {/* Overlay Section */}
 <div
-  className="backdrop-blur-md bg-black/40 rounded-lg text-white p-4 flex flex-col items-start space-y-2 absolute z-10"
+  className=" bg-black/40 backdrop-blur-md rounded-lg text-white p-4 flex flex-col-2 items-start space-y-2 absolute z-10"
   style={{
     bottom: "calc(1% + 1rem)", // Align with the Flash Icon Section
     left: "80%",
     transform: "translateX(0%)", // Center horizontally
     width: "90%",
     maxWidth: "450px",
-    minWidth: "250px",
+    minWidth: "280px",
     padding: "1.5rem",
   }}
 >

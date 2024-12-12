@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <div>
       {/* Footer Section */}
-      <footer className="bg-gray-100 py-10">
+      <footer className="bg-white text-black py-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
             {/* Logo & Payment Section */}
@@ -23,7 +23,7 @@ const Footer = () => {
                   height={50}
                 />
               </div>
-              <p className="text-sm text-gray-500">Accepted Payments</p>
+              <p className="text-sm">Accepted Payments</p>
               <div className="flex space-x-3">
                 <Image
                   src="/images/visa.png"
@@ -99,15 +99,15 @@ const Footer = () => {
               },
             ].map((section, index) => (
               <div key={index}>
-                <h3 className="font-semibold text-lg mb-4 text-[#1E3A5F]">
+                <h3 className="font-semibold text-lg mb-4 text-black">
                   {section.title}
                 </h3>
-                <ul className="space-y-2 text-sm text-gray-600">
+                <ul className="space-y-2 text-sm text-black">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
                       <Link
                         href="/"
-                        className="hover:text-blue-600 transition-colors duration-300"
+                        className="hover:text-[#1E3A5F] transition-colors duration-300"
                       >
                         {link}
                       </Link>
@@ -120,39 +120,39 @@ const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="mt-8 border-t pt-4 text-sm text-gray-500">
+        <div className="mt-8 border-t pt-4 text-sm text-black">
           <div className="container mx-auto px-4 flex flex-wrap items-center justify-between">
             <div className="flex flex-wrap space-x-4 justify-center md:justify-start mb-4 md:mb-0">
               <Link
                 href="/"
-                className="hover:text-blue-600 transition-colors duration-300 flex items-center"
+                className="hover:text-[#1E3A5F] transition-colors duration-300 flex items-center"
               >
-                <ShoppingBagIcon className="w-5 h-5 cursor-pointer text-[#1E3A5F]"/>
+                <ShoppingBagIcon className="w-5 h-5 cursor-pointer text-black"/>
                 Become Seller
               </Link>
               <Link
                 href="/"
-                className="hover:text-blue-600 transition-colors duration-300 flex items-center"
+                className="hover:text-[#1E3A5F] transition-colors duration-300 flex items-center"
               >
-                <GiftIcon className="w-5 h-5 cursor-pointer text-[#1E3A5F]"/>
+                <GiftIcon className="w-5 h-5 cursor-pointer text-black"/>
                 Gift Cards
               </Link>
               <Link
                 href="/"
-                className="hover:text-blue-600 transition-colors duration-300 flex items-center"
+                className="hover:text-[#1E3A5F] transition-colors duration-300 flex items-center"
               >
-                <InformationCircleIcon className="w-5 h-5 cursor-pointer text-[#1E3A5F]"/>
+                <InformationCircleIcon className="w-5 h-5 cursor-pointer text-black"/>
                 Help Centre
               </Link>
               <Link
                 href="/"
-                className="hover:text-blue-600 transition-colors duration-300 flex items-center"
+                className="hover:text-[#1E3A5F] transition-colors duration-300 flex items-center"
               >
                 Terms of Use
               </Link>
               <Link
                 href="/"
-                className="hover:text-blue-600 transition-colors duration-300 flex items-center"
+                className="hover:text-[#1E3A5F] transition-colors duration-300 flex items-center"
               >
                 Privacy Policy
               </Link>

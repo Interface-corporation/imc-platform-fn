@@ -45,7 +45,7 @@ const Dashboard: React.FC = () => {
       <aside
         className={`w-65 bg-blue-950 text-[#25aae1] flex flex-col justify-between p-6 transition-transform duration-300 
         ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} sm:w-46 rounded-r-[25px] 
-        sm:translate-x-0 sm:block ${isSidebarOpen ? "block" : "hidden"} lg:w-40 lg:rounded-[25px] lg:px-2`} // Sidebar on small screens will be compact
+        sm:translate-x-0 sm:block ${isSidebarOpen ? "block" : "hidden"} lg:w-40 lg:rounded-r-[25px] lg:px-2`} // Sidebar on small screens will be compact
       >
         <div>
           <div className="items-center mb-8">

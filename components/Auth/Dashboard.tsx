@@ -87,7 +87,7 @@ const Dashboard: React.FC = () => {
                 placeholder="Search items..."
                 className="p-2 pl-10 bg-white shadow-lg rounded-xl w-full"
               />
-              <span className="absolute left-2 top-2 text-blue-500 text-lg">
+              <span className="absolute right-2 top-2 text-blue-500 text-lg">
                 <FaSearch />
               </span>
             </div>

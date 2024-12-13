@@ -16,10 +16,8 @@ import {
 } from "react-icons/fa";
 
 const Dashboard: React.FC = () => {
-  // State to handle the currently selected menu item
   const [selectedMenu, setSelectedMenu] = useState<string>("Dashboard");
 
-  // Content mapping for each menu item
   const menuContent: Record<string, string> = {
     Dashboard: "Welcome to the Dashboard!",
     Cart: "This is a list of all carts.",
@@ -31,18 +29,18 @@ const Dashboard: React.FC = () => {
     Logout: "You have been logged out.",
   };
 
-  // State to manage unread notifications
-  const [hasUnreadNotifications, setHasUnreadNotifications] = useState<boolean>(true);
+  // Constant for unread notifications (state not needed)
+  const hasUnreadNotifications = true;
 
   return (
     <div className="flex h-screen bg-white">
       {/* Sidebar */}
-      <aside className="w-49 bg-blue-950 text-blue-600 flex rounded-r-[30px] flex-col justify-between">
+      <aside className="w-60 bg-blue-950 text-blue-600 flex rounded-r-[30px] flex-col justify-between">
         <div>
           <div className="p-6 items-center">
             <Image
-              src="/dashLog.png"
-              alt="IMC Logo"
+              src="/logo.png"
+              alt="Company Logo"
               width={100}
               height={100}
               className="mx-auto bg-blue-900"
@@ -62,10 +60,13 @@ const Dashboard: React.FC = () => {
               <button
                 key={item.name}
                 onClick={() => setSelectedMenu(item.name)}
-                className={`flex items-center px-6 py-3 hover:bg-blue-700 w-full ${
-                  selectedMenu === item.name ? "bg-none" : ""
+                className={`flex items-center px-6 py-3 w-full relative ${
+                  selectedMenu === item.name ? "text-white" : ""
                 }`}
               >
+                {selectedMenu === item.name && (
+                  <span className="absolute left-0 top-0 h-full w-1 bg-white rounded-r-md"></span>
+                )}
                 <span className="mr-4 text-lg">{item.icon}</span>
                 {item.name}
               </button>
@@ -77,11 +78,9 @@ const Dashboard: React.FC = () => {
       {/* Main Content */}
       <main className="flex-1">
         <header className="flex items-center justify-between px-6 py-4 bg-white">
-          <div className="flex items-center gap-4">
-            {/* Empty div for spacing */}
-          </div>
+          <div className="flex items-center gap-4"></div>
           <div className="flex items-center gap-4 ml-auto">
-            {/* Search box aligned to the right */}
+            {/* Search box */}
             <div className="relative w-80">
               <input
                 type="text"
@@ -94,33 +93,42 @@ const Dashboard: React.FC = () => {
             </div>
 
             {/* Notification icon with red dot */}
-            <button type="button" className="relative p-2 bg-white rounded" aria-label="Notification">
+            <button
+              type="button"
+              className="relative p-2 bg-white rounded"
+              aria-label="View notifications"
+            >
               <FaBell className="text-black text-lg" />
               {hasUnreadNotifications && (
                 <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full" />
               )}
             </button>
 
-            {/* Profile icon with green dot */}
-            <div className="relative flex items-center bg-white rounded p-2">
+            {/* Profile section */}
+            <div className="relative">
+              {/* Profile picture */}
               <Image
                 src="/profile.jpg"
-                alt="Profile"
+                alt="User Profile Picture"
                 width={40}
                 height={40}
                 className="rounded-full"
               />
-              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white" />
-              <div className="ml-2">
-                <p className="text-sm font-semibold">Abdoul Khaliq</p>
-                <p className="text-xs text-gray-500">abdoulkhaliq@gmail.com</p>
-              </div>
+              {/* Green dot indicating online status */}
+              <span className="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></span>
+            </div>
+            <div className="ml-4">
+              <p className="text-sm font-semibold">Abdoul Khaliq</p>
+              <p className="text-xs text-gray-500">abdoulkhaliq@gmail.com</p>
             </div>
           </div>
         </header>
+
         <div className="p-6">
           <h1 className="text-2xl font-bold">{selectedMenu}</h1>
-          <p className="mt-4 text-lg">{menuContent[selectedMenu]}</p>
+          <p className="mt-4 text-lg">
+            {menuContent[selectedMenu] || "Content not available"}
+          </p>
         </div>
       </main>
     </div>

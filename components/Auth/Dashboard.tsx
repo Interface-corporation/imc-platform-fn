@@ -35,15 +35,15 @@ const Dashboard: React.FC = () => {
   return (
     <div className="flex h-screen bg-white">
       {/* Sidebar */}
-      <aside className="w-60 bg-blue-950 text-blue-600 flex rounded-r-[30px] flex-col justify-between">
+      <aside className="w-60 bg-blue-950 text-[#25aae1] flex rounded-r-[30px] flex-col justify-between">
         <div>
           <div className="p-6 items-center">
             <Image
-              src="/logo.png"
+              src="/images/logo.png"
               alt="Company Logo"
               width={100}
               height={100}
-              className="mx-auto bg-blue-900"
+              className="mx-auto"
             />
           </div>
           <nav>
@@ -87,7 +87,7 @@ const Dashboard: React.FC = () => {
                 placeholder="Search items..."
                 className="p-2 pl-10 bg-white shadow-lg rounded-xl w-full"
               />
-              <span className="absolute left-2 top-2 text-blue-500 text-lg">
+              <span className="absolute left-2 top-2 text-[#25aae1] text-lg">
                 <FaSearch />
               </span>
             </div>

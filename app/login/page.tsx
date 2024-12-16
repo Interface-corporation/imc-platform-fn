@@ -10,7 +10,7 @@ import userPic from "@/public/user.png";
 // Component for displaying the "Top Stock Resources" info
 const InfoSection = () => {
   return (
-    <div className="flex flex-col justify-end items-center h-full bg-cover bg-center bg-no-repeat p-6 relative">
+    <div className="flex flex-col justify-end items-center h-screen bg-cover bg-center bg-no-repeat p-6 relative">
       {/* Main Content (Overlay) */}
       <div className="bg-black/40 rounded-lg p-4 backdrop-blur-md space-y-4 z-0 w-full flex flex-col justify-between h-[250px]">
         {/* Blue background with text and thumb-up icon at the top inside the overlay */}
@@ -49,7 +49,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto flex-1">
+    <div className="w-full max-w-md mx-auto flex-1 h-screen">
       <h1 className="text-2xl md:text-3xl font-bold mb-2 text-center">Welcome Back</h1>
       <p className="text-sm md:text-base text-gray-500 mb-8 text-center">Login into your account</p>
 

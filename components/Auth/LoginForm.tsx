@@ -14,7 +14,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="max-w-md w-full">
+    <div className="max-w-md w-full h-screen">
       {/* Logo */}
       <div className="absolute top-4 left-4">
         <Image

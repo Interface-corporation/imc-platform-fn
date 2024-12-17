@@ -171,10 +171,10 @@ const SingleProductPage = ({ params }: { params: { id: string } }) => {
             </div>
 
             <div className="mt-6 flex space-x-4">
-              <button className="px-6 py-3 bg-[#1E3A5F] text-white rounded-lg hover:bg-[#25aae1]">
+              <button className="px-6 py-3 bg-[#1E3A5F] text-white rounded-full hover:bg-[#25aae1]">
                 Buy Now
               </button>
-              <button className="px-6 py-3 text-lg font-medium text-black bg-white border border-black rounded-lg hover:bg-[#16415F] hover:text-white transition-all">
+              <button className="px-6 py-3 text-lg font-medium text-black bg-white border border-black rounded-full hover:bg-[#16415F] hover:text-white transition-all">
                 Add to Cart
               </button>
             </div>

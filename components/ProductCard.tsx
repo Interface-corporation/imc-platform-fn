@@ -13,10 +13,9 @@ interface Product {
 }
 
 const ProductCard = ({ product }: { product: Product }) => {
-  // Function to render stars based on the rating
   const renderStars = (rating: number) => {
     const fullStars = Math.floor(rating);
-    const halfStars = rating % 1 !== 0 ? 1 : 0; // To render half a star if the rating is a decimal
+    const halfStars = rating % 1 !== 0 ? 1 : 0;
     const emptyStars = 5 - fullStars - halfStars;
 
     return (
@@ -76,7 +75,7 @@ const ProductCard = ({ product }: { product: Product }) => {
       </div>
 
       {/* Add to Cart Button */}
-      <button className="mt-4 w-1/2 px-4 py-2 text-lg font-medium text-black rounded-lg bg-white border hover:bg-[#16415F] hover:text-white transition-colors duration-300">
+      <button className="mt-4 w-1/2 px-4 py-2 text-lg font-medium text-black rounded-full bg-white border hover:bg-[#25aae1] hover:text-white transition-colors duration-300">
         Add to Cart
       </button>
     </div>

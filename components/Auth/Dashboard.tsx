@@ -39,10 +39,11 @@ const Dashboard: React.FC = () => {
     <div className="flex h-screen bg-white">
       {/* Sidebar */}
       <aside
-        className={`h-screen w-65 bg-blue-950 text-[#25aae1] flex flex-col justify-between p-6 transition-transform duration-300 
-  ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} sm:w-46 rounded-r-[25px] 
-  sm:translate-x-0 sm:block ${isSidebarOpen ? "block" : "hidden"} lg:w-40 lg:rounded-r-[25px] lg:px-2`}
+        className={`h-screen w-95 bg-blue-950 text-[#25aae1] flex flex-col justify-between p-6 transition-transform duration-300 
+          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} sm:w-46 rounded-r-[25px] 
+          sm:translate-x-0 sm:block ${isSidebarOpen ? "block" : "hidden"} lg:w-40 lg:rounded-r-[25px] lg:px-2`}
       >
+
 
         <div>
           <div className="items-center mb-8">
@@ -79,7 +80,7 @@ const Dashboard: React.FC = () => {
           </nav>
         </div>
 
-        <div className="mt-[200px]">
+        <div className="mt-[160px]">
           <nav>
             {[
               { name: "Setting", icon: <FaCog /> },
@@ -104,96 +105,106 @@ const Dashboard: React.FC = () => {
 
       {/* Main Content */}
       <main className="flex-1">
-      <header className="flex items-center justify-between px-4 py-4 bg-white">
-  <div className="flex items-center gap-4">
-    <button
-      onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-      className="lg:hidden p-2"
-      aria-label="Toggle sidebar"
-    >
-      <FaBars className="text-[#25aae1]" size={24} />
-    </button>
-  </div>
+        <header className="flex items-center justify-between px-4 py-4 bg-white">
+          <div className="flex items-center gap-2">
+            {/* Sidebar Toggle Button */}
+            <button
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              className="lg:hidden p-2"
+              aria-label="Toggle sidebar"
+            >
+              <FaBars className="text-[#25aae1]" size={24} />
+            </button>
+          </div>
 
-  {/* Header Content */}
-  <div className="flex items-center gap-4 sm:gap-6 w-full justify-between sm:max-w-full">
-    {/* Search Bar */}
-    <div className="relative w-1/2 sm:w-[400px] lg:w-[700px] lg:ml-auto">
-      <input
-        type="text"
-        placeholder="Search items..."
-        className="p-3 pl-1 bg-white shadow-lg rounded-3xl w-full text-xs lg:text-sm"
-      />
-      <span className="absolute right-4 top-3 text-[#25aae1] text-lg">
-        <FaSearch />
-      </span>
-    </div>
+          {/* Header Content */}
+          <div className="flex items-center gap-3 w-full justify-between">
+            {/* Search Bar */}
+            <div className="relative w-[150px] lg:w-[650px] lg:ml-auto">
+              <input
+                type="text"
+                placeholder="Search items..."
+                className="p-2 pl-3 bg-white shadow-md rounded-3xl w-full text-xs lg:text-sm"
+              />
+              <span className="absolute right-3 top-2.5 text-[#25aae1] text-xl">
+                <FaSearch />
+              </span>
+            </div>
 
-    {/* Notifications */}
-    <button
-      type="button"
-      className="relative p-2 bg-white rounded"
-      aria-label="View notifications"
-    >
-      <FaBell className="text-amber-400 text-2xl" />
-      {hasUnreadNotifications && (
-        <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full" />
-      )}
-    </button>
+            {/* Notifications */}
+            <button
+              type="button"
+              className="relative p-2"
+              aria-label="View notifications"
+            >
+              <FaBell className="text-amber-400 text-3xl" />
+              {hasUnreadNotifications && (
+                <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full" />
+              )}
+            </button>
 
-    {/* Profile Section */}
-    <div className="relative flex items-center gap-2">
-      {/* Profile Image */}
-      <div className="relative">
-        <Image
-          src="/profile.jpg"
-          alt="User Profile Picture"
-          width={40}
-          height={40}
-          className="rounded-full"
-        />
-        <span className="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></span>
-      </div>
+            {/* Profile Section */}
+            <div className="relative flex items-center gap-2">
+              {/* Profile Image */}
+              <div className="relative">
+                <Image
+                  src="/profile.jpg"
+                  alt="User Profile Picture"
+                  width={60}
+                  height={60}
+                  className="rounded-full"
+                />
+                <span className="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></span>
+              </div>
 
-      {/* Dropdown Icon and Name */}
-      <button
-        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        className="focus:outline-none flex items-center gap-1"
-        aria-label="Toggle profile dropdown"
-      >
-        <span className="font-semibold text-sm">Abdoul Khaliq</span>
-        <FaChevronDown
-          className={`text-[#25aae1] transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`}
-          size={16}
-        />
-      </button>
+              {/* Name and Email */}
+              <div className="flex flex-col leading-tight">
+                <span className="font-semibold text-sm whitespace-nowrap">
+                  Abdoul Khaliq
+                </span>
+                <span className="text-gray-500 text-xs whitespace-nowrap">
+                  abdoulkhaliq@gmail.com
+                </span>
+              </div>
 
-      {/* Dropdown Menu */}
-      {isDropdownOpen && (
-        <div className="absolute top-14 left-0 mt-1 w-48 bg-white shadow-lg rounded-xl z-10">
-          <ul>
-            <li>
-              <button className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
-                View Profile
+              {/* Dropdown Icon */}
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="focus:outline-none"
+                aria-label="Toggle profile dropdown"
+              >
+                <FaChevronDown
+                  className={`text-[#25aae1] transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""
+                    }`}
+                  size={14}
+                />
               </button>
-            </li>
-            <li>
-              <button className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
-                Edit Profile
-              </button>
-            </li>
-            <li>
-              <button className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-100">
-                Logout
-              </button>
-            </li>
-          </ul>
-        </div>
-      )}
-    </div>
-  </div>
-</header>
 
+              {/* Dropdown Menu */}
+              {isDropdownOpen && (
+                <div className="absolute top-14 right-0 mt-1 w-48 bg-white shadow-lg rounded-xl z-10">
+                  <ul>
+                    <li>
+                      <button className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+                        View Profile
+                      </button>
+                    </li>
+                    <li>
+                      <button className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+                        Edit Profile
+                      </button>
+                    </li>
+                    <li>
+                      <button className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-100">
+                        Logout
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        </header>
 
         {/* Content Section */}
         <div className="p-6">

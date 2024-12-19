@@ -10,6 +10,25 @@ export const authenticationSlice = apiSlice.injectEndpoints({
                 body: data,
                 credentials: "include"
             }),
+            async onQueryStarted(args, { dispatch, queryFulfilled }){
+                try {
+                    const { data: userData } = await queryFulfilled;
+
+                    dispatch(
+                        authenticationSlice.util.updateQueryData("getProfile", undefined, (draft)=> {
+                            console.log(draft)
+                            draft.success = userData?.success;
+                            draft.responseObject = userData.responseObject;
+                            draft.message = userData.message;
+                            draft.status = userData.status;
+
+                            return draft;
+                        })
+                    )
+                } catch (error) {
+                    console.log(error);
+                }
+            }
         }),
         signupUser: builder.mutation({
             query: (data) => ({

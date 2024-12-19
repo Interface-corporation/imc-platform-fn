@@ -1,22 +1,18 @@
 "use client";
-import { Outfit } from "next/font/google";
 
 import LoginForm from "@/components/Auth/LoginForm";
 import Image from "next/image";
-import { FaThumbsUp } from "react-icons/fa";
-
-const outfit = Outfit({ subsets: ['latin', "latin-ext"], weight: "500" })
 
 const LoginPage = () => {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex max-md:flex-col min-h-screen">
       {/* Left Section: Login Form */}
-      <div className="w-1/2 flex flex-col justify-center items-center bg-gray-50 px-8 py-16">
+      <div className="w-1/2 max-md:w-full flex flex-col items-center bg-gray-100 px-8 py-16">
         <LoginForm />
       </div>
 
       {/* Right Section: Promotional Content */}
-      <div className="w-1/2 h-lvh relative">
+      <div className="w-1/2 max-md:w-full h-lvh relative">
             {/* Background Image */}
             <div className="relative w-full h-lvh">
                 <Image
@@ -29,14 +25,14 @@ const LoginPage = () => {
             </div>
 
             {/* Overlay Content */}
-            <div className="absolute bottom-10 left-5 backdrop-blur-lg  bg-white/30 bg-opacity-90 p-6 rounded-lg shadow-lg max-w-lg w-full">
-                <div className="bg-[#25AAE1] rounded-lg p-2 flex items-center gap-x-2 w-1/2">
-                    <FaThumbsUp className="h-6 w-6 text-[#e2bb50]"/>
+            <div className="absolute bottom-10 left-[15%] backdrop-blur-lg  bg-white/30 bg-opacity-90 p-6 rounded-lg shadow-lg max-w-[70%] w-full">
+                <div className="bg-[#25AAE1] rounded-lg p-2 flex items-center gap-x-2 w-1/2 max-lg:w-full">
+                    <Image src="/thumbs-up.png" alt="thumbs-up icon" width={ 24 } height={ 24 } className="h-6 w-6"/>
                     <h2 className="text-sm font-semibold text-white">
                         Top Stock Resources
                     </h2>
                 </div>
-                <p className={`text-white mt-2 text-xl ${ outfit.className }`}>
+                <p className="text-white mt-2 text-xl">
                     Today, we create innovative solutions to the challenges consumers
                     face in everyday lives.
                 </p>

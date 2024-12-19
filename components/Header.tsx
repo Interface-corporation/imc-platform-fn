@@ -7,6 +7,9 @@ import {
   UserIcon,
 } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import { useGetProfileQuery, useLogoutUserMutation } from "@/states/authentication";
+import { LuLogOut } from "react-icons/lu";
+import { useRouter } from "next/navigation";
 
 interface NavLink {
   label: string;
@@ -20,6 +23,9 @@ const Header = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
+  const { data: authUser } = useGetProfileQuery({});
+  const [logoutUser, { isSuccess: logoutSuccess }] = useLogoutUserMutation();
+  const router = useRouter();
 
   const navLinks: NavLink[] = [
     { label: "Whats New", href: "#categories" },
@@ -36,6 +42,15 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if(logoutSuccess){
+    router.push("/login")
+  }
+
+  const handleLogout = async()=> {
+    await logoutUser({});
+
+  }
 
   return (
     <header
@@ -146,9 +161,16 @@ const Header = () => {
             <Link href="/cart">
               <ShoppingCartIcon className="w-5 h-5 cursor-pointer text-white" />
             </Link>
-            <Link href="/login">
-              <UserIcon className="w-5 h-5 cursor-pointer text-white" />
-            </Link>
+            {
+                authUser 
+                ?  <Link href="/#" onClick={ handleLogout }>
+                        <LuLogOut className="w-5 h-5 cursor-pointer text-white" />
+                    </Link>
+                  : <Link href="/login">
+                        <UserIcon className="w-5 h-5 cursor-pointer text-white" />
+                    </Link>
+            }
+            
           </div>
         </div>
 

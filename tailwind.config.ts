@@ -9,6 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+         primary: {
+          DEFAULT: '#1E3A5F',
+          foreground: '#FFFFFF',
+        },
+        secondary: {
+          DEFAULT: '#25AAE1',
+          foreground: '#ffffff',
+        },
       },
     },
   },

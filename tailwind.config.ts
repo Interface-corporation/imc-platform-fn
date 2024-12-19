@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        logoBlue: "#25aae1"
       },
     },
   },

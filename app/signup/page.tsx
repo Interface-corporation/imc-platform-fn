@@ -15,7 +15,7 @@ const InfoSection = () => (
         transform: "translateX(-10%)",
       }}
     >
-      <div className="flex items-center gap-0 p-0 bg-blue-500 text-white rounded-full">
+      <div className="flex items-center top-8 gap-0 p-4 bg-blue-500 text-white rounded-xl">
         <IoFlashSharp className="w-6 h-6" />
         <span className="font-medium text-lg">imc stock</span>
       </div>
@@ -28,10 +28,10 @@ const InfoSection = () => (
     bottom: "calc(1% + 1rem)", // Align with the Flash Icon Section
     left: "80%",
     transform: "translateX(0%)", // Center horizontally
-    width: "90%",
-    maxWidth: "450px",
-    minWidth: "280px",
-    padding: "1.5rem",
+    width: "100%",
+    maxWidth: "350px",
+    minWidth: "380px",
+    padding: "3rem",
   }}
 >
   <div className="flex items-center gap-2 mb-4">

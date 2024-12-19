@@ -1,93 +1,157 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
-import Image from "next/image";
-import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
+import Image from "next/image"; 
+import { useState } from "react";
+import { FcGoogle } from "react-icons/fc";
+import { FaThumbsUp, FaEye, FaEyeSlash } from "react-icons/fa";
+import userPic from "@/public/user.png"; 
 
-const LoginForm = () => {
-  // State to toggle password visibility
-  const [showPassword, setShowPassword] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
+// Component for displaying the "Top Stock Resources" info
+const InfoSection = () => {
   return (
-    <div className="max-w-md w-full h-screen">
-      {/* Logo */}
-      <div className="absolute top-4 left-4">
-        <Image
-          src="/logo.png"
-          alt="IMC Logo"
-          width={64}
-          height={64}
-          priority
-        />
-      </div>
-
-      <h1 className="text-3xl font-semibold text-gray-800 text-center mt-20">
-        Welcome Back
-      </h1>
-      <p className="text-gray-500 text-center mb-6">Login into your account</p>
-
-      <div className="flex gap-4 justify-center mb-6 text-black">
-        <button
-          type="button"
-          className="flex items-center justify-center w-full bg-blue-500  py-2 rounded-lg shadow hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 outline-none"
-        >
-          <FaGoogle className=" text-black w-5 h-5 mr-2" />
-          Google
-        </button>
-      </div>
-
-      <div className="text-center text-gray-500 mb-4">Or continue with</div>
-
-      <form className="space-y-4">
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-        />
-        <div className="relative">
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Password"
-            className="w-full px-4 py-1 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-          />
-          <button
-            type="button"
-            className="absolute inset-y-0 right-0 flex items-center pr-4 cursor-pointer focus:ring-2 focus:ring-blue-500"
-            onClick={togglePasswordVisibility}
-            aria-label={showPassword ? "Hide password" : "Show password"}
-          >
-            {showPassword ? <FaEyeSlash className="text-gray-600" /> : <FaEye className="text-gray-600" />}
-          </button>
+    <div className="absolute inset-0 p-11 flex flex-col justify-end items-start">
+      <div className="bg-black bg-opacity-40 rounded-lg p-6 w-full max-w-md flex flex-col justify-between h-56">
+        <div className="bg-blue-600 p-3 rounded-lg flex justify-start w-3/4 max-w-xs mx-auto">
+          <FaThumbsUp className="mr-2 text-yellow-400" />
+          <span className="font-medium text-lg text-white">Top Stock Resources</span>
         </div>
-        <div className="flex items-center justify-between">
-          <label className="flex items-center space-x-2">
-            <input type="checkbox" className="form-checkbox" />
-            <span>Remember me</span>
-          </label>
-          <Link href="/ForgotPassword" className="text-blue-500 text-sm">
-            Forgot Password?
-          </Link>
+        <div className="rounded-b-lg text-white p-4 text-left">
+          <div className="text-lg leading-relaxed">
+            <p className="pl-4">Today, we create innovative solutions to the</p>
+            <p className="pl-4">challenges that consumers face in their</p>
+            <p className="pl-4">everyday lives.</p>
+          </div>
         </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-3 rounded-lg shadow hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 outline-none transition"
-        >
-          Login
-        </button>
-      </form>
-      <p className="text-center text-sm mt-4">
-        Don’t have an account?{" "}
-        <Link href="/signup" className="text-blue-500 font-medium">
-          Sign up!
-        </Link>
-      </p>
+      </div>
     </div>
   );
 };
 
-export default LoginForm;
+// Component for the Login Form
+const LoginForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted!");
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="w-full max-w-md mx-auto flex flex-col justify-center text-xl p-4"
+    >
+      <h1 className="text-2xl font-bold text-black text-5xl text-center mb-4">Welcome Back</h1>
+      <p className="text-black text-center mb-6 text-xl">Login into your account</p>
+
+      <div className="mb-6 flex justify-center items-center">
+        <button
+          type="button"
+          className="flex items-center justify-center w-1/2 bg-white p-3 rounded-lg shadow-md cursor-pointer transition-colors"
+        >
+          <FcGoogle size={20} className="mr-2" />
+          Google
+        </button>
+      </div>
+
+      <div className="flex items-center mb-4">
+        <div className="flex-1 border-b border-gray-300 mr-2" />
+        <div className="text-black text-xl mx-2 text">Or continue with</div>
+        <div className="flex-1 border-b border-gray-300 ml-2" />
+      </div>
+
+      <input
+        type="email"
+        placeholder="Email"
+        className="w-full p-3 rounded-lg border border-gray-300 mb-4 text-base"
+      />
+
+      <div className="relative mb-4">
+        <input
+          type={showPassword ? "text" : "password"}
+          placeholder="Password"
+          className="w-full p-3 rounded-lg border border-gray-300 text-base"
+        />
+        <button
+          type="button"
+          onClick={togglePasswordVisibility}
+          className="absolute top-1/2 right-3 transform -translate-y-1/2 bg-none border-none cursor-pointer"
+        >
+          {showPassword ? (
+            <FaEyeSlash className="text-black" />
+          ) : (
+            <FaEye className="text-black" />
+          )}
+        </button>
+      </div>
+
+      <div className="flex justify-between mb-4">
+        <label className="flex items-center  text-lg">
+          <input
+            type="checkbox"
+            checked={rememberMe}
+            onChange={(e) => setRememberMe(e.target.checked)}
+            className="mr-2"
+          />
+          Remember me
+        </label>
+        <Link href="/forgot-password" className="text-blue-600 text-lg">
+          Forgot Password?
+        </Link>
+      </div>
+
+      <button
+        type="submit"
+        className="w-full bg-white border-3 text-black p-3 rounded-lg shadow-md cursor-pointer transition-colors"
+      >
+        Login
+      </button>
+
+      <p className="text-center text-lg mt-4">
+        Don’t have an account?{' '}
+        <Link href="/signup" className="text-blue-600 font-medium">
+          Sign up!
+        </Link>
+      </p>
+    </form>
+  );
+};
+
+// Main Component
+const Login = () => {
+  return (
+    <div className="flex flex-row w-screen h-screen">
+      {/* Left Section */}
+      <div className="w-full max-w-1/2 bg-white flex flex-col justify-center p-4">
+        <div className="mb-8">
+          <Link href="/home">
+            <Image
+              src="/logo.png"
+              alt="IMC Logo"
+              width={64}
+              height={64}
+              className="cursor-pointer"
+            />
+          </Link>
+        </div>
+        <LoginForm />
+      </div>
+
+      {/* Right Section */}
+      <div
+        className="relative w-full max-w-1/2 h-full bg-cover bg-no-repeat bg-center"
+        style={{ backgroundImage: `url(${userPic.src})` }}
+      >
+        <InfoSection />
+      </div>
+    </div>
+  );
+};
+
+export default Login;

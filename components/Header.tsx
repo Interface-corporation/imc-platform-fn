@@ -25,7 +25,7 @@ const Header = () => {
     { label: "Whats New", href: "#categories" },
     { label: "Categories", href: "#categories" },
     { label: "Services", href: "#services" },
-    { label: "Products", href: "#product" },
+    { label: "Products", href: "/Products" },
   ];
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-4">
-          <Link href={"#heroSection"}>
+          <Link href={"/"}>
             <Image
               src="/images/logo.png"
               alt="hero image"

@@ -87,117 +87,122 @@ const ShoppingCart: React.FC = () => {
     return (
         <>
             <Header />
-            <div className="mx-auto px-4 flex flex-col gap-8 mt-20 lg:flex-row">
-                {/* Shopping Cart Section */}
-                <div className="w-full lg:w-2/3 p-6 bg-gray-50 rounded-lg shadow-md">
-                    <h1 className="text-2xl font-bold mb-6 text-gray-800">
-                        Shopping Cart
-                    </h1>
-                    <div className="space-y-6">
-                        {cartItems.map((item) => (
-                            <div
-                                key={item.id}
-                                className="flex flex-col sm:flex-row items-start sm:items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition"
-                            >
-                                <Image
-                                    src={item.imageUrl}
-                                    alt={item.name}
-                                    width={96}
-                                    height={96}
-                                    className="w-24 h-24 rounded-md object-cover"
-                                />
-                                <div className="flex-1 px-4">
-                                    <h3 className="text-lg font-semibold text-gray-800">
-                                        {item.name}
-                                    </h3>
-                                    <p className="text-gray-600 text-sm mt-2">{item.description}</p>
-                                    <p className="text-green-600 text-sm font-medium mt-2">
-                                        In Stock
-                                    </p>
-                                    <div className="flex items-center space-x-4 mt-4">
-                                        <span className="font-semibold text-gray-800">Qty:</span>
-                                        <input
-                                            type="number"
-                                            min={1}
-                                            max={item.stock}
-                                            value={item.quantity}
-                                            onChange={(e) =>
-                                                handleUpdateQuantity(item.id, Number(e.target.value))
-                                            }
-                                            className="w-16 border rounded-md text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        />
-                                        <button
-                                            className="px-4 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
-                                            onClick={() =>
-                                                handleUpdateQuantity(item.id, item.quantity)
-                                            }
-                                        >
-                                            Update
-                                        </button>
-                                        <button
-                                            className="px-4 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
-                                            onClick={() => handleDelete(item.id)}
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-                                <div className="text-right">
-                                    <p className="text-xl font-bold text-gray-800">
-                                        ${(item.price * item.quantity).toFixed(2)}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <p className="text-xl font-bold mt-6 text-gray-800">
-                        Total: ${calculateTotal().toFixed(2)}
-                    </p>
-                    <button
-                        className="mt-6 w-full sm:w-1/2 px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
-                        onClick={() => setCartItems([])}
-                    >
-                        Clean Cart
-                    </button>
-                </div>
-
-                {/* Recently Viewed Section */}
-                <div className="w-full lg:w-1/3 bg-gray-50 rounded-lg shadow-md p-6 h-[300px] overflow-y-auto">
-                    <div className="text-right mb-4">
-                        <Link href="/">
-                            <h2 className="text-blue-500 hover:text-blue-600 transition">
-                                Proceed to checkout
-                            </h2>
-                        </Link>
-                    </div>
-                    <h2 className="text-xl font-semibold mb-4 text-gray-800">Recently Viewed</h2>
-                    <div className="space-y-2">
-                        {recentlyViewed.map((item) => (
-                            <div
-                                key={item.id}
-                                className="flex items-center space-x-4 bg-white p-4 rounded-lg shadow hover:shadow-lg transition"
-                            >
-                                <Image
-                                    src={item.imageUrl}
-                                    alt={item.name}
-                                    width={64}
-                                    height={64}
-                                    className="w-16 h-16 rounded-md object-cover"
-                                />
-                                <div className="flex-1">
-                                    <h4 className="text-sm font-medium text-gray-800">{item.name}</h4>
-                                    <p className="text-gray-600 text-xs mt-1">
-                                        Only {item.stock} left in stock
-                                    </p>
-                                    <button className="px-4 py-2 bg-blue-500 text-white text-sm rounded-md border-2 border-blue-500 hover:bg-blue-600 transition">
-                                        Add to Cart
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+            <div className="mx-auto px-4 flex flex-col-2 gap-8 mt-20 lg:flex-row container">
+    {/* Shopping Cart Section */}
+    <div className="w-full lg:w-2/3 p-6 bg-gray-50 rounded-lg shadow-md relative">
+        {/* Clear Cart Button */}
+        <button
+            className="absolute top-0 right-0 mt-4 mr-4 w-1/4 sm:w-1/2 px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
+            onClick={() => setCartItems([])}
+        >
+            Clear Cart
+        </button>
+        
+        {/* Shopping Cart Title Row */}
+        <div className="flex justify-between shadow-md p-4 mt-8 items-center mb-6">
+            <h1 className="text-2xl font-bold text-gray-800">Shopping Cart</h1>
+            <div className="text-xl font-semibold text-gray-800">
+                {/* Total Price */}
+                <span className="mr-2">Price</span>
+                
             </div>
+        </div>
+
+        {/* Cart Items */}
+        <div className="space-y-6">
+            {cartItems.map((item) => (
+                <div
+                    key={item.id}
+                    className="flex flex-col sm:flex-row items-start sm:items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition"
+                >
+                    <Image
+                        src={item.imageUrl}
+                        alt={item.name}
+                        width={96}
+                        height={96}
+                        className="w-24 h-24 rounded-md object-cover"
+                    />
+                    <div className="flex-1 px-4">
+                        <h3 className="text-lg font-semibold text-gray-800">{item.name}</h3>
+                        <p className="text-gray-600 text-sm mt-2">{item.description}</p>
+                        <p className="text-green-600 text-sm font-medium mt-2">In Stock</p>
+                        <div className="flex items-center space-x-4 mt-4">
+                            <span className="font-semibold text-gray-800">Qty:</span>
+                            <input
+                                type="number"
+                                min={1}
+                                max={item.stock}
+                                value={item.quantity}
+                                onChange={(e) =>
+                                    handleUpdateQuantity(item.id, Number(e.target.value))
+                                }
+                                className="w-16 border rounded-md text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                            <button
+                                className="px-4 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+                                onClick={() =>
+                                    handleUpdateQuantity(item.id, item.quantity)
+                                }
+                            >
+                                Update
+                            </button>
+                            <button
+                                className="px-4 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
+                                onClick={() => handleDelete(item.id)}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                    <div className="text-right">
+                        <p className="text-xl font-bold text-gray-800">
+                            ${(item.price * item.quantity).toFixed(2)}
+                        </p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    {/* Recently Viewed Section */}
+    <div className="w-full lg:w-1/3 bg-gray-50 rounded-lg shadow-md p-6 h-[300px] overflow-y-auto">
+        <div className="text-center mb-4 bg-blue-800">
+            <Link href="/">
+                <h2 className="text-black bg-blue-600 hover:text-blue-600 transition">
+                    Proceed to checkout
+                </h2>
+            </Link>
+        </div>
+        <h2 className="text-xl text-center font-semibold mb-4 text-gray-800">Recently Viewed</h2>
+        <div className="space-y-2">
+            {recentlyViewed.map((item) => (
+                <div
+                    key={item.id}
+                    className="flex items-center space-x-4 bg-white p-4 rounded-lg shadow hover:shadow-lg transition"
+                >
+                    <Image
+                        src={item.imageUrl}
+                        alt={item.name}
+                        width={64}
+                        height={64}
+                        className="w-16 h-16 rounded-md object-cover"
+                    />
+                    <div className="flex-1">
+                        <h4 className="text-sm font-medium text-gray-800">{item.name}</h4>
+                        <p className="text-gray-600 text-xs mt-1">
+                            Only {item.stock} left in stock
+                        </p>
+                        <button className="px-4 py-2 bg-blue-500 text-white text-sm rounded-md border-2 border-blue-500 hover:bg-blue-600 transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</div>
+
+
             <Footer />
         </>
     );

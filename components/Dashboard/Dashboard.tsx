@@ -1,10 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { House, ShoppingBasket, ShoppingCart } from "lucide-react";
+
 import {
-  FaHome,
-  FaShoppingCart,
-  FaLink,
   FaClipboardList,
   FaTruck,
   FaFileAlt,
@@ -15,25 +14,28 @@ import {
   FaBars,
   FaChevronDown
 } from "react-icons/fa";
+import CartContent from "./CartContent";
+import { ProductContent } from "./ProductContent";
 
 const Dashboard: React.FC = () => {
   const [selectedMenu, setSelectedMenu] = useState<string>("Dashboard");
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
-  const menuContent: Record<string, string> = {
-    Dashboard: "Welcome to the Dashboard!",
-    Cart: "This is a list of all carts.",
-    "Service Request": "Manage your service requests here.",
-    "Custom Order": "Place your custom orders here.",
-    Trucking: "Track your trucking details.",
-    Reports: "View reports and analytics.",
-    Setting: "Configure your settings here.",
-    Logout: "You have been logged out.",
+  const menuContent: Record<string, React.FC> = {
+    // Dashboard: "Welcome to the Dashboard!",
+    Cart: CartContent,
+    Products: ProductContent,
+    // "Service Request": "Manage your service requests here.",
+    // "Custom Order": "Place your custom orders here.",
+    // Trucking: "Track your trucking details.",
+    // Reports: "View reports and analytics.",
+    // Setting: "Configure your settings here.",
+    // Logout: "You have been logged out.",
   };
 
   const hasUnreadNotifications = true;
-
+  const SelectedContent = menuContent[selectedMenu] || (() => <div>Content not available</div>);
   return (
     <div className="flex min-h-screen max-h-screen overflow-hidden bg-white">
       {/* Overlay for mobile */}
@@ -46,7 +48,7 @@ const Dashboard: React.FC = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed lg:static h-screen flex-none w-64 bg-blue-950 text-[#25aae1] flex flex-col justify-between p-4 
+        className={`fixed lg:static h-screen flex-none w-64 bg-[#1E3A5F] text-[#25aae1] flex flex-col justify-between p-4 
           transition-transform duration-300 z-30
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
           lg:translate-x-0 lg:w-56 lg:rounded-r-[25px]`}
@@ -64,9 +66,9 @@ const Dashboard: React.FC = () => {
 
           <nav className="flex-grow overflow-y-auto scrollbar-hide">
             {[
-              { name: "Dashboard", icon: <FaHome /> },
-              { name: "Cart", icon: <FaShoppingCart /> },
-              { name: "Service Request", icon: <FaLink /> },
+              { name: "Dashboard", icon: <House /> },
+              { name: "Products", icon: <ShoppingBasket /> },
+              { name: "Cart", icon: <ShoppingCart /> },
               { name: "Custom Order", icon: <FaClipboardList /> },
               { name: "Trucking", icon: <FaTruck /> },
               { name: "Reports", icon: <FaFileAlt /> },
@@ -198,7 +200,7 @@ const Dashboard: React.FC = () => {
         <div className="flex-1 overflow-auto p-6">
           <h1 className="text-2xl font-bold mb-4">{selectedMenu}</h1>
           <p className="text-lg">
-            {menuContent[selectedMenu] || "Content not available"}
+            <SelectedContent />
           </p>
         </div>
       </main>

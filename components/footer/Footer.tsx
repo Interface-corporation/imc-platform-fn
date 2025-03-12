@@ -19,7 +19,7 @@ const Footer = () => {
     };
 
     return (
-        <footer className="relative bg-gradient-to-br from-[#1E3A5F] to-[#25AAE1] text-white overflow-hidden">
+        <footer className="relative bg-gradient-to-br from-[#1E3A5F] to-[#0b4a64] text-white overflow-hidden">
             {/* Animated background pattern */}
             <motion.div
                 className="absolute inset-0 opacity-5"
@@ -33,7 +33,7 @@ const Footer = () => {
             />
 
             <motion.div
-                className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20"
+                className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20" // Applying same container width as of other sections
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"

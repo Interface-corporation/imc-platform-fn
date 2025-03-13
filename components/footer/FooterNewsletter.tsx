@@ -60,22 +60,18 @@ export function FooterNewsletter() {
                 <motion.button
                     type="submit"
                     className="absolute right-2 top-1/2 -translate-y-1/2 
-            p-2 rounded-full bg-[#25aae1] text-white
+            p-2 rounded-full bg-[#25aae1] text-white hover:scale-[1.1] focus:scale-[1]
             hover:bg-[#1e90ff] transition-colors duration-300"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
                     onHoverStart={() => setIsHovered(true)}
                     onHoverEnd={() => setIsHovered(false)}
                 >
                     <Send className="w-4 h-4" />
                     <motion.div
-                        className="absolute inset-0 rounded-full bg-white pointer-events-none"
+                        className="absolute inset-0 rounded-full bg-white "
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{
-                            // scale: isHovered ? 1.5 : 0,
-                            scale:0,
-
-                            opacity: isHovered ? 0 : 0,
+                            scale: isHovered ? 1.5 : 0,
+                            opacity: isHovered ? 0: 0,
                            
                         }}
                         transition={{ duration: 0.5 }}

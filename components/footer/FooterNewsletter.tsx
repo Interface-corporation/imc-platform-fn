@@ -69,11 +69,14 @@ export function FooterNewsletter() {
                 >
                     <Send className="w-4 h-4" />
                     <motion.div
-                        className="absolute inset-0 rounded-full bg-white"
+                        className="absolute inset-0 rounded-full bg-white pointer-events-none"
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{
-                            scale: isHovered ? 1.5 : 0,
+                            // scale: isHovered ? 1.5 : 0,
+                            scale:0,
+
                             opacity: isHovered ? 0 : 0,
+                           
                         }}
                         transition={{ duration: 0.5 }}
                     />

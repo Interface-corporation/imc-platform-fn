@@ -17,6 +17,8 @@ interface NavLink {
 }
 
 const Header = () => {
+
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

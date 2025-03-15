@@ -62,8 +62,8 @@ export function FooterNewsletter() {
                     className="absolute right-2 top-1/2 -translate-y-1/2 
             p-2 rounded-full bg-[#25aae1] text-white
             hover:bg-[#1e90ff] transition-colors duration-300"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                    // whileHover={{ scale: 1.1 }}
+                    // whileTap={{ scale: 0.9 }}
                     onHoverStart={() => setIsHovered(true)}
                     onHoverEnd={() => setIsHovered(false)}
                 >

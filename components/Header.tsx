@@ -32,6 +32,8 @@ const Header = () => {
     { label: "Categories", href: "#categories" },
     { label: "Services", href: "#services" },
     { label: "Products", href: "/Products" },
+    { label: "About Us", href: "/about" },
+    { label: "Contact us", href: "/contact" },
   ];
 
   useEffect(() => {

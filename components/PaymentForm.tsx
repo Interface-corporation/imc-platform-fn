@@ -162,7 +162,7 @@ export default function PaymentForm({ onSubmit }: PaymentFormProps) {
                         <motion.button
                             key={id}
                             type="button"
-                            onClick={() => setPaymentMethod(id as any)}
+                            onClick={() => setPaymentMethod(id as 'card' | 'mobile' | 'paypal')}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             className={`p-6 rounded-xl border-2 flex flex-col items-center justify-center space-y-3 transition-all ${paymentMethod === id

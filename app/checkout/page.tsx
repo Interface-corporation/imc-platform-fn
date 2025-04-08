@@ -6,12 +6,13 @@ import PaymentSummary from '@/components/PaymentSummary';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/footer/Footer';
+import { PaymentFormData } from '@/types';
 
 export default function CheckoutPage() {
     const { items: cartItems, clearCart } = useCart();
     const router = useRouter();
 
-    const handlePaymentSubmit = async (formData: any) => {
+    const handlePaymentSubmit = async (formData: PaymentFormData) => {
         try {
             // Here you would typically:
             // 1. Validate the form data

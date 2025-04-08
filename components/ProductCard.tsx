@@ -2,6 +2,7 @@
 
 import { useCart } from '@/context/CartContext';
 import { Product } from '@/types/product';
+import Image from 'next/image'; 
 
 interface ProductCardProps {
   product: Product;
@@ -17,10 +18,13 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <div className="relative aspect-square">
-        <img
-          src={product.images[0]}
-          alt={product.name}
-          className="w-full h-full object-cover"
+        <Image
+          src={product.images[0]} // Path to the image
+          alt={product.name}       // Alt text for accessibility
+          width={500}               // Provide a width (adjust as necessary)
+          height={500}              // Provide a height (adjust as necessary)
+          className="w-full h-full object-cover" // Maintain the object-fit behavior
+          priority                 // Optional: Use `priority` if the image is above the fold
         />
       </div>
       <div className="p-4">

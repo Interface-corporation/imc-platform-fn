@@ -6,21 +6,62 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  Theme: {
+  safelist: [
+    // Borders
+    "border-primary",
+    "border-secondary",
+    "border-creditCard",
+    "border-mtnMomo",
+    "border-logoBlue",
+
+    // Backgrounds with opacity
+    "bg-primary/10",
+    "bg-secondary/10",
+    "bg-creditCard/10",
+    "bg-mtnMomo/10",
+    "bg-logoBlue/10",
+
+    // Text colors
+    "text-primary",
+    "text-secondary",
+    "text-creditCard",
+    "text-mtnMomo",
+    "text-logoBlue",
+
+    // Foregrounds (if used)
+    "text-primary-foreground",
+    "text-secondary-foreground",
+    "text-creditCard-foreground",
+    "text-mtnMomo-foreground",
+    "text-logoBlue-foreground",
+  ],
+  theme: {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#1E3A5F',
-          foreground: '#FFFFFF',
+          DEFAULT: "#1E3A5F",
+          foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: '#25AAE1',
-          foreground: '#ffffff',
+          DEFAULT: "#25AAE1",
+          foreground: "#ffffff",
         },
-        logoBlue: "#25aae1"
+        creditCard: {
+          DEFAULT: "#D37B00",
+          foreground: "#ffffff",
+        },
+        mtnMomo: {
+          DEFAULT: "#ffcc08",
+          foreground: "#ffffff",
+        },
+        logoBlue: {
+          DEFAULT: "#ffcc08",
+          foreground: "#ffffff",
+        },
       },
     },
   },
   plugins: [],
 };
+
 export default config;

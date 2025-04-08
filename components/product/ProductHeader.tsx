@@ -70,8 +70,8 @@ export function ProductHeader({ product, isWishlisted, onWishlistToggle }: Produ
             <div className="flex items-center justify-between">
                 <div className="space-y-1">
                     <div className="flex items-baseline gap-3">
-                        <span className="text-3xl font-bold bg-gradient-to-r from-[#1E3A5F] to-[#25aae1] bg-clip-text text-transparent">
-                            {product.price}
+                        <span className="text-2xl font-bold bg-gradient-to-r from-[#1E3A5F] to-[#25aae1] bg-clip-text text-transparent">
+                            ${product.price}
                         </span>
                         {product.originalPrice && (
                             <span className="text-lg text-gray-400 line-through">

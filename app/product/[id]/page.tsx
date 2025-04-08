@@ -11,13 +11,16 @@ import { ProductTabs } from "@/components/product/ProductTabs";
 import { SimilarProducts } from "@/components/product/SimilarProducts";
 import { ProductHeader } from "@/components/product/ProductHeader";
 import { motion } from "framer-motion";
+import { useCart } from "@/context/CartContext";
+import { useRouter } from "next/navigation";
 
 export default function SingleProductPage({ params }: { params: { id: string } }) {
   const [product, setProduct] = useState<Product | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>("");
   const [quantity, setQuantity] = useState<number>(1);
   const [isWishlisted, setIsWishlisted] = useState(false);
-
+  const router = useRouter();
+  const { addToCart } = useCart();
   useEffect(() => {
     if (params.id) {
       const foundProduct = products.find((p) => p.id === Number(params.id));
@@ -40,11 +43,16 @@ export default function SingleProductPage({ params }: { params: { id: string } }
   }
 
   const handleAddToCart = () => {
-    console.log("Adding to cart:", { product, quantity, selectedColor });
+    if (product) {
+      addToCart(product, quantity, selectedColor);
+    }
   };
 
   const handleBuyNow = () => {
-    console.log("Buying now:", { product, quantity, selectedColor });
+    if (product) {
+      addToCart(product, quantity, selectedColor);
+      router.push('/checkout');
+    }
   };
 
   return (

@@ -1,25 +1,20 @@
-
-import ms1_1 from "../public/products/massage_chair_1/massage_chair_1_1.jpg";
-import ms1_2 from "../public/products/massage_chair_1/massage_chair_1_2.jpg";
-import ms1_3 from "../public/products/massage_chair_1/massage_chair_1_3.jpg";
-import ms1_4 from "../public/products/massage_chair_1/massage_chair_1_4.jpg";
-import ms1_5 from "../public/products/massage_chair_1/massage_chair_1_5.jpg";
-
-import ms2_1 from "../public/products/massage_chair_2/massage_chair_2_1.jpg";
-import ms2_2 from "../public/products/massage_chair_2/massage_chair_2_2.jpg";
-import ms2_3 from "../public/products/massage_chair_2/massage_chair_2_3.jpg";
-import ms2_4 from "../public/products/massage_chair_2/massage_chair_2_4.jpg";
-import ms2_5 from "../public/products/massage_chair_2/massage_chair_2_5.jpg";
-import ms2_6 from "../public/products/massage_chair_2/massage_chair_2_6.jpg";
-
 import ms3_1 from "../public/products/massage_chair_3/massage_chair_3_1.jpg";
 import ms3_2 from "../public/products/massage_chair_3/massage_chair_3_2.jpg";
 import ms3_3 from "../public/products/massage_chair_3/massage_chair_3_3.jpg";
 import ms3_4 from "../public/products/massage_chair_3/massage_chair_3_4.jpg";
 import ms3_5 from "../public/products/massage_chair_3/massage_chair_3_5.jpg";
 import ms3_6 from "../public/products/massage_chair_3/massage_chair_3_6.jpg";
-
-
+import ms1_1 from "../public/products/massage_chair_1/massage_chair_1_1.jpg";
+import ms1_2 from "../public/products/massage_chair_1/massage_chair_1_2.jpg";
+import ms1_3 from "../public/products/massage_chair_1/massage_chair_1_3.jpg";
+import ms1_4 from "../public/products/massage_chair_1/massage_chair_1_4.jpg";
+import ms1_5 from "../public/products/massage_chair_1/massage_chair_1_5.jpg";
+import ms2_1 from "../public/products/massage_chair_2/massage_chair_2_1.jpg";
+import ms2_2 from "../public/products/massage_chair_2/massage_chair_2_2.jpg";
+import ms2_3 from "../public/products/massage_chair_2/massage_chair_2_3.jpg";
+import ms2_4 from "../public/products/massage_chair_2/massage_chair_2_4.jpg";
+import ms2_5 from "../public/products/massage_chair_2/massage_chair_2_5.jpg";
+import ms2_6 from "../public/products/massage_chair_2/massage_chair_2_6.jpg";
 import jz1_1 from "../public/products/Jacuzzi_1/Jacuzzi_1_1.jpg";
 import jz1_2 from "../public/products/Jacuzzi_1/Jacuzzi_1_2.jpg";
 import jz1_3 from "../public/products/Jacuzzi_1/Jacuzzi_1_3.jpg";
@@ -35,7 +30,6 @@ import jz2_5 from "../public/products/Jacuzzi_2/Jacuzzi_2_5.jpg";
 import jz2_6 from "../public/products/Jacuzzi_2/Jacuzzi_2_6.jpg";
 import jz2_7 from "../public/products/Jacuzzi_2/Jacuzzi_2_7.jpg";
 import jz2_8 from "../public/products/Jacuzzi_2/Jacuzzi_2_8.jpg";
-
 import sauna1_1 from "../public/products/sauna_1/sauna_1_1.jpg";
 import sauna1_2 from "../public/products/sauna_1/sauna_1_2.jpg";
 import sauna1_3 from "../public/products/sauna_1/sauna_1_3.jpg";
@@ -43,18 +37,16 @@ import sauna1_4 from "../public/products/sauna_1/sauna_1_4.jpg";
 import sauna1_5 from "../public/products/sauna_1/sauna_1_5.jpg";
 import sauna1_6 from "../public/products/sauna_1/sauna_1_6.jpg";
 import sauna1_7 from "../public/products/sauna_1/sauna_1_7.jpg";
-
 import sauna2_1 from "../public/products/sauna_2/sauna_2_1.jpg";
 import sauna2_2 from "../public/products/sauna_2/sauna_2_2.jpg";
 import sauna2_3 from "../public/products/sauna_2/sauna_2_3.jpg";
 import sauna2_4 from "../public/products/sauna_2/sauna_2_4.jpg";
-
 import sauna3_1 from "../public/products/sauna_3/sauna_3_1.jpg";
 import sauna3_2 from "../public/products/sauna_3/sauna_3_2.jpg";
 import sauna3_3 from "../public/products/sauna_3/sauna_3_3.jpg";
 import sauna3_4 from "../public/products/sauna_3/sauna_3_4.jpg";
 import sauna3_5 from "../public/products/sauna_3/sauna_3_5.jpg";
-import sauna3_6 from "../public/products/sauna_3/sauna_3_6.jpg";3
+import sauna3_6 from "../public/products/sauna_3/sauna_3_6.jpg";
 import { Product } from "@/types/product";
 
 export const products: Product[] = [
@@ -600,8 +592,6 @@ export const products: Product[] = [
     },
     stock: 15,
   },
-
-  
 
   // ... other products
 ];

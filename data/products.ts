@@ -1,11 +1,10 @@
-import img1 from "../public/images/accessories.png";
-import img2 from "../public/images/gifts.jpg";
-import img3 from "../public/images/electronics.png";
+
 import ms1_1 from "../public/products/massage_chair_1/massage_chair_1_1.jpg";
 import ms1_2 from "../public/products/massage_chair_1/massage_chair_1_2.jpg";
 import ms1_3 from "../public/products/massage_chair_1/massage_chair_1_3.jpg";
 import ms1_4 from "../public/products/massage_chair_1/massage_chair_1_4.jpg";
 import ms1_5 from "../public/products/massage_chair_1/massage_chair_1_5.jpg";
+
 import ms2_1 from "../public/products/massage_chair_2/massage_chair_2_1.jpg";
 import ms2_2 from "../public/products/massage_chair_2/massage_chair_2_2.jpg";
 import ms2_3 from "../public/products/massage_chair_2/massage_chair_2_3.jpg";

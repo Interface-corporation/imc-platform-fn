@@ -8,8 +8,8 @@ import aboutImg from '@/public/images/webImage/about1.png'
 import isaac from '@/public/team/isaac.jpg'
 import kappy from '@/public/team/kappy-removebg-preview.png'
 import savuer from '@/public/team/savuer.jpg'
-import david from '@/public/team/david.jpg'
-import kananura from '@/public/team/kananura.jpg'
+import david from '@/public/team/davides.jpg'
+import kananura from '@/public/team/kananuras.jpg'
 import dsm from '@/public/team/DSM.jpg'
 
 

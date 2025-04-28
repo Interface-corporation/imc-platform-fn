@@ -1,61 +1,41 @@
 'use client';
 
-export const dynamic = 'force-dynamic';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { clearCart } from '@/states/cartSlice';
 import { RootState } from '@/lib/redux-store';
 import PaymentForm from '@/components/PaymentForm';
 import PaymentSummary from '@/components/PaymentSummary';
-import { useRouter, useSearchParams } from 'next/navigation'; // 👈 Added useSearchParams
+import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/footer/Footer';
 import { PaymentFormData } from '@/types';
-import { products } from '@/data/products'; // 👈 Import your product data to find product by id
 
 export default function CheckoutPage() {
+    // Get cart items from Redux store instead of context
     const cartItems = useSelector((state: RootState) => state.cart.items);
     const dispatch = useDispatch();
     const router = useRouter();
-    const searchParams = useSearchParams(); // 👈 Read query params
-
-    // Detect if it's a 'Buy Now' flow
-    const isBuyNow = searchParams.get('buyNow') === 'true';
-    const productId = searchParams.get('productId');
-
-    let itemsToCheckout = cartItems; // default: cart items
-
-    if (isBuyNow && productId) {
-        const singleProduct = products.find(p => p.id === Number(productId));
-        if (singleProduct) {
-            itemsToCheckout = [
-                {
-                    id: singleProduct.id.toString(),
-                    name: singleProduct.name,
-                    price: parseFloat(singleProduct.price),
-                    quantity: 1,
-                    image: singleProduct.images[0],
-                    type: singleProduct.type,
-                }
-            ];
-        }
-    }
 
     const handlePaymentSubmit = async (formData: PaymentFormData) => {
         try {
+            // Here you would typically:
+            // 1. Validate the form data
+            // 2. Send payment details to your payment processor
+            // 3. Create order in your database
+            // 4. Clear the cart
             console.log('Payment submitted:', formData);
 
-            if (!isBuyNow) {
-                dispatch(clearCart()); // Clear cart only if not a direct buy now
-            }
-            router.push('/Products');
+            // For now, we'll just simulate a successful payment
+            dispatch(clearCart()); // Use Redux action to clear cart
+            router.push('/Products'); // Redirect after successful payment
             console.log("product paid successfully");
+
         } catch (error) {
             console.error('Payment failed:', error);
         }
     };
 
-    if (itemsToCheckout.length === 0) {
+    if (cartItems.length === 0) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
                 <div className="text-center">
@@ -83,11 +63,11 @@ export default function CheckoutPage() {
                     </div>
 
                     <div className="order-1 lg:order-2">
-                        <PaymentSummary items={itemsToCheckout} />
+                        <PaymentSummary items={cartItems} />
                     </div>
                 </div>
             </div>
             <Footer />
         </div>
     );
-}
+} 

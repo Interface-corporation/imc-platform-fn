@@ -66,7 +66,17 @@ export default function SingleProductPage({ params }: { params: { id: string } }
 
   const handleBuyNow = () => {
     if (product) {
-      router.push(`/checkout?buyNow=true&productId=${product.id}`);
+      dispatch(
+        addToCart({
+          id: String(product.id),
+          name: product.name,
+          price: Number(product.price),
+          image: product.images[0],
+          quantity,
+          selectedColor,
+        })
+      );
+      router.push("/checkout");
     }
   };
   return (
@@ -130,13 +140,13 @@ export default function SingleProductPage({ params }: { params: { id: string } }
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, duration: 0.5 }}
                 >
-                  
-<ProductActions 
-  product={product}
-  type="cart"
-  onAddToCart={handleAddToCart}
-  onBuyNow={handleBuyNow}
-/>
+
+                  <ProductActions
+                    product={product}
+                    type="cart"
+                    onAddToCart={handleAddToCart}
+                    onBuyNow={handleBuyNow}
+                  />
                 </motion.div>
               </div>
 

@@ -1,52 +1,52 @@
-import ms3_1 from "../public/products/massage_chair_3/massage_chair_3_1.jpg";
-import ms3_2 from "../public/products/massage_chair_3/massage_chair_3_2.jpg";
-import ms3_3 from "../public/products/massage_chair_3/massage_chair_3_3.jpg";
-import ms3_4 from "../public/products/massage_chair_3/massage_chair_3_4.jpg";
-import ms3_5 from "../public/products/massage_chair_3/massage_chair_3_5.jpg";
-import ms3_6 from "../public/products/massage_chair_3/massage_chair_3_6.jpg";
-import ms1_1 from "../public/products/massage_chair_1/massage_chair_1_1.jpg";
-import ms1_2 from "../public/products/massage_chair_1/massage_chair_1_2.jpg";
-import ms1_3 from "../public/products/massage_chair_1/massage_chair_1_3.jpg";
-import ms1_4 from "../public/products/massage_chair_1/massage_chair_1_4.jpg";
-import ms1_5 from "../public/products/massage_chair_1/massage_chair_1_5.jpg";
-import ms2_1 from "../public/products/massage_chair_2/massage_chair_2_1.jpg";
-import ms2_2 from "../public/products/massage_chair_2/massage_chair_2_2.jpg";
-import ms2_3 from "../public/products/massage_chair_2/massage_chair_2_3.jpg";
-import ms2_4 from "../public/products/massage_chair_2/massage_chair_2_4.jpg";
-import ms2_5 from "../public/products/massage_chair_2/massage_chair_2_5.jpg";
-import ms2_6 from "../public/products/massage_chair_2/massage_chair_2_6.jpg";
-import jz1_1 from "../public/products/Jacuzzi_1/Jacuzzi_1_1.jpg";
-import jz1_2 from "../public/products/Jacuzzi_1/Jacuzzi_1_2.jpg";
-import jz1_3 from "../public/products/Jacuzzi_1/Jacuzzi_1_3.jpg";
-import jz1_4 from "../public/products/Jacuzzi_1/Jacuzzi_1_4.jpg";
-import jz1_5 from "../public/products/Jacuzzi_1/Jacuzzi_1_5.jpg";
-import jz1_6 from "../public/products/Jacuzzi_1/Jacuzzi_1_6.jpg";
-import jz1_7 from "../public/products/Jacuzzi_1/Jacuzzi_1_7.jpg";
-import jz2_1 from "../public/products/Jacuzzi_2/Jacuzzi_2_1.jpg";
-import jz2_2 from "../public/products/Jacuzzi_2/Jacuzzi_2_2.jpg";
-import jz2_3 from "../public/products/Jacuzzi_2/Jacuzzi_2_3.jpg";
-import jz2_4 from "../public/products/Jacuzzi_2/Jacuzzi_2_4.jpg";
-import jz2_5 from "../public/products/Jacuzzi_2/Jacuzzi_2_5.jpg";
-import jz2_6 from "../public/products/Jacuzzi_2/Jacuzzi_2_6.jpg";
-import jz2_7 from "../public/products/Jacuzzi_2/Jacuzzi_2_7.jpg";
-import jz2_8 from "../public/products/Jacuzzi_2/Jacuzzi_2_8.jpg";
-import sauna1_1 from "../public/products/sauna_1/sauna_1_1.jpg";
-import sauna1_2 from "../public/products/sauna_1/sauna_1_2.jpg";
-import sauna1_3 from "../public/products/sauna_1/sauna_1_3.jpg";
-import sauna1_4 from "../public/products/sauna_1/sauna_1_4.jpg";
-import sauna1_5 from "../public/products/sauna_1/sauna_1_5.jpg";
-import sauna1_6 from "../public/products/sauna_1/sauna_1_6.jpg";
-import sauna1_7 from "../public/products/sauna_1/sauna_1_7.jpg";
-import sauna2_1 from "../public/products/sauna_2/sauna_2_1.jpg";
-import sauna2_2 from "../public/products/sauna_2/sauna_2_2.jpg";
-import sauna2_3 from "../public/products/sauna_2/sauna_2_3.jpg";
-import sauna2_4 from "../public/products/sauna_2/sauna_2_4.jpg";
-import sauna3_1 from "../public/products/sauna_3/sauna_3_1.jpg";
-import sauna3_2 from "../public/products/sauna_3/sauna_3_2.jpg";
-import sauna3_3 from "../public/products/sauna_3/sauna_3_3.jpg";
-import sauna3_4 from "../public/products/sauna_3/sauna_3_4.jpg";
-import sauna3_5 from "../public/products/sauna_3/sauna_3_5.jpg";
-import sauna3_6 from "../public/products/sauna_3/sauna_3_6.jpg";
+import ms3_1 from "/public/products/massage_chair_3/massage_chair_3_1.jpg";
+import ms3_2 from "/public/products/massage_chair_3/massage_chair_3_2.jpg";
+import ms3_3 from "/public/products/massage_chair_3/massage_chair_3_3.jpg";
+import ms3_4 from "/public/products/massage_chair_3/massage_chair_3_4.jpg";
+import ms3_5 from "/public/products/massage_chair_3/massage_chair_3_5.jpg";
+import ms3_6 from "/public/products/massage_chair_3/massage_chair_3_6.jpg";
+import ms1_1 from "/public/products/massage_chair_1/massage_chair_1_1.jpg";
+import ms1_2 from "/public/products/massage_chair_1/massage_chair_1_2.jpg";
+import ms1_3 from "/public/products/massage_chair_1/massage_chair_1_3.jpg";
+import ms1_4 from "/public/products/massage_chair_1/massage_chair_1_4.jpg";
+import ms1_5 from "/public/products/massage_chair_1/massage_chair_1_5.jpg";
+import ms2_1 from "/public/products/massage_chair_2/massage_chair_2_1.jpg";
+import ms2_2 from "/public/products/massage_chair_2/massage_chair_2_2.jpg";
+import ms2_3 from "/public/products/massage_chair_2/massage_chair_2_3.jpg";
+import ms2_4 from "/public/products/massage_chair_2/massage_chair_2_4.jpg";
+import ms2_5 from "/public/products/massage_chair_2/massage_chair_2_5.jpg";
+import ms2_6 from "/public/products/massage_chair_2/massage_chair_2_6.jpg";
+import jz1_1 from "/public/products/Jacuzzi_1/Jacuzzi_1_1.jpg";
+import jz1_2 from "/public/products/Jacuzzi_1/Jacuzzi_1_2.jpg";
+import jz1_3 from "/public/products/Jacuzzi_1/Jacuzzi_1_3.jpg";
+import jz1_4 from "/public/products/Jacuzzi_1/Jacuzzi_1_4.jpg";
+import jz1_5 from "/public/products/Jacuzzi_1/Jacuzzi_1_5.jpg";
+import jz1_6 from "/public/products/Jacuzzi_1/Jacuzzi_1_6.jpg";
+import jz1_7 from "/public/products/Jacuzzi_1/Jacuzzi_1_7.jpg";
+import jz2_1 from "/public/products/Jacuzzi_2/Jacuzzi_2_1.jpg";
+import jz2_2 from "/public/products/Jacuzzi_2/Jacuzzi_2_2.jpg";
+import jz2_3 from "/public/products/Jacuzzi_2/Jacuzzi_2_3.jpg";
+import jz2_4 from "/public/products/Jacuzzi_2/Jacuzzi_2_4.jpg";
+import jz2_5 from "/public/products/Jacuzzi_2/Jacuzzi_2_5.jpg";
+import jz2_6 from "/public/products/Jacuzzi_2/Jacuzzi_2_6.jpg";
+import jz2_7 from "/public/products/Jacuzzi_2/Jacuzzi_2_7.jpg";
+import jz2_8 from "/public/products/Jacuzzi_2/Jacuzzi_2_8.jpg";
+import sauna1_1 from "/public/products/sauna_1/sauna_1_1.jpg";
+import sauna1_2 from "/public/products/sauna_1/sauna_1_2.jpg";
+import sauna1_3 from "/public/products/sauna_1/sauna_1_3.jpg";
+import sauna1_4 from "/public/products/sauna_1/sauna_1_4.jpg";
+import sauna1_5 from "/public/products/sauna_1/sauna_1_5.jpg";
+import sauna1_6 from "/public/products/sauna_1/sauna_1_6.jpg";
+import sauna1_7 from "/public/products/sauna_1/sauna_1_7.jpg";
+import sauna2_1 from "/public/products/sauna_2/sauna_2_1.jpg";
+import sauna2_2 from "/public/products/sauna_2/sauna_2_2.jpg";
+import sauna2_3 from "/public/products/sauna_2/sauna_2_3.jpg";
+import sauna2_4 from "/public/products/sauna_2/sauna_2_4.jpg";
+import sauna3_1 from "/public/products/sauna_3/sauna_3_1.jpg";
+import sauna3_2 from "/public/products/sauna_3/sauna_3_2.jpg";
+import sauna3_3 from "/public/products/sauna_3/sauna_3_3.jpg";
+import sauna3_4 from "/public/products/sauna_3/sauna_3_4.jpg";
+import sauna3_5 from "/public/products/sauna_3/sauna_3_5.jpg";
+import sauna3_6 from "/public/products/sauna_3/sauna_3_6.jpg";
 import { Product } from "@/types/product";
 
 export const products: Product[] = [
@@ -157,7 +157,7 @@ export const products: Product[] = [
     id: 4,
     name: "MassaMAX 4D Massage Chair",
     description:
-      "MassaMAX 4D Massage Chair - 2025 Full Body Massage Chair with Zero Gravity, Extended Footrest, SL Track, Yoga Stretch, Foot Rollers, and Heating...",
+      "MassaMAX 4D Massage Chair - 2025 Full Body Massage Chair with Zero Gravity, Extended Footrest, SL Track, Yoga Stretch, Foot Rollers, and Heating.",
     price: "2499",
     originalPrice: "3200",
     images: [ms2_1.src, ms2_2.src, ms2_3.src, ms2_4.src, ms2_5.src, ms2_6.src],
@@ -188,7 +188,7 @@ export const products: Product[] = [
     id: 5,
     name: "Pro A+ Massage Chair",
     description:
-      "Pro A+ Massage Chair - 2025 Full Body Massage Chair with Zero Gravity, Extended Footrest, SL Track, Yoga Stretch, Foot Rollers, and Heating...",
+      "Pro A+ Massage Chair - 2025 Full Body Massage Chair with Zero Gravity, Extended Footrest, SL Track, Yoga Stretch, Foot Rollers, and Heating.",
     price: "2499",
     originalPrice: "3200",
     images: [ms3_1.src, ms3_2.src, ms3_3.src, ms3_4.src, ms3_5.src, ms3_6.src],
@@ -428,7 +428,7 @@ export const products: Product[] = [
     id: 12,
     name: "MassaMAX 4D Massage Chair",
     description:
-      "MassaMAX 4D Massage Chair - 2025 Full Body Massage Chair with Zero Gravity, Extended Footrest, SL Track, Yoga Stretch, Foot Rollers, and Heating...",
+      "MassaMAX 4D Massage Chair - 2025 Full Body Massage Chair with Zero Gravity, Extended Footrest, SL Track, Yoga Stretch, Foot Rollers, and Heating.",
     price: "312",
     originalPrice: "430",
     images: [ms2_1.src, ms2_2.src, ms2_3.src, ms2_4.src, ms2_5.src, ms2_6.src],
@@ -459,7 +459,7 @@ export const products: Product[] = [
     id: 13,
     name: "Pro A+ Massage Chair",
     description:
-      "Pro A+ Massage Chair - 2025 Full Body Massage Chair with Zero Gravity, Extended Footrest, SL Track, Yoga Stretch, Foot Rollers, and Heating...",
+      "Pro A+ Massage Chair - 2025 Full Body Massage Chair with Zero Gravity, Extended Footrest, SL Track, Yoga Stretch, Foot Rollers, and Heating.",
     price: "307",
     originalPrice: "402",
     images: [ms3_1.src, ms3_2.src, ms3_3.src, ms3_4.src, ms3_5.src, ms3_6.src],
@@ -593,5 +593,5 @@ export const products: Product[] = [
     stock: 15,
   },
 
-  // ... other products
+  // . other products
 ];

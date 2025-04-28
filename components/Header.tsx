@@ -10,6 +10,8 @@ import Link from "next/link";
 import { useGetProfileQuery, useLogoutUserMutation } from "@/states/authentication";
 import { LuLogOut } from "react-icons/lu";
 import { useRouter } from "next/navigation";
+import { AnimatePresence } from "framer-motion";
+import FlyoutMenu from "./mobile-menu";
 
 interface NavLink {
   label: string;
@@ -18,11 +20,13 @@ interface NavLink {
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(true);
+  // const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
+  // const toggleProfile = () => setIsProfileOpen(!isProfileOpen);
   const { data: authUser } = useGetProfileQuery({});
   const [logoutUser, { isSuccess: logoutSuccess }] = useLogoutUserMutation();
   const router = useRouter();
@@ -56,22 +60,95 @@ const Header = () => {
     <header
       className={` fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#1E3A5F]/80 backdrop-blur-md shadow-lg"
-        : "bg-[#1E3A5F]"
+          ? "bg-[#031D40]/80 backdrop-blur-md shadow-lg"
+        : "bg-[#031D40]"
       }`}
     >
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+
+        <AnimatePresence>
+          {
+            isMenuOpen && (
+              <FlyoutMenu handleClose={() => setIsMenuOpen(false)}>
+                <FlyoutMenu.Title>
+                  <Link href={"/"}>
+                    <Image
+                      src="/images/logo.png"
+                      alt="Logo"
+                      width={50}
+                      height={50}
+                      style={{ objectFit: "cover" }}
+                    />
+                  </Link>
+                </FlyoutMenu.Title>
+                <div className="mt-6">
+                  <nav className="flex flex-col items-start space-y-4">
+                    {
+                      navLinks.map((link, idx) => (
+                        <Link
+                        key={idx}
+                        href={link.href}
+                        >
+                          {link.label}
+                        </Link>
+                      ))
+                    }
+                  </nav>
+                </div>
+              </FlyoutMenu>
+            )
+          }
+        </AnimatePresence>
+        
         {/* Logo */}
-        <div className="flex items-center space-x-4">
-          <Link href={"/"}>
-            <Image
-              src="/images/logo.png"
-              alt="Logo"
-              width={50}
-              height={50}
-              style={{ objectFit: "cover" }}
-            />
-          </Link>
+        <div className="flex items-center space-x-2">
+          <div className="md:hidden" >
+            <button onClick={toggleMenu} className="text-white" aria-label="Toggle mobile menu">
+              {isMenuOpen ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  />
+                </svg>
+              )}
+            </button>
+          </div >
+
+          <div className="flex items-center space-x-4">
+            <Link href={"/"}>
+              <Image
+                src="/images/logo.png"
+                alt="Logo"
+                width={50}
+                height={50}
+                style={{ objectFit: "cover" }}
+              />
+            </Link>
+          </div>
         </div>
 
         {/* Navigation */}
@@ -92,8 +169,8 @@ const Header = () => {
         <div className="flex items-center text-white space-x-4">
           {/* Search Bar */}
           <div
-            className={`${isSearchOpen ? "flex" : "hidden"
-              } lg:flex items-center bg-white rounded-full shadow-md w-full max-w-md px-4 py-2`}
+            className={`${isSearchOpen ? "flex absolute lg:relative -bottom-8 left-0 lg:inset-0 " : "hidden"
+              } lg:flex items-center bg-white lg:rounded-full shadow-md w-full xl:min-w-[520px] lg:min-w-[px] px-4 py-2`}
           >
             <select
               className="bg-transparent outline-none border-none text-gray-500 text-sm"
@@ -164,7 +241,7 @@ const Header = () => {
           {/* Cart and User Icons */}
           <div className="hidden md:flex space-x-4">
             <Link href="/cart" aria-label="View Cart">
-              <ShoppingCartIcon className="w-5 h-5 cursor-pointer text-white" />
+              <ShoppingCartIcon className="w-5 h-5 cursor-pointer text-red" />
             </Link>
             {
               authUser
@@ -178,72 +255,13 @@ const Header = () => {
 
           </div >
         </div >
-
-        {/* Mobile Menu Toggle */}
-        < div className="md:hidden" >
-          <button onClick={toggleMenu} className="text-white" aria-label="Toggle mobile menu">
-            {isMenuOpen ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              </svg>
-            )}
-          </button>
-        </div >
+      
         <div className="flex items-center space-x-4 text-white md:hidden">
-          <Link href="/cart" aria-label="View Cart">
-            <ShoppingCartIcon className="w-6 h-6 cursor-pointer text-white" />
-          </Link>
           <Link href="/login" aria-label="User Login">
             <UserIcon className="w-6 h-6 cursor-pointer text-white" />
           </Link>
         </div>
       </div >
-
-      {/* Mobile Menu */}
-      {
-        isMenuOpen && (
-          <div className="md:hidden">
-            <nav className="bg-[#1E3A5F] flex flex-col space-y-2 p-4 text-white">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="hover:text-blue-400"
-                  aria-label={`Navigate to ${link.label}`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        )
-      }
     </header >
   );
 };

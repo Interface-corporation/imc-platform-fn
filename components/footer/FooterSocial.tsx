@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const socialLinks = [
-    { icon: Facebook, href: "#", color: "#1877f2" },
-    { icon: Twitter, href: "#", color: "#1da1f2" },
-    { icon: Instagram, href: "#", color: "#e4405f" },
-    { icon: Linkedin, href: "#", color: "#0077b5" },
-    { icon: Youtube, href: "#", color: "#ff0000" },
+    { icon: Facebook, href: "https://www.linkedin.com/company/interfaceimc/?viewAsMember=true", color: "#1877f2" },
+    { icon: Twitter, href: "https://www.linkedin.com/company/interfaceimc/?viewAsMember=true", color: "#1da1f2" },
+    { icon: Instagram, href: "https://www.linkedin.com/company/interfaceimc/?viewAsMember=true", color: "#e4405f" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/interfaceimc/?viewAsMember=true", color: "#0077b5" },
+    { icon: Youtube, href: "https://www.linkedin.com/company/interfaceimc/?viewAsMember=true", color: "#ff0000" },
 ];
 
 export function FooterSocial() {

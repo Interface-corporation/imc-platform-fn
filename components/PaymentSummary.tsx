@@ -1,4 +1,4 @@
-import { CartItem } from '@/types/index';
+import { CartItem } from '@/states/cartSlice';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ShoppingBag, Package } from 'lucide-react';
@@ -36,14 +36,14 @@ export default function PaymentSummary({ items }: PaymentSummaryProps) {
                     >
                         <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
                           <Image
-  src={Array.isArray(item.images) ? item.images[0] : item.images}
+  src={Array.isArray(item.image) ? item.image[0] : item.image}
   alt={item.name}
   fill
   className="object-cover"
 />
                         </div>
                         <div className="flex-1 min-w-0">
-                            <h3 className="text-sm font-medium text-gray-800 truncate">{item.name}</h3>
+                            <h3 className="text-sm  text-gray-800 truncate font-bold">{item.name}</h3>
                             <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
                             <p className="text-sm font-medium text-primary mt-1">
                                   ${(Number(item.price) * Number(item.quantity)).toFixed(2)}

@@ -5,9 +5,13 @@ import { Building2, Users, Target, Award, LinkedinIcon } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/footer/Footer';
 import aboutImg from '@/public/images/webImage/about1.png'
-import oldMan from '@/public/images/webImage/man2.jpeg'
-import youngBoy from '@/public/images/webImage/men.jpeg'
-import busnwoman from '@/public/images/webImage/shippingWoman.jpeg'
+import isaac from '@/public/team/isaac.jpg'
+import kappy from '@/public/team/kappy-removebg-preview.png'
+import savuer from '@/public/team/savuer.jpg'
+import david from '@/public/team/david.jpg'
+import kananura from '@/public/team/kananura.jpg'
+import dsm from '@/public/team/DSM.jpg'
+
 
 export default function AboutPage() {
   // Animation variants remain the same
@@ -202,41 +206,42 @@ export default function AboutPage() {
             <div className="grid max-w-7xl   grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12  mx-auto">
               {[
                 {
-                  name: 'John Smith',
+                  name: 'Kagenza Isaac',
                   position: 'Chief Executive Officer',
-                  image: oldMan,
+                  image: isaac,
+                  linkedin: 'https://www.linkedin.com/in/kagenza-isaac-a93599287/',
+                },
+                {
+                  name: 'Kagenza Ramadhan',
+                  position: 'Director of Sales and Marketing',
+                  image: dsm,
                   linkedin: '#',
                 },
                 {
-                  name: 'Sarah Johnson',
-                  position: 'Chief Operations Officer',
-                  image: busnwoman,
-                  linkedin: '#',
+                  name: 'Uwanyagasani Eric',
+                  position: 'Graphic Designer',
+                  image: kappy,
+                  linkedin: 'https://www.linkedin.com/in/eric-uwanyagasani-936082230/',
                 },
                 {
-                  name: 'Michael Chen',
+                  name: 'Bikorimana Savuer',
                   position: 'Chief Technology Officer',
-                  image: youngBoy,
-                  linkedin: '#',
+                  image: savuer,
+                  linkedin: 'https://www.linkedin.com/in/saveur1/',
                 },
                 {
-                  name: 'John Smith',
-                  position: 'Chief Executive Officer',
-                  image: oldMan,
-                  linkedin: '#',
-                },
-                {
-                  name: 'Sarah Johnson',
+                  name: 'Muhire David',
                   position: 'Chief Operations Officer',
-                  image: busnwoman,
-                  linkedin: '#',
+                  image: david,
+                  linkedin: 'https://www.linkedin.com/in/muhire-david-88b5b0283/',
                 },
                 {
-                  name: 'Michael Chen',
-                  position: 'Chief Technology Officer',
-                  image: youngBoy,
-                  linkedin: '#',
+                  name: 'Kananura Abdulkhaliq',
+                  position: 'Project Manager',
+                  image: kananura,
+                  linkedin: 'https://www.linkedin.com/in/kananura-abdulkhaliq-4b4473222/',
                 },
+              
               ].map((member, index) => (
                 <motion.div
                   key={index}

@@ -5,8 +5,8 @@ import { Building2, Users, Target, Award, LinkedinIcon } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/footer/Footer';
 import aboutImg from '@/public/images/webImage/about1.png'
-import isaac from '@/public/team/isaac.jpg'
-import kappy from '@/public/team/kappy-removebg-preview.png'
+import isaac from '@/public/team/isaacs.jpg'
+import kappy from '@/public/team/kappy.png'
 import savuer from '@/public/team/savuer.jpg'
 import david from '@/public/team/davides.jpg'
 import kananura from '@/public/team/kananuras.jpg'

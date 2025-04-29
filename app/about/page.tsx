@@ -5,6 +5,7 @@ import { Building2, Users, Target, Award, LinkedinIcon } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/footer/Footer';
 import aboutImg from '@/public/images/webImage/about1.png'
+import isaac from '@/public/team/kagenza.png'
 import kappy from '@/public/team/kappy.png'
 import savuer from '@/public/team/savuer.jpg'
 import david from '@/public/team/davides.jpg'
@@ -204,17 +205,17 @@ export default function AboutPage() {
             </motion.h2>
             <div className="grid max-w-7xl   grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12  mx-auto">
               {[
-                // {
-                //   name: 'Kagenza Isaac',
-                //   position: 'Chief Executive Officer',
-                //   image: isaac,
-                //   linkedin: 'https://www.linkedin.com/in/kagenza-isaac-a93599287/',
-                // },
+                {
+                  name: 'Kagenza Isaac',
+                  position: 'Chief Executive Officer',
+                  image: isaac,
+                  linkedin: 'https://www.linkedin.com/in/kagenza-isaac-a93599287/',
+                },
                 {
                   name: 'Kagenza Ramadhan',
                   position: 'Director of Sales and Marketing',
                   image: dsm,
-                  linkedin: '#',
+                  linkedin: 'https://www.linkedin.com/company/interfaceimc/?viewAsMember=true',
                 },
                 {
                   name: 'Uwanyagasani Eric',

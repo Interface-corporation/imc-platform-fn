@@ -219,7 +219,7 @@ export default function AboutPage() {
                 },
                 {
                   name: 'Uwanyagasani Eric',
-                  position: 'Graphic Designer',
+                  position: 'UI/UX & Graphic Designer',
                   image: kappy,
                   linkedin: 'https://www.linkedin.com/in/eric-uwanyagasani-936082230/',
                 },

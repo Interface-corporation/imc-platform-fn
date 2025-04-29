@@ -1,6 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+
 import { products } from "@/data/products";
 import { Product } from "@/types/product";
 import { ImageGallery } from "@/components/product/ImageGallery";
@@ -10,17 +14,17 @@ import { ProductActions } from "@/components/product/ProductActions";
 import { ProductTabs } from "@/components/product/ProductTabs";
 import { SimilarProducts } from "@/components/product/SimilarProducts";
 import { ProductHeader } from "@/components/product/ProductHeader";
-import { motion } from "framer-motion";
-import { useCart } from "@/context/CartContext";
-import { useRouter } from "next/navigation";
+import { addToCart } from "@/states/cartSlice"; // Assuming your action is here
 
 export default function SingleProductPage({ params }: { params: { id: string } }) {
   const [product, setProduct] = useState<Product | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>("");
   const [quantity, setQuantity] = useState<number>(1);
   const [isWishlisted, setIsWishlisted] = useState(false);
+
+  const dispatch = useDispatch();
   const router = useRouter();
-  const { addToCart } = useCart();
+
   useEffect(() => {
     if (params.id) {
       const foundProduct = products.find((p) => p.id === Number(params.id));
@@ -42,19 +46,39 @@ export default function SingleProductPage({ params }: { params: { id: string } }
     );
   }
 
-  const handleAddToCart = () => {
-    if (product) {
-      addToCart(product, quantity, selectedColor);
-    }
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch(addToCart({
+      id: product.id.toString(),
+      name: product.name,
+      price: parseFloat(product.price),
+      originalPrice: product.originalPrice ? parseFloat(product.originalPrice) : undefined,
+      quantity: 1,
+      image: product?.images[0],
+      type: product.type,
+    }));
+
+    // setShowBanner(true);
+    // setTimeout(() => setShowBanner(false), 5000);
   };
+
 
   const handleBuyNow = () => {
     if (product) {
-      addToCart(product, quantity, selectedColor);
-      router.push('/checkout');
+      dispatch(
+        addToCart({
+          id: String(product.id),
+          name: product.name,
+          price: Number(product.price),
+          image: product.images[0],
+          quantity,
+          selectedColor,
+        })
+      );
+      router.push("/checkout");
     }
   };
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <main className="max-w-7xl mx-auto px-4 py-8">
@@ -65,6 +89,7 @@ export default function SingleProductPage({ params }: { params: { id: string } }
           className="bg-white rounded-xl shadow-lg p-8"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Left Side - Image Gallery */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -73,6 +98,7 @@ export default function SingleProductPage({ params }: { params: { id: string } }
               <ImageGallery images={product.images} productName={product.name} />
             </motion.div>
 
+            {/* Right Side - Product Info */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -114,10 +140,12 @@ export default function SingleProductPage({ params }: { params: { id: string } }
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, duration: 0.5 }}
                 >
+
                   <ProductActions
+                    product={product}
+                    type="cart"
                     onAddToCart={handleAddToCart}
                     onBuyNow={handleBuyNow}
-                    type={product.type}
                   />
                 </motion.div>
               </div>
@@ -137,6 +165,7 @@ export default function SingleProductPage({ params }: { params: { id: string } }
           </div>
         </motion.div>
 
+        {/* Similar Products */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

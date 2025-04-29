@@ -80,15 +80,15 @@ export default function ContactPage() {
                             <div className="space-y-6 sm:space-y-8">
                                 <div className="flex items-center space-x-4 sm:space-x-6">
                                     <Phone className="w-6 sm:w-8 h-6 sm:h-8 text-secondary flex-shrink-0" />
-                                    <span className="text-base sm:text-lg">+1 (234) 567-8900</span>
+                                    <span className="text-base sm:text-lg">+(250) 782290301 </span>
                                 </div>
                                 <div className="flex items-center space-x-4 sm:space-x-6">
                                     <Mail className="w-6 sm:w-8 h-6 sm:h-8 text-secondary flex-shrink-0" />
-                                    <span className="text-base sm:text-lg break-all">contact@imcmultiflexserve.com</span>
+                                    <span className="text-base sm:text-lg break-all">interfacecorporation103@gmail.com</span>
                                 </div>
                                 <div className="flex items-center space-x-4 sm:space-x-6">
                                     <MapPin className="w-6 sm:w-8 h-6 sm:h-8 text-secondary flex-shrink-0" />
-                                    <span className="text-base sm:text-lg">123 Business Avenue, Tech District</span>
+                                    <span className="text-base sm:text-lg">Remera, Gisimenti, Ikaze House Floor 2</span>
                                 </div>
                                 <div className="flex items-start space-x-4 sm:space-x-6">
                                     <Clock className="w-6 sm:w-8 h-6 sm:h-8 text-secondary flex-shrink-0" />
@@ -206,7 +206,7 @@ export default function ContactPage() {
                 className="h-[400px] sm:h-[450px] lg:h-[500px]"
             >
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30596073366!2d-74.25986548248684!3d40.69714941932609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1645564756836!5m2!1sen!2s"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.706948203695!2d30.0892599!3d-1.9528542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca70019ec04db%3A0xc640c85bb39ec8ce!2sIKAZE%20HOUSE!5e0!3m2!1sen!2srw!4v1714389917658!5m2!1sen!2srw"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -214,6 +214,7 @@ export default function ContactPage() {
                     loading="lazy"
                     className="filter grayscale hover:grayscale-0 transition-all duration-300"
                 />
+
             </motion.section>
 
             <Footer />

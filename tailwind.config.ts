@@ -59,6 +59,10 @@ const config: Config = {
           foreground: "#ffffff",
         },
       },
+    
+      animation: {
+        fadeIn: "fadeIn 0.5s ease-out forwards",
+      },
     },
   },
   plugins: [],

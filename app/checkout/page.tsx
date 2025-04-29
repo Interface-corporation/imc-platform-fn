@@ -1,6 +1,8 @@
 'use client';
 
-import { useCart } from '@/context/CartContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { clearCart } from '@/states/cartSlice';
+import { RootState } from '@/lib/redux-store';
 import PaymentForm from '@/components/PaymentForm';
 import PaymentSummary from '@/components/PaymentSummary';
 import { useRouter } from 'next/navigation';
@@ -9,7 +11,9 @@ import Footer from '@/components/footer/Footer';
 import { PaymentFormData } from '@/types';
 
 export default function CheckoutPage() {
-    const { items: cartItems, clearCart } = useCart();
+    // Get cart items from Redux store instead of context
+    const cartItems = useSelector((state: RootState) => state.cart.items);
+    const dispatch = useDispatch();
     const router = useRouter();
 
     const handlePaymentSubmit = async (formData: PaymentFormData) => {
@@ -22,10 +26,10 @@ export default function CheckoutPage() {
             console.log('Payment submitted:', formData);
 
             // For now, we'll just simulate a successful payment
-            clearCart();
-            router.push('/Products'); // You'll need to create this page
-            console.log("product payed susssfully");
-            
+            dispatch(clearCart()); // Use Redux action to clear cart
+            router.push('/Products'); // Redirect after successful payment
+            console.log("product paid successfully");
+
         } catch (error) {
             console.error('Payment failed:', error);
         }
@@ -48,9 +52,8 @@ export default function CheckoutPage() {
     }
 
     return (
-     
         <div className="min-h-screen bg-gray-50">
-              <Header />
+            <Header />
             <div className="max-w-7xl mx-auto px-4 py-8">
                 <h1 className="text-3xl font-bold text-gray-900 mb-8">Checkout</h1>
 
@@ -66,6 +69,5 @@ export default function CheckoutPage() {
             </div>
             <Footer />
         </div>
-      
     );
-}
+} 

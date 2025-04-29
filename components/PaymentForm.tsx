@@ -236,7 +236,7 @@ export default function PaymentForm({ onSubmit }: PaymentFormProps) {
                             required
                             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-yellow-500/20 focus:border-yellow-500 transition-all duration-200"
                             onChange={handleInputChange}
-                            placeholder="+1 234 567 8900"
+                            placeholder="0782290301"
                         />
                     </motion.div>
                 )}

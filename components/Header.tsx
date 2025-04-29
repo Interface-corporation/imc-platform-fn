@@ -2,14 +2,16 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
-  ChevronDownIcon,
+ 
   ShoppingCartIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { useGetProfileQuery, useLogoutUserMutation } from "@/states/authentication";
-import { LuLogOut } from "react-icons/lu";
 import { useRouter } from "next/navigation";
+import { LuLogOut } from "react-icons/lu";
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/redux-store"; // adjust if your store is located somewhere else
 
 interface NavLink {
   label: string;
@@ -17,48 +19,43 @@ interface NavLink {
 }
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
   const { data: authUser } = useGetProfileQuery({});
   const [logoutUser, { isSuccess: logoutSuccess }] = useLogoutUserMutation();
   const router = useRouter();
 
+  const cartItems = useSelector((state: RootState) => state.cart.items); // assuming cart.products array
+
   const navLinks: NavLink[] = [
-    { label: "What's New", href: "#categories" },
-    { label: "Categories", href: "#categories" },
+    { label: "About Us", href: "/about" },
     { label: "Services", href: "#services" },
     { label: "Products", href: "/Products" },
-    { label: "About Us", href: "/about" },
     { label: "Contact us", href: "/contact" },
   ];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   if (logoutSuccess) {
-    router.push("/login")
+    router.push("/login");
   }
 
   const handleLogout = async () => {
     await logoutUser({});
-
-  }
+  };
 
   return (
     <header
-      className={` fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
           ? "bg-[#1E3A5F]/80 backdrop-blur-md shadow-lg"
-        : "bg-[#1E3A5F]"
-      }`}
+          : "bg-[#1E3A5F]"
+        }`}
     >
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
@@ -135,7 +132,11 @@ const Header = () => {
             </button>
           </div>
           {!isSearchOpen && (
-            <button onClick={toggleSearch} className="lg:hidden text-white" aria-label="Open search bar">
+            <button
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="lg:hidden text-white"
+              aria-label="Open search bar"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -154,34 +155,42 @@ const Header = () => {
           )}
 
           {/* Language Dropdown */}
-          <div className="hidden md:flex items-center space-x-1">
+          {/* <div className="hidden md:flex items-center space-x-1">
             <button className="text-white" aria-label="Language selection">
               Eng
             </button>
             <ChevronDownIcon className="w-5 h-5 cursor-pointer text-white" />
-          </div>
+          </div> */}
 
           {/* Cart and User Icons */}
-          <div className="hidden md:flex space-x-4">
-            <Link href="/cart" aria-label="View Cart">
+          <div className="hidden md:flex space-x-4 relative">
+            <Link href="/cart" aria-label="View Cart" className="relative">
               <ShoppingCartIcon className="w-5 h-5 cursor-pointer text-white" />
+              {cartItems.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartItems.length}
+                </span>
+              )}
             </Link>
-            {
-              authUser
-                ? <Link href="/#" onClick={handleLogout}>
-                  <LuLogOut className="w-5 h-5 cursor-pointer text-white" />
-                </Link>
-                : <Link href="/login">
-                  <UserIcon className="w-5 h-5 cursor-pointer text-white" />
-                </Link>
-            }
-
-          </div >
-        </div >
+            {authUser ? (
+              <Link href="#" onClick={handleLogout}>
+                <LuLogOut className="w-5 h-5 cursor-pointer text-white" />
+              </Link>
+            ) : (
+              <Link href="/login">
+                <UserIcon className="w-5 h-5 cursor-pointer text-white" />
+              </Link>
+            )}
+          </div>
+        </div>
 
         {/* Mobile Menu Toggle */}
-        < div className="md:hidden" >
-          <button onClick={toggleMenu} className="text-white" aria-label="Toggle mobile menu">
+        <div className="md:hidden">
+          <button
+            // onClick={}
+            className="text-white"
+            aria-label="Toggle mobile menu"
+          >
             {isMenuOpen ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -214,37 +223,42 @@ const Header = () => {
               </svg>
             )}
           </button>
-        </div >
+        </div>
+
+        {/* Mobile Cart & User */}
         <div className="flex items-center space-x-4 text-white md:hidden">
-          <Link href="/cart" aria-label="View Cart">
+          <Link href="/cart" aria-label="View Cart" className="relative">
             <ShoppingCartIcon className="w-6 h-6 cursor-pointer text-white" />
+            {cartItems.length > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
+                {cartItems.length}
+              </span>
+            )}
           </Link>
           <Link href="/login" aria-label="User Login">
             <UserIcon className="w-6 h-6 cursor-pointer text-white" />
           </Link>
         </div>
-      </div >
+      </div>
 
       {/* Mobile Menu */}
-      {
-        isMenuOpen && (
-          <div className="md:hidden">
-            <nav className="bg-[#1E3A5F] flex flex-col space-y-2 p-4 text-white">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="hover:text-blue-400"
-                  aria-label={`Navigate to ${link.label}`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        )
-      }
-    </header >
+      {isMenuOpen && (
+        <div className="md:hidden">
+          <nav className="bg-[#1E3A5F] flex flex-col space-y-2 p-4 text-white">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="hover:text-blue-400"
+                aria-label={`Navigate to ${link.label}`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      )}
+    </header>
   );
 };
 

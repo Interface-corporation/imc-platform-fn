@@ -1,209 +1,82 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
-import {
-  FaHome,
-  FaShoppingCart,
-  FaLink,
-  FaClipboardList,
-  FaTruck,
-  FaFileAlt,
-  FaCog,
-  FaSignOutAlt,
-  FaSearch,
-  FaBell,
-  FaBars,
-  FaChevronDown
-} from "react-icons/fa";
+import DashboardLayout from "./DashboardLayout";
+import OrdersComponent from "./OrdersComponent";
+import AnalyticsComponent from "./Analytics";
 
-const Dashboard: React.FC = () => {
-  const [selectedMenu, setSelectedMenu] = useState<string>("Dashboard");
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+const DashboardPage: React.FC = () => {
+  const [currentMenu, setCurrentMenu] = useState<string>("Dashboard");
+  const [pageTitle, setPageTitle] = useState<string>("Dashboard");
 
-  const menuContent: Record<string, string> = {
-    Dashboard: "Welcome to the Dashboard!",
-    Cart: "This is a list of all carts.",
-    "Service Request": "Manage your service requests here.",
-    "Custom Order": "Place your custom orders here.",
-    Trucking: "Track your trucking details.",
-    Reports: "View reports and analytics.",
-    Setting: "Configure your settings here.",
-    Logout: "You have been logged out.",
+  // Handle menu selection
+  const handleMenuSelect = (menuItem: string) => {
+    setCurrentMenu(menuItem);
+    setPageTitle(menuItem);
   };
 
-  const hasUnreadNotifications = true;
+  // Render the appropriate content based on selected menu
+  const renderContent = () => {
+    switch (currentMenu) {
+      case "Dashboard":
+        return <AnalyticsComponent />;
+      case "Cart":
+        return <OrdersComponent />;
+      case "Service Request":
+        return (
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <h3 className="text-lg font-semibold mb-4">Service Requests</h3>
+            <p>Manage your service requests here.</p>
+          </div>
+        );
+      case "Custom Order":
+        return (
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <h3 className="text-lg font-semibold mb-4">Custom Orders</h3>
+            <p>Create and manage custom orders here.</p>
+          </div>
+        );
+      case "Trucking":
+        return (
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <h3 className="text-lg font-semibold mb-4">Trucking Management</h3>
+            <p>Track and manage your shipments here.</p>
+          </div>
+        );
+      case "Reports":
+        return (
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <h3 className="text-lg font-semibold mb-4">Reports</h3>
+            <p>View detailed reports and analytics.</p>
+          </div>
+        );
+      case "Setting":
+        return (
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <h3 className="text-lg font-semibold mb-4">Settings</h3>
+            <p>Configure your account and application settings.</p>
+          </div>
+        );
+      default:
+        return (
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <p>Content for {currentMenu} will be displayed here.</p>
+          </div>
+        );
+    }
+  };
 
   return (
-    <div className="flex min-h-screen max-h-screen overflow-hidden bg-white">
-      {/* Overlay for mobile */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden"
-          onClick={() => setIsSidebarOpen(false)}
-        />
-      )}
-
-      {/* Sidebar */}
-      <aside
-        className={`fixed lg:static h-screen flex-none w-64 bg-blue-950 text-[#25aae1] flex flex-col justify-between p-4 
-          transition-transform duration-300 z-30
-          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
-          lg:translate-x-0 lg:w-56 lg:rounded-r-[25px]`}
-      >
-        <div className="flex flex-col h-full overflow-hidden">
-          <div className="flex-shrink-0 mb-8">
-            <Image
-              src="/images/logo.png"
-              alt="Company Logo"
-              width={100}
-              height={100}
-              className="mx-auto"
-            />
-          </div>
-
-          <nav className="flex-grow overflow-y-auto scrollbar-hide">
-            {[
-              { name: "Dashboard", icon: <FaHome /> },
-              { name: "Cart", icon: <FaShoppingCart /> },
-              { name: "Service Request", icon: <FaLink /> },
-              { name: "Custom Order", icon: <FaClipboardList /> },
-              { name: "Trucking", icon: <FaTruck /> },
-              { name: "Reports", icon: <FaFileAlt /> },
-            ].map((item) => (
-              <button
-                key={item.name}
-                onClick={() => setSelectedMenu(item.name)}
-                className={`flex items-center px-4 py-3 w-full relative text-sm
-                  ${selectedMenu === item.name ? "text-white" : "text-[#25aae1]"}
-                  hover:bg-blue-900 rounded-lg transition-colors`}
-              >
-                {selectedMenu === item.name && (
-                  <span className="absolute left-0 top-0 h-full w-1 bg-white rounded-r-md" />
-                )}
-                <span className="mr-3 text-lg">{item.icon}</span>
-                {item.name}
-              </button>
-            ))}
-          </nav>
-
-          <div className="flex-shrink-0 mt-4">
-            {[
-              { name: "Setting", icon: <FaCog /> },
-              { name: "Logout", icon: <FaSignOutAlt /> },
-            ].map((item) => (
-              <button
-                key={item.name}
-                onClick={() => setSelectedMenu(item.name)}
-                className={`flex items-center px-4 py-3 w-full relative text-sm
-                  ${selectedMenu === item.name ? "text-white" : "text-[#25aae1]"}
-                  hover:bg-blue-900 rounded-lg transition-colors`}
-              >
-                {selectedMenu === item.name && (
-                  <span className="absolute left-0 top-0 h-full w-1 bg-white rounded-r-md" />
-                )}
-                <span className="mr-3 text-lg">{item.icon}</span>
-                {item.name}
-              </button>
-            ))}
-          </div>
-        </div>
-      </aside>
-
-      {/* Main Content */}
-      <main className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        <header className="flex-shrink-0 bg-white shadow-sm">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between px-4 py-4 lg:px-8 lg:py-6">
-            {/* Top row for mobile, left section for desktop */}
-            <div className="flex items-center justify-between lg:w-1/3">
-              <button
-                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                className="lg:hidden p-2"
-                aria-label="Toggle sidebar"
-              >
-                <FaBars className="text-[#25aae1]" size={24} />
-              </button>
-
-              {/* Search bar */}
-              <div className="relative flex-1 lg:max-w-xl mx-4">
-                <input
-                  type="text"
-                  placeholder="Search items..."
-                  className="w-full p-3 pl-12 bg-gray-50 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-sm"
-                />
-                <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-              </div>
-            </div>
-
-            {/* Right section */}
-            <div className="flex items-center justify-end gap-6 mt-4 lg:mt-0">
-              {/* Notification button with badge */}
-              <button className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors" aria-label="View notifications">
-                <FaBell className="text-amber-400 text-2xl" />
-                {hasUnreadNotifications && (
-                  <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-white" />
-                )}
-              </button>
-
-              {/* Profile section */}
-              <div className="relative">
-                <button
-                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex items-center gap-4 p-2 hover:bg-gray-100 rounded-lg transition-colors"
-                >
-                  <div className="relative flex-shrink-0">
-                    <Image
-                      src="/profile.jpg"
-                      alt="Profile"
-                      width={48}
-                      height={48}
-                      className="rounded-full object-cover"
-                    />
-                    <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 rounded-full ring-2 ring-white" />
-                  </div>
-
-                  <div className="hidden lg:flex flex-col items-start">
-                    <span className="font-semibold text-gray-900">Abdoul Khaliq</span>
-                    <span className="text-gray-500 text-sm">abdoulkhaliq@gmail.com</span>
-                  </div>
-
-                  <FaChevronDown
-                    className={`text-gray-400 transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`}
-                    size={16}
-                  />
-                </button>
-
-                {/* Dropdown menu */}
-                {isDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden z-50">
-                    <div className="py-2">
-                      <button className="flex w-full px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">
-                        View Profile
-                      </button>
-                      <button className="flex w-full px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50">
-                        Edit Profile
-                      </button>
-                      <div className="h-px bg-gray-100 my-2"></div>
-                      <button className="flex w-full px-4 py-2.5 text-sm text-red-600 hover:bg-gray-50">
-                        Logout
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </header>
-
-        <div className="flex-1 overflow-auto p-6">
-          <h1 className="text-2xl font-bold mb-4">{selectedMenu}</h1>
-          <p className="text-lg">
-            {menuContent[selectedMenu] || "Content not available"}
-          </p>
-        </div>
-      </main>
-    </div>
+    <DashboardLayout
+      title={pageTitle}
+      onMenuSelect={handleMenuSelect}
+      logoSrc="/images/logo.png"
+      profileSrc="/profile.jpg"
+      username="Abdoul Khaliq"
+      email="abdoulkhaliq@gmail.com"
+    >
+      {renderContent()}
+    </DashboardLayout>
   );
 };
 
-export default Dashboard;
+export default DashboardPage;

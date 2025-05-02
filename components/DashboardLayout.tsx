@@ -4,32 +4,59 @@ import Image from "next/image";
 import {
   FaHome,
   FaShoppingCart,
-  FaLink,
   FaClipboardList,
-  FaTruck,
   FaFileAlt,
   FaCog,
-  FaSignOutAlt,
   FaSearch,
   FaBell,
   FaBars,
-  FaChevronDown
+  FaChevronDown,
+  FaQuestionCircle,
+  FaUser,
+  FaUserShield,
+  FaLock,
+  FaUsers,
+  FaUserTie
 } from "react-icons/fa";
 
 // Define menu items for better organization
-const MAIN_MENU_ITEMS = [
-  { name: "Dashboard", icon: <FaHome /> },
-  { name: "Cart", icon: <FaShoppingCart /> },
-  { name: "Service Request", icon: <FaLink /> },
-  { name: "Custom Order", icon: <FaClipboardList /> },
-  { name: "Trucking", icon: <FaTruck /> },
-  { name: "Reports", icon: <FaFileAlt /> },
+const MENU_STRUCTURE = [
+  {
+    title: "General",
+    items: [
+      { name: "Dashboard", icon: <FaHome /> },
+      {
+        name: "Products",
+        icon: <FaShoppingCart />,
+        children: ["List", "Grid", "Details", "Edit", "Create"],
+      },
+      { name: "Category", icon: <FaClipboardList />, children: ["List", "Grid", "Details", "Edit", "Create"] },
+      { name: "Inventory", icon: <FaClipboardList />, children: [] },
+      { name: "Orders", icon: <FaClipboardList />, children: [] },
+      { name: "Purchases", icon: <FaClipboardList />, children: [] },
+      { name: "Attributes", icon: <FaClipboardList />, children: [] },
+      { name: "Invoices", icon: <FaFileAlt />, children: [] },
+      { name: "Settings", icon: <FaCog /> },
+    ],
+  },
+  {
+    title: "Users",
+    items: [
+      { name: "Profile", icon: <FaUser /> },
+      {
+        name: "Roles",
+        icon: <FaUserShield />,
+        children: [],
+      },
+      { name: "Permissions", icon: <FaLock /> },
+      { name: "Customers", icon: <FaUsers /> },
+      { name: "Sellers", icon: <FaUserTie /> },
+      { name: "Support Center", icon: <FaQuestionCircle /> },
+    ],
+  },
+  
 ];
 
-const FOOTER_MENU_ITEMS = [
-  { name: "Setting", icon: <FaCog /> },
-  { name: "Logout", icon: <FaSignOutAlt /> },
-];
 
 // Define interfaces
 interface DashboardLayoutProps {
@@ -45,8 +72,8 @@ interface DashboardLayoutProps {
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   children,
   title = "Dashboard",
-  logoSrc = "/placeholder-logo.png",
-  profileSrc = "/placeholder-profile.png",
+  logoSrc = "/images/car.jpg",
+  profileSrc = "/images/car.jpg",
   username = "User Name",
   email = "user@example.com",
   onMenuSelect
@@ -54,6 +81,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   const [selectedMenu, setSelectedMenu] = useState<string>("Dashboard");
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const handleMenuSelect = (menuName: string) => {
     setSelectedMenu(menuName);
@@ -61,6 +89,11 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       onMenuSelect(menuName);
     }
   };
+
+  const handleDropdownToggle = (menuName: string) => {
+    setOpenDropdown((prev) => (prev === menuName ? null : menuName));
+  };
+  
 
   const hasUnreadNotifications = true; // This could be a prop too
 
@@ -93,40 +126,54 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           </div>
 
           <nav className="flex-grow overflow-y-auto scrollbar-hide">
-            {MAIN_MENU_ITEMS.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => handleMenuSelect(item.name)}
-                className={`flex items-center px-4 py-3 w-full relative text-sm
-                  ${selectedMenu === item.name ? "text-white" : "text-[#25aae1]"}
-                  hover:bg-blue-900 rounded-lg transition-colors`}
-              >
-                {selectedMenu === item.name && (
-                  <span className="absolute left-0 top-0 h-full w-1 bg-white rounded-r-md" />
-                )}
-                <span className="mr-3 text-lg">{item.icon}</span>
-                {item.name}
-              </button>
-            ))}
-          </nav>
+          {MENU_STRUCTURE.map((section) => (
+          <div key={section.title} className="mb-4">
+            <p className="text-xs text-gray-400 px-4 uppercase">{section.title}</p>
+            {section.items.map((item) => (
+              <div key={item.name}>
+                <button
+                  onClick={() => {
+                    if (item.children && item.children.length > 0) {
+                      handleDropdownToggle(item.name);
+                    } else {
+                      handleMenuSelect(item.name);
+                      setOpenDropdown(null);
+                    }
+                  }}
+                  className={`flex items-center px-4 py-3 w-full relative text-sm ${
+                    selectedMenu === item.name ? "text-white" : "text-[#25aae1]"
+                  } hover:bg-blue-900 rounded-lg transition-colors`}
+                >
+                  {selectedMenu === item.name && (
+                    <span className="absolute left-0 top-0 h-full w-1 bg-white rounded-r-md" />
+                  )}
+                  <span className="mr-3 text-lg">{item.icon}</span>
+                  {item.name}
+                  {item.children && item.children.length > 0 && (
+                    <FaChevronDown className="ml-auto text-xs" />
+                  )}
+                </button>
 
-          <div className="flex-shrink-0 mt-4">
-            {FOOTER_MENU_ITEMS.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => handleMenuSelect(item.name)}
-                className={`flex items-center px-4 py-3 w-full relative text-sm
-                  ${selectedMenu === item.name ? "text-white" : "text-[#25aae1]"}
-                  hover:bg-blue-900 rounded-lg transition-colors`}
-              >
-                {selectedMenu === item.name && (
-                  <span className="absolute left-0 top-0 h-full w-1 bg-white rounded-r-md" />
-                )}
-                <span className="mr-3 text-lg">{item.icon}</span>
-                {item.name}
-              </button>
+                {item.children && item.children.length > 0 && openDropdown === item.name && (
+                    <div className="ml-6">
+                      {item.children.map((subItem) => (
+                        <button
+                          key={subItem}
+                          onClick={() => handleMenuSelect(subItem)}
+                          className="ml-4 text-sm text-left py-2 text-[#25aae1] hover:text-white hover:bg-blue-900 w-full block"
+                        >
+                          {subItem}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+              </div>
             ))}
           </div>
+          ))}
+
+          </nav>
+
         </div>
       </aside>
 

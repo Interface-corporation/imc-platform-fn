@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import DashboardLayout from "./DashboardLayout";
 import OrdersComponent from "./OrdersComponent";
 import AnalyticsComponent from "./Analytics";
+import HelpCenterPage from "./HelpCenter";
+import AllProductsPage from "./product/adminProducts";
 
 const DashboardPage: React.FC = () => {
   const [currentMenu, setCurrentMenu] = useState<string>("Dashboard");
@@ -21,6 +23,10 @@ const DashboardPage: React.FC = () => {
         return <AnalyticsComponent />;
       case "Cart":
         return <OrdersComponent />;
+      case "Support Center":
+        return <HelpCenterPage/>
+        case "List":
+          return <AllProductsPage />;
       case "Service Request":
         return (
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">

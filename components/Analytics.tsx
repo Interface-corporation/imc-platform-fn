@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { FaFire, FaUserPlus, FaHandshake, FaDollarSign, FaChevronRight } from "react-icons/fa";
-import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Bar, ComposedChart, Area } from "recharts";
 import OrdersComponent from "./OrdersComponent";
 
 // Sample chart data
@@ -107,28 +107,29 @@ const AnalyticsComponent: React.FC = () => {
         </div>
         <div className="h-72">
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={performanceData}>
+            <ComposedChart data={performanceData}>
+            <defs>
+              <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#D1AE5D" stopOpacity={0.8}/>
+                <stop offset="95%" stopColor="#D1AE5D" stopOpacity={0}/>
+              </linearGradient>
+            </defs>
               <XAxis dataKey="month" axisLine={false} tickLine={false} />
               <YAxis axisLine={false} tickLine={false} />
               <Tooltip />
               <Legend />
-              <Line
-                type="monotone"
+              <Bar
                 dataKey="pageViews"
-                stroke="#f97316"
-                strokeWidth={3}
-                dot={false}
+                fill="#25AAE1"
                 name="Page Views"
               />
-              <Line
+              <Area
                 type="monotone"
                 dataKey="clicks"
-                stroke="#10b981"
-                strokeWidth={3}
-                dot={false}
+                stroke="#D1AE5D" fillOpacity={1} fill="url(#colorUv)"
                 name="Clicks"
               />
-            </LineChart>
+            </ComposedChart>
           </ResponsiveContainer>
         </div>
       </div>

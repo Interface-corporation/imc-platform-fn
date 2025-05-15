@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-import imc from '@/public/partener/minicit.jpg';
-import ur from '@/public/partener/ur.jpg';
-import unipod from '@/public/partener/unipod.jpg';
-import ictchamber from '@/public/partener/ictchamber.jpg';
-import klab from '@/public/partener/klab.jpg';
-import imagine from '@/public/partener/imagine.jpg';
-import kengine from '@/public/partener/kengine.jpg';
-import raisin from '@/public/partener/raisin.jpg';
-import khenz from '@/public/partener/khenz.jpg';
+import imc from '@/public/partener/minicit.png';
+import ur from '@/public/partener/ur.png';
+import unipod from '@/public/partener/unipod.png';
+import ictchamber from '@/public/partener/ictchamber.png';
+import klab from '@/public/partener/klab.png';
+import imagine from '@/public/partener/imagine.png';
+import kengine from '@/public/partener/kengine.png';
+import raisin from '@/public/partener/raisin.png';
+import khenz from '@/public/partener/khenz.png';
 
 const partners = [
     { id: 1, name: "MIN ICT", logo: imc, color: "#0057B8" },

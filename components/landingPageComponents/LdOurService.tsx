@@ -1,11 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
     Rocket,
-    PieChart,
     CloudCog,
     Layers,
-    Workflow,
-    Shield,
     ChevronDown,
     ChevronUp,
     ChevronLeft,
@@ -20,6 +17,7 @@ import softwareImage from '@/public/flyers/techService.png';
 import propertyImage from '@/public/flyers/reale.png';
 import mushirarungu from '@/public/flyers/mushirarungu.png';
 import blindGlass from '@/public/cover/blindglass.jpeg';
+import { StaticImageData } from 'next/image';
 
 // Define types for our service objects
 interface ServiceItem {
@@ -27,7 +25,7 @@ interface ServiceItem {
     title: string;
     shortDescription: string;
     longDescription: string;
-    image: any; // For imported image
+    image: StaticImageData; // For imported image
     color: string;
     keyServices: string[];
 }
@@ -213,9 +211,7 @@ const ServicesShowcase: React.FC = () => {
     const cardWidth = 384; // w-96 = 24rem = 384px
     const gap = 24; // space-x-6 = 1.5rem = 24px
     
-    // Create a circular array of services by duplicating them
-    const extendedServices = [...services, ...services.slice(0, 2)]; // Add first two services at the end for smooth looping
-    
+   
     // Calculate maximum scrollable width
     const maxScrollWidth = (services.length - 1) * (cardWidth + gap);
     
@@ -243,10 +239,10 @@ const ServicesShowcase: React.FC = () => {
         const timer = setInterval(() => {
             const nextIndex = (currentIndex + 1) % totalItems;
             scrollToIndex(nextIndex);
-        }, 5000); // 5 seconds
+        }, 10000); // 5 seconds
         
         return () => clearInterval(timer);
-    }, [currentIndex]);
+    }, [scrollToIndex, totalItems]);
     
     // Manual scrolling with arrow buttons
     const scrollToPrev = () => {
@@ -301,7 +297,7 @@ const ServicesShowcase: React.FC = () => {
         if (currentIndex === totalItems - 1) {
             handleLoopToStart();
         }
-    }, [currentIndex]);
+    }, [handleLoopToStart, totalItems]);
     
     return (
         <div className="bg-white py-16 ">

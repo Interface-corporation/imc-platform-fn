@@ -70,14 +70,3 @@ export default function CTABanner() {
     );
 }
 
-// Tailwind CSS Custom Animations
-const styles = `
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 1s ease-out;
-}
-`;

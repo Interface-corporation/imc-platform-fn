@@ -44,11 +44,7 @@ const Header = () => {
 
   // Close mobile menu when navigating
   useEffect(() => {
-    const handleRouteChange = () => {
-      if (isMenuOpen) {
-        setIsMenuOpen(false);
-      }
-    };
+   
 
     // Next.js App Router doesn't have events like the Pages Router,
     // but we can clean up the menu when component unmounts

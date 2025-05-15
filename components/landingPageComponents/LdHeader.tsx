@@ -15,6 +15,12 @@ interface NavLink {
   label: string;
   href: string;
 }
+const navLinks: NavLink[] = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "e-Shop", href: "/landingPage" },
+  { label: "Contact us", href: "/contact" },
+];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,12 +35,6 @@ const Header = () => {
 
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
-  const navLinks: NavLink[] = [
-    { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
-    { label: "e-Shop", href: "/landingPage" },
-    { label: "Contact us", href: "/contact" },
-  ];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);

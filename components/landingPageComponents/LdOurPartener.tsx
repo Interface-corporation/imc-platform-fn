@@ -10,6 +10,7 @@ import imagine from '@/public/partener/imagine.png';
 import kengine from '@/public/partener/kengine.png';
 import raisin from '@/public/partener/raisin.png';
 import khenz from '@/public/partener/khenz.png';
+import Image from 'next/image';
 
 const partners = [
     { id: 1, name: "MIN ICT", logo: imc, color: "#0057B8" },
@@ -123,10 +124,12 @@ export default function PartnerCarousel() {
                                     onMouseEnter={pauseAutoScroll}
                                 >
                                     <div className="flex flex-col items-center justify-center p-4 w-full h-full">
-                                        <img
-                                            src={partner.logo.src}
+                                        <Image
+                                            src={partner.logo}
                                             alt={`${partner.name} logo`}
-                                            className="mb-3 max-h-16 w-auto transition-transform duration-300 hover:scale-110"
+                                            width={100}
+                                            height={64}
+                                            className="mb-3 max-h-16 w-auto transition-transform duration-300 hover:scale-110 object-contain"
                                         />
                                         <p className="font-medium text-gray-800">{partner.name}</p>
                                     </div>

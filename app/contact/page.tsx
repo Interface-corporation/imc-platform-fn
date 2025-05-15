@@ -1,48 +1,12 @@
-"use client"
-import { useState } from 'react'
-import { Mail, Phone, MapPin, Clock } from 'lucide-react'
-import { motion } from 'framer-motion'
+"use client";
+import { useForm, ValidationError } from '@formspree/react';
+import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/footer/Footer';
 
-interface FormData {
-    firstName: string
-    lastName: string
-    email: string
-    subject: string
-    message: string
-}
-
 export default function ContactPage() {
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [formData, setFormData] = useState<FormData>({
-        firstName: '',
-        lastName: '',
-        email: '',
-        subject: '',
-        message: ''
-    })
-
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        setIsSubmitting(true)
-        await new Promise(resolve => setTimeout(resolve, 1500))
-        setIsSubmitting(false)
-        setFormData({
-            firstName: '',
-            lastName: '',
-            email: '',
-            subject: '',
-            message: ''
-        })
-    }
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData(prev => ({
-            ...prev,
-            [e.target.name]: e.target.value
-        }))
-    }
+    const [state, handleSubmit] = useForm("xvgadglq");
 
     return (
         <div className="min-h-screen">
@@ -108,91 +72,85 @@ export default function ContactPage() {
                             className="bg-white p-6 sm:p-8 lg:p-12 rounded-xl sm:rounded-2xl shadow-xl order-1 lg:order-2"
                         >
                             <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 sm:mb-8">Send us a Message</h2>
-                            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
-                                <div className="grid sm:grid-cols-2 gap-6">
+                            {state.succeeded ? (
+                                <p className="text-green-600 text-lg">Thank you for your message!</p>
+                            ) : (
+                                <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+                                    <div className="grid sm:grid-cols-2 gap-6">
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                First Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="firstName"
+                                                className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                                placeholder="John"
+                                                required
+                                                disabled={state.submitting}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                Last Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="lastName"
+                                                className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                                placeholder="Doe"
+                                                required
+                                                disabled={state.submitting}
+                                            />
+                                        </div>
+                                    </div>
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            First Name
+                                            Email
                                         </label>
                                         <input
-                                            type="text"
-                                            name="firstName"
-                                            value={formData.firstName}
-                                            onChange={handleChange}
+                                            type="email"
+                                            name="email"
                                             className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                                            placeholder="John"
+                                            placeholder="john@example.com"
                                             required
-                                            disabled={isSubmitting}
+                                            disabled={state.submitting}
                                         />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            Last Name
+                                            Subject
                                         </label>
                                         <input
                                             type="text"
-                                            name="lastName"
-                                            value={formData.lastName}
-                                            onChange={handleChange}
+                                            name="subject"
                                             className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                                            placeholder="Doe"
+                                            placeholder="How can we help?"
                                             required
-                                            disabled={isSubmitting}
+                                            disabled={state.submitting}
                                         />
                                     </div>
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                                        Email
-                                    </label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                                        placeholder="john@example.com"
-                                        required
-                                        disabled={isSubmitting}
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                                        Subject
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="subject"
-                                        value={formData.subject}
-                                        onChange={handleChange}
-                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                                        placeholder="How can we help?"
-                                        required
-                                        disabled={isSubmitting}
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                                        Message
-                                    </label>
-                                    <textarea
-                                        name="message"
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent h-32 sm:h-40"
-                                        placeholder="Write your message here..."
-                                        required
-                                        disabled={isSubmitting}
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="w-full bg-secondary hover:bg-secondary/80 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-lg transition-colors disabled:opacity-50 text-base sm:text-lg"
-                                >
-                                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                                </button>
-                            </form>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                            Message
+                                        </label>
+                                        <textarea
+                                            name="message"
+                                            className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent h-32 sm:h-40"
+                                            placeholder="Write your message here..."
+                                            required
+                                            disabled={state.submitting}
+                                        />
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        disabled={state.submitting}
+                                        className="w-full bg-secondary hover:bg-secondary/80 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-lg transition-colors disabled:opacity-50 text-base sm:text-lg"
+                                    >
+                                        {state.submitting ? 'Sending...' : 'Send Message'}
+                                    </button>
+                                </form>
+                            )}
                         </motion.div>
                     </div>
                 </div>
@@ -205,7 +163,9 @@ export default function ContactPage() {
                 transition={{ delay: 0.5 }}
                 className="h-[400px] sm:h-[450px] lg:h-[500px]"
             >
-                <iframe
+                
+ 
+               <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.706948203695!2d30.0892599!3d-1.9528542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca70019ec04db%3A0xc640c85bb39ec8ce!2sIKAZE%20HOUSE!5e0!3m2!1sen!2srw!4v1714389917658!5m2!1sen!2srw"
                     width="100%"
                     height="100%"

@@ -17,7 +17,7 @@ import softwareImage from '@/public/flyers/techService.png';
 import propertyImage from '@/public/flyers/reale.png';
 import mushirarungu from '@/public/flyers/mushirarungu.png';
 import blindGlass from '@/public/cover/blindglass.jpeg';
-import { StaticImageData } from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 // Define types for our service objects
 interface ServiceItem {
@@ -154,9 +154,11 @@ const ServiceCard: React.FC<{ service: ServiceItem }> = ({ service }) => {
                 <CardContent>
                     {/* Service Image */}
                     <div className="mb-4 overflow-hidden rounded-lg">
-                        <img
+                        <Image
                             src={service.image.src}
                             alt={service.title}
+                            width={500}
+                            height={300}
                             className="w-full h-48 object-cover"
                         />
                     </div>

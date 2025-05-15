@@ -1,0 +1,150 @@
+/* styles/AboutUs.module.css */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes floatCards {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes blobSoft {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+
+    33% {
+        transform: translate(20px, -30px) scale(1.05);
+        opacity: 0.4;
+    }
+
+    66% {
+        transform: translate(-15px, 15px) scale(0.95);
+        opacity: 0.5;
+    }
+}
+
+@keyframes backgroundPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.1;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 0.2;
+    }
+}
+
+@keyframes particle {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translate(50px, -50px) scale(1.2);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translate(-30px, 30px) scale(0.8);
+        opacity: 0;
+    }
+}
+
+.floatingImage {
+    animation: float 4s ease-in-out infinite;
+}
+
+.floatingCard {
+    animation: floatCards 5s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+.floatingCard:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.animateBlobSoft {
+    animation: blobSoft 15s ease-in-out infinite;
+}
+
+.backgroundPulse {
+    animation: backgroundPulse 8s ease-in-out infinite;
+}
+
+.animateParticle {
+    position: absolute;
+    border-radius: 50%;
+    animation: particle 10s infinite;
+}
+
+.imageContainer {
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.imageWrapper {
+    transition: all 0.5s ease;
+    transform-style: preserve-3d;
+}
+
+.imageWrapper:hover {
+    transform:
+        translateZ(50px) rotateX(5deg) rotateY(-5deg) scale(1.05);
+}
+
+.particleEffect {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* Maintaining previous hover effects */
+.hoverBackground {
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+    opacity: 0.1;
+}
+
+.hoverBackground:nth-child(1) {
+    background-color: theme('colors.blue.500');
+    transition-delay: 0s;
+}
+
+.hoverBackground:nth-child(2) {
+    background-color: theme('colors.purple.500');
+    transition-delay: 0.1s;
+}
+
+.hoverBackground:nth-child(3) {
+    background-color: theme('colors.green.500');
+    transition-delay: 0.2s;
+}
+
+.imageContainer:hover .hoverBackground {
+    transform: scale(1.1);
+    opacity: 0.2; }

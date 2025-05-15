@@ -76,10 +76,10 @@ export default function AboutPage() {
               className="text-center w-full sm:max-w-2xl lg:max-w-4xl mx-auto"
             >
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 tracking-wide px-4 sm:px-0">
-                About IMC Multiflexserve
+                Interface Multiservice Corporation Ltd
               </h1>
               <p className="text-lg sm:text-xl lg:text-2xl opacity-90 px-4 sm:px-6">
-                Your trusted partner in e-commerce and professional services
+                Your Trusted Gateway To Global Excellence
               </p>
             </motion.div>
           </div>
@@ -107,9 +107,7 @@ export default function AboutPage() {
                   Our Mission
                 </motion.h2>
                 <p className="text-gray-600 mb-8 leading-relaxed">
-                  To revolutionize the way people buy, sell, and access services by providing a comprehensive
-                  marketplace that connects businesses and individuals, making commerce and service procurement
-                  accessible, efficient, and reliable for everyone.
+                  At Interface Multiservice Corporation Ltd, our mission is to bridge gaps across industries by delivering seamless logistics, cutting-edge digital solutions, inclusive assistive technologies, premium property services, and exceptional hospitality. We are committed to excellence, customer satisfaction, and sustainable impact through innovation, integrity, and a personalized approach to every service we provide.
                 </p>
                 <motion.h2
                   initial={{ x: -50, opacity: 0 }}
@@ -120,9 +118,7 @@ export default function AboutPage() {
                   Our Vision
                 </motion.h2>
                 <p className="text-gray-600 leading-relaxed">
-                  To become the leading global platform that seamlessly integrates e-commerce, professional
-                  services, and custom solutions, empowering businesses and individuals to thrive in the
-                  digital economy.
+                  To become a globally trusted hub for innovative, multiservice solutions—empowering individuals and businesses through world-class logistics, transformative technology, and personalized service experiences that shape a smarter, more connected future.
                 </p>
               </div>
               <motion.div

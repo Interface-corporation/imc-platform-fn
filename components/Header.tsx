@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
- 
   ShoppingCartIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
@@ -19,7 +18,7 @@ interface NavLink {
 }
 
 const Header = () => {
-  const [isMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -30,9 +29,10 @@ const Header = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items); // assuming cart.products array
 
   const navLinks: NavLink[] = [
-    { label: "About Us", href: "/about" },
-    { label: "Services", href: "#services" },
+    { label: "Home", href: "/" },
+    { label: "e-Shop", href: "/landingPage" },
     { label: "Products", href: "/Products" },
+    { label: "About Us", href: "/about" },
     { label: "Contact us", href: "/contact" },
   ];
 
@@ -42,12 +42,53 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu when navigating
+  useEffect(() => {
+   
+
+    // Next.js App Router doesn't have events like the Pages Router,
+    // but we can clean up the menu when component unmounts
+    return () => {
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+  }, [isMenuOpen]);
+
+  // Add click outside handler to close mobile menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuToggle = document.getElementById('menu-toggle');
+
+      if (
+        isMenuOpen &&
+        mobileMenu &&
+        !mobileMenu.contains(target) &&
+        menuToggle &&
+        !menuToggle.contains(target)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
   if (logoutSuccess) {
     router.push("/login");
   }
 
   const handleLogout = async () => {
     await logoutUser({});
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -71,7 +112,7 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Navigation */}
+        {/* Navigation - Desktop */}
         <nav className="hidden md:flex space-x-6 text-white">
           {navLinks.map((link) => (
             <Link
@@ -154,15 +195,7 @@ const Header = () => {
             </button>
           )}
 
-          {/* Language Dropdown */}
-          {/* <div className="hidden md:flex items-center space-x-1">
-            <button className="text-white" aria-label="Language selection">
-              Eng
-            </button>
-            <ChevronDownIcon className="w-5 h-5 cursor-pointer text-white" />
-          </div> */}
-
-          {/* Cart and User Icons */}
+          {/* Cart and User Icons - Desktop */}
           <div className="hidden md:flex space-x-4 relative">
             <Link href="/cart" aria-label="View Cart" className="relative">
               <ShoppingCartIcon className="w-5 h-5 cursor-pointer text-white" />
@@ -187,8 +220,9 @@ const Header = () => {
         {/* Mobile Menu Toggle */}
         <div className="md:hidden">
           <button
-            // onClick={}
-            className="text-white"
+            id="menu-toggle"
+            onClick={toggleMobileMenu}
+            className="text-white focus:outline-none"
             aria-label="Toggle mobile menu"
           >
             {isMenuOpen ? (
@@ -198,7 +232,7 @@ const Header = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={2}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-6 h-6 transition-transform duration-300 transform rotate-90"
               >
                 <path
                   strokeLinecap="round"
@@ -213,7 +247,7 @@ const Header = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={2}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-6 h-6 transition-transform duration-300"
               >
                 <path
                   strokeLinecap="round"
@@ -235,29 +269,40 @@ const Header = () => {
               </span>
             )}
           </Link>
-          <Link href="/login" aria-label="User Login">
-            <UserIcon className="w-6 h-6 cursor-pointer text-white" />
-          </Link>
+          {authUser ? (
+            <Link href="#" onClick={handleLogout} aria-label="Logout">
+              <LuLogOut className="w-6 h-6 cursor-pointer text-white" />
+            </Link>
+          ) : (
+            <Link href="/login" aria-label="User Login">
+              <UserIcon className="w-6 h-6 cursor-pointer text-white" />
+            </Link>
+          )}
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden">
-          <nav className="bg-[#1E3A5F] flex flex-col space-y-2 p-4 text-white">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="hover:text-blue-400"
-                aria-label={`Navigate to ${link.label}`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      )}
+      {/* Mobile Menu - Now properly toggled with animations */}
+      <div
+        id="mobile-menu"
+        className={`md:hidden transition-all duration-300 ease-in-out transform ${isMenuOpen
+            ? "opacity-100 max-h-96 translate-y-0"
+            : "opacity-0 max-h-0 -translate-y-2 pointer-events-none"
+          } overflow-hidden`}
+      >
+        <nav className="bg-[#1E3A5F] flex flex-col space-y-1 p-4 text-white border-t border-[#25aae1]/20">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="hover:text-[#25aae1] py-3 px-2 transition-all duration-300 hover:bg-[#25aae1]/10 rounded-md"
+              aria-label={`Navigate to ${link.label}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
     </header>
   );
 };

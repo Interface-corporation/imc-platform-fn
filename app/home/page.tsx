@@ -1,21 +1,27 @@
-import Header from "@/components/Header"
+'use client'
 import Footer from "@/components/footer/Footer";
-import HeroSection from "@/components/hero/HeroSection";
-import Categories from "@/components/Categories";
-import Services from "@/components/Services";
-import { ProductList } from "@/components/product/ProductList";
-import { ProductCategories } from "@/components/product/ProductCategories";
+import LdHeader from "@/components/landingPageComponents/LdHeader"
+import HeroSection from "@/components/landingPageComponents/LdHero"
+import HighlightCards from "@/components/landingPageComponents/HighlightCards"
+import Ldabout from "@/components/landingPageComponents/Ldabout"
+import Ldbanner from "@/components/landingPageComponents/Ldbanner"
+import LdOurService from "@/components/landingPageComponents/LdOurService"
+import LdOurPartener from "@/components/landingPageComponents/LdOurPartener"
 
 const Homepage = () => {
   return (
     <div>
        <main className="flex flex-col gap-2">
-        <Header />
+        <LdHeader />
         <HeroSection />
-        <ProductCategories />
-        <ProductList />
-        <Categories/>
-        <Services />
+        <HighlightCards />
+        <Ldabout />
+        <LdOurService />
+        <Ldbanner />
+        <LdOurPartener />
+
+
+
       </main>
       <Footer/>
     </div>

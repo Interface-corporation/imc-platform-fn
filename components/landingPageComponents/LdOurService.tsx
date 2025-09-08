@@ -310,7 +310,7 @@ const ServicesShowcase: React.FC = () => {
                 
                 {/* Section Description */}
                 <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
-                    At Interface Multiservic Corporation, we deliver innovative solutions across multiple industries.
+                    At Interface Multiservice Corporation, we deliver innovative solutions across multiple industries.
                     From cutting-edge assistive technology to global logistics and digital transformation,
                     our services are designed to meet your diverse needs with excellence and reliability.
                 </p>

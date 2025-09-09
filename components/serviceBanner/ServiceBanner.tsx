@@ -5,9 +5,7 @@ import calmLogostic from '@/public/services/calmLogostic.jpg'
 import technology from '@/public/services/techEmp.jpg'
 import eShop from '@/public/services/eshop2.jpg'
 import autoService from '@/public/services/autoService.jpg'
-import { FaTruck, FaWrench, FaLaptopCode, FaCouch, FaShoppingBag, FaPlaneDeparture, FaCarSide } from "react-icons/fa";
-import { Link } from 'lucide-react';
-import { useRouter } from "next/router";
+import {   FaLaptopCode, FaCouch, FaShoppingBag, FaPlaneDeparture, FaCarSide } from "react-icons/fa";
 
 
 // Define the props interface for the ServiceBanner component
@@ -50,7 +48,6 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
     buttonText = "LEARN MORE",
     websiteUrl = "www.imc.rw",
     logoText = "IMC",
-    websiteLink = "/", // ✅ added
     imageUrl = "https://images.unsplash.com/photo-1494790108755-2616c6d4e6e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
     onButtonClick = () => { },
     backgroundColor = "from-[#25A4D9] to-blue-600",
@@ -243,34 +240,21 @@ const ServiceBanner: React.FC<ServiceBannerProps> = ({
                                     transformOrigin: `${imageMousePos.x}% ${imageMousePos.y}%`,
                                 }}
                             >
-                                {typeof imageUrl === "string" ? (
-                                    <img
-                                        src={imageUrl}
-                                        alt="Service illustration"
-                                        className="w-full h-full object-cover transition-all duration-700 ease-out"
-                                        style={{
-                                            filter: isImageHovered 
-                                                ? 'brightness(1.1) contrast(1.1) saturate(1.2)'
-                                                : 'brightness(1) contrast(1) saturate(1)',
-                                        }}
-                                        onLoad={() => setImageLoaded(true)}
-                                    />
-                                ) : (
-                                    <Image
-                                        src={imageUrl}
-                                        alt="Service illustration"
-                                        className="w-full h-full object-cover transition-all duration-700 ease-out"
-                                        style={{
-                                            filter: isImageHovered 
-                                                ? 'brightness(1.1) contrast(1.1) saturate(1.2)'
-                                                : 'brightness(1) contrast(1) saturate(1)',
-                                        }}
-                                        fill
-                                        sizes="(max-width: 768px) 100vw, 50vw"
-                                        priority
-                                        onLoad={() => setImageLoaded(true)}
-                                    />
-                                )}
+                                {/* Use Next.js Image for both local and string URLs */}
+                                <Image
+                                    src={imageUrl}   // imageUrl is typed as string | StaticImageData
+                                    alt="Service illustration"
+                                    className="w-full h-full object-cover transition-all duration-700 ease-out"
+                                    style={{
+                                        filter: isImageHovered
+                                            ? "brightness(1.1) contrast(1.1) saturate(1.2)"
+                                            : "brightness(1) contrast(1) saturate(1)",
+                                    }}
+                                    fill                                // makes Image cover parent (parent is positioned already)
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    priority
+                                    onLoadingComplete={() => setImageLoaded(true)}  // correct callback
+                                />
                             </div>
 
                             {/* Dynamic Gradient Overlay */}

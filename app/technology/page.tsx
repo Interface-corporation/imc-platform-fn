@@ -7,7 +7,7 @@ import Ldabout from "@/components/landingPageComponents/Ldabout"
 import Ldbanner from "@/components/landingPageComponents/Ldbanner"
 import LdOurService from "@/components/landingPageComponents/LdOurService"
 import LdOurPartener from "@/components/landingPageComponents/LdOurPartener"
-import { AutospacecardData, colorMap, TechServiceCardData } from "@/data/cardsData";
+import {  colorMap, TechServiceCardData } from "@/data/cardsData";
 
 import softwareImg from '@/public/technology/swDev.jpg';
 import aiImg from '@/public/technology/aiDev.jpg';

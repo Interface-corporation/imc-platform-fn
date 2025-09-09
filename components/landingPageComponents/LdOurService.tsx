@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
     Rocket,
     CloudCog,
@@ -218,33 +218,32 @@ const ServicesShowcase: React.FC = () => {
     const maxScrollWidth = (services.length - 1) * (cardWidth + gap);
     
     // Scroll to specific index with proper handling for the last card
-    const scrollToIndex = (index: number) => {
-        if (scrollRef.current) {
-            // Calculate the scroll position
-            const scrollPosition = index * (cardWidth + gap);
-            
-            // Make sure we don't scroll beyond the actual content
-            const safeScrollPosition = Math.min(scrollPosition, maxScrollWidth);
-            
-            // Scroll to that position
-            scrollRef.current.scrollTo({
-                left: safeScrollPosition,
-                behavior: 'smooth'
-            });
-            
-            setCurrentIndex(index % totalItems);
-        }
-    };
+    const scrollToIndex = useCallback(
+        (index: number) => {
+            if (scrollRef.current) {
+                const scrollPosition = index * (cardWidth + gap);
+                const safeScrollPosition = Math.min(scrollPosition, maxScrollWidth);
+
+                scrollRef.current.scrollTo({
+                    left: safeScrollPosition,
+                    behavior: 'smooth',
+                });
+
+                setCurrentIndex(index % totalItems);
+            }
+        },
+        [cardWidth, gap, maxScrollWidth, totalItems]
+    );
     
     // Automatic scrolling with 5-second delay
     useEffect(() => {
         const timer = setInterval(() => {
             const nextIndex = (currentIndex + 1) % totalItems;
             scrollToIndex(nextIndex);
-        }, 10000); // 5 seconds
-        
+        }, 10000); // 10s
+
         return () => clearInterval(timer);
-    }, [scrollToIndex, totalItems]);
+    }, [currentIndex, totalItems, scrollToIndex]);
     
     // Manual scrolling with arrow buttons
     const scrollToPrev = () => {
@@ -279,27 +278,26 @@ const ServicesShowcase: React.FC = () => {
     };
     
     // When the last card finishes displaying and we need to loop
-    const handleLoopToStart = () => {
+    const handleLoopToStart = useCallback(() => {
         if (currentIndex === totalItems - 1 && scrollRef.current) {
-            // Smoothly transition to the first card
             setTimeout(() => {
                 if (scrollRef.current) {
                     scrollRef.current.scrollTo({
                         left: 0,
-                        behavior: 'smooth'
+                        behavior: 'smooth',
                     });
                     setCurrentIndex(0);
                 }
-            }, 5000); // Wait the standard display time
+            }, 5000); // same delay you had
         }
-    };
+    }, [currentIndex, totalItems]);
     
     // Effect to handle looping
     useEffect(() => {
         if (currentIndex === totalItems - 1) {
             handleLoopToStart();
         }
-    }, [handleLoopToStart, totalItems]);
+    }, [currentIndex, totalItems, handleLoopToStart]);;
     
     return (
         <div className="bg-white py-16 ">

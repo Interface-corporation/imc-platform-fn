@@ -1,5 +1,5 @@
 "use client";
-import React, { useId, useState, useEffect } from "react";
+import React, {  useState, useEffect } from "react";
 
 type ServiceOption = string | { label: string; value: string };
 
@@ -72,7 +72,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({
     resetOnSuccess = true,
     defaultValues,
     showProgressBar = true,
-    accentColor = 'blue',
+    
 }) => {
     const [values, setValues] = useState<ApplicationFormValues>(initialState(defaultValues));
     const [errors, setErrors] = useState<Partial<Record<keyof ApplicationFormValues, string>>>({});
@@ -82,7 +82,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({
     const [formProgress, setFormProgress] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
 
-    const uid = useId();
+    
 
     // Animate form entrance
     useEffect(() => {
@@ -93,7 +93,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({
     // Calculate form completion progress
     useEffect(() => {
         const fields = Object.entries(values);
-        const completedFields = fields.filter(([_, value]) => value.trim() !== '').length;
+        const completedFields = fields.filter(([ value]) => value.trim() !== '').length;
         const progress = (completedFields / fields.length) * 100;
         setFormProgress(progress);
     }, [values]);
@@ -191,6 +191,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({
             }
         } catch (error) {
             setStatus("error");
+            console.log("Form submission error:", error);
             setTimeout(() => setStatus("idle"), 5000);
         }
     };

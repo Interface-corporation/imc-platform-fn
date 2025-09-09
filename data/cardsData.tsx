@@ -337,7 +337,7 @@ export const WellnessCardData = [
             
              cta: {
                text: "Explore logistics solutions",
-        link: "/spare-parts"
+        link: "/"
       }
         },
         {
@@ -354,7 +354,7 @@ export const WellnessCardData = [
            
           cta: {
             text: "Discover tech services",
-            link: "/spare-parts"
+            link: "/"
           }
         },
         {
@@ -371,7 +371,7 @@ export const WellnessCardData = [
             
              cta: {
                text: "Shop our solutions",
-            link: "/spare-parts"
+            link: "/"
           }
         }
     ];

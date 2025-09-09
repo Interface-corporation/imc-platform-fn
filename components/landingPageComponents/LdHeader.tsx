@@ -5,6 +5,7 @@ import {
   ShoppingCartIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useGetProfileQuery, useLogoutUserMutation } from "@/states/authentication";
 import { useRouter } from "next/navigation";
@@ -13,11 +14,23 @@ import { RootState } from "@/lib/redux-store";
 
 interface NavLink {
   label: string;
-  href: string;
+  href?: string;
+  children?: { label: string; href: string }[];
 }
+
 const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
+  {
+    label: "Services",
+    children: [
+      { label: "Logistic & Ticketing", href: "/" },
+      { label: "Online Shopping", href: "/landingPage" },
+      { label: "Auto Space", href: "/autospace" },
+      { label: "Technology", href: "/technology" },
+      { label: "Relax Conner", href: "/relax" },
+    ],
+  },
   { label: "e-Shop", href: "/landingPage" },
   { label: "Contact us", href: "/contact" },
 ];
@@ -26,15 +39,18 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState("");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+
   const menuRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const { data: authUser } = useGetProfileQuery({});
   const [logoutUser, { isSuccess: logoutSuccess }] = useLogoutUserMutation();
   const router = useRouter();
-
   const cartItems = useSelector((state: RootState) => state.cart.items);
-
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -43,7 +59,6 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    // Handle clicks outside the menu
     const handleClickOutside = (event: MouseEvent) => {
       if (
         isMenuOpen &&
@@ -54,26 +69,37 @@ const Header = () => {
       ) {
         setIsMenuOpen(false);
       }
+      if (
+        dropdownOpen &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setDropdownOpen(false);
+      }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isMenuOpen]);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isMenuOpen, dropdownOpen]);
 
-  // Set initial active link based on current path
   useEffect(() => {
     const path = window.location.pathname;
-    const currentLink = navLinks.find(link => link.href === path);
-    if (currentLink) {
-      setActiveLink(currentLink.label);
-    }
+    const findActive = (links: NavLink[]) => {
+      for (const link of links) {
+        if (link.href === path) return link.label;
+        if (link.children) {
+          const child = link.children.find((c) => c.href === path);
+          if (child) return child.label;
+        }
+      }
+      return "";
+    };
+    setActiveLink(findActive(navLinks));
   }, []);
 
-  // Close menu when a link is clicked
   const handleLinkClick = (label: string) => {
     setIsMenuOpen(false);
+    setDropdownOpen(false);
+    setMobileDropdownOpen(false);
     setActiveLink(label);
   };
 
@@ -89,6 +115,15 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Hover delay handlers
+  const handleMouseEnter = () => {
+    if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
+    setDropdownOpen(true);
+  };
+  const handleMouseLeave = () => {
+    hoverTimeout.current = setTimeout(() => setDropdownOpen(false), 250);
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled
@@ -97,7 +132,7 @@ const Header = () => {
         }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* Logo with subtle bounce animation on hover */}
+        {/* Logo */}
         <div className="flex items-center">
           <Link
             href={"/"}
@@ -113,34 +148,61 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Desktop Navigation with enhanced hover effects */}
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 text-white">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className={`relative group overflow-hidden px-2 py-1 text-sm font-medium tracking-wide ${activeLink === link.label ? "text-[#25aae1]" : "text-white"
-                }`}
-              aria-label={`Navigate to ${link.label}`}
-              onClick={() => handleLinkClick(link.label)}
-            >
-              <span className="relative z-10 inline-block transition-colors duration-300 group-hover:text-white">
+          {navLinks.map((link) =>
+            link.children ? (
+              <div
+                key={link.label}
+                className="relative"
+                ref={dropdownRef}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button
+                  className={`flex items-center gap-1 relative group overflow-hidden px-2 py-1 text-sm font-medium tracking-wide ${activeLink === link.label ? "text-[#25aae1]" : "text-white"
+                    }`}
+                >
+                  {link.label}
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${dropdownOpen ? "rotate-180" : ""
+                      }`}
+                  />
+                </button>
+                {dropdownOpen && (
+                  <div className="absolute left-0 mt-2 w-56 bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out">
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.label}
+                        href={child.href}
+                        onClick={() => handleLinkClick(child.label)}
+                        className={`block px-4 py-2 text-sm hover:bg-[#25aae1] hover:text-white ${activeLink === child.label
+                            ? "bg-[#25aae1]/90 text-white"
+                            : ""
+                          }`}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={link.label}
+                href={link.href!}
+                className={`relative group overflow-hidden px-2 py-1 text-sm font-medium tracking-wide ${activeLink === link.label ? "text-[#25aae1]" : "text-white"
+                  }`}
+                onClick={() => handleLinkClick(link.label)}
+              >
                 {link.label}
-              </span>
-
-              {/* Bottom border animation */}
-              <span className={`absolute bottom-0 left-0 h-0.5 ${activeLink === link.label ? "w-full bg-[#25aae1]" : "w-0 bg-[#25aae1]"
-                } group-hover:w-full transition-all duration-300 ease-out`}></span>
-
-              {/* Hover background effect */}
-              <span className="absolute bottom-0 left-0 w-full h-0 bg-[#25aae1] group-hover:h-full transition-all duration-300 ease-out -z-0 opacity-20"></span>
-            </Link>
-          ))}
+              </Link>
+            )
+          )}
         </nav>
 
-        {/* User Actions - Desktop with enhanced animations */}
+        {/* User Actions - Desktop */}
         <div className="hidden md:flex items-center space-x-6">
-          {/* Cart Icon with Counter and pulse animation */}
           <Link
             href="/cart"
             aria-label="View Cart"
@@ -154,14 +216,12 @@ const Header = () => {
             )}
           </Link>
 
-          {/* Authentication with glow effect */}
           {authUser ? (
             <button
               onClick={handleLogout}
               className="relative overflow-hidden px-4 py-1.5 rounded-full bg-transparent border border-[#25aae1]/30 text-white hover:text-[#25aae1] hover:shadow-[0_0_15px_rgba(37,170,225,0.3)] transition-all duration-300 group"
             >
               <span className="relative z-10 text-sm font-medium">Logout</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-[#25aae1]/0 via-[#25aae1]/10 to-[#25aae1]/0 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-full transition-all duration-1000 ease-out"></span>
             </button>
           ) : (
             <Link
@@ -172,121 +232,92 @@ const Header = () => {
                 <UserIcon className="w-4 h-4 transform group-hover:rotate-12 transition-transform duration-300" />
                 <span className="text-sm font-medium">Login</span>
               </span>
-              <span className="absolute inset-0 bg-gradient-to-r from-[#25aae1]/0 via-[#25aae1]/10 to-[#25aae1]/0 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-full transition-all duration-1000 ease-out"></span>
             </Link>
           )}
         </div>
 
-        {/* Mobile Menu Toggle with enhanced animation */}
+        {/* Mobile Menu Button */}
         <button
           ref={btnRef}
           onClick={toggleMenu}
           className="md:hidden text-white p-2 rounded-full hover:bg-white/10 transition-all duration-300 focus:outline-none z-50"
-          aria-label="Toggle mobile menu"
-          aria-expanded={isMenuOpen}
         >
           <div className="w-6 h-5 flex flex-col justify-between relative">
-            <span className={`bg-white h-0.5 w-full block transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2 bg-[#25aae1]' : ''
-              }`}></span>
-            <span className={`bg-white h-0.5 w-full block transition-all duration-300 ${isMenuOpen ? 'opacity-0 translate-x-3' : 'opacity-100'
-              }`}></span>
-            <span className={`bg-white h-0.5 w-full block transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2 bg-[#25aae1]' : ''
-              }`}></span>
+            <span
+              className={`bg-white h-0.5 w-full block transition-all duration-300 ${isMenuOpen ? "rotate-45 translate-y-2 bg-[#25aae1]" : ""
+                }`}
+            ></span>
+            <span
+              className={`bg-white h-0.5 w-full block transition-all duration-300 ${isMenuOpen ? "opacity-0 translate-x-3" : "opacity-100"
+                }`}
+            ></span>
+            <span
+              className={`bg-white h-0.5 w-full block transition-all duration-300 ${isMenuOpen ? "-rotate-45 -translate-y-2 bg-[#25aae1]" : ""
+                }`}
+            ></span>
           </div>
         </button>
 
-        {/* Mobile Menu with improved animation and visual effects */}
+        {/* Mobile Menu */}
         <div
           ref={menuRef}
           className={`fixed top-0 right-0 h-screen bg-gradient-to-b from-[#1E3A5F] to-[#152A47] w-72 shadow-2xl transform transition-all duration-500 ease-out z-40 ${isMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
         >
-          {/* Decorative top pattern */}
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#25aae1]/0 via-[#25aae1] to-[#25aae1]/0"></div>
-
           <div className="flex flex-col h-full pt-20 px-6">
             <nav className="flex flex-col space-y-6 text-white">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => handleLinkClick(link.label)}
-                  className={`group flex items-center text-lg font-medium transition-all duration-300 border-b border-blue-800/30 pb-3 ${activeLink === link.label ? "text-[#25aae1] border-[#25aae1]/50" : "hover:text-[#25aae1]"
-                    }`}
-                  aria-label={`Navigate to ${link.label}`}
-                >
-                  {/* Animated indicator dot */}
-                  <span className={`w-2 h-2 rounded-full mr-3 transition-all duration-300 ${activeLink === link.label ? "bg-[#25aae1]" : "bg-white/30 group-hover:bg-[#25aae1]/70"
-                    }`}></span>
-
-                  {/* Menu item with slide animation */}
-                  <span className="transform transition-transform duration-300 group-hover:translate-x-1">
+              {navLinks.map((link) =>
+                link.children ? (
+                  <div key={link.label} className="flex flex-col">
+                    <button
+                      onClick={() =>
+                        setMobileDropdownOpen(!mobileDropdownOpen)
+                      }
+                      className="flex items-center justify-between text-lg font-medium transition-all duration-300 border-b border-blue-800/30 pb-3"
+                    >
+                      {link.label}
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform ${mobileDropdownOpen ? "rotate-180" : ""
+                          }`}
+                      />
+                    </button>
+                    <div
+                      className={`ml-4 flex flex-col space-y-2 overflow-hidden transition-all duration-300 ${mobileDropdownOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                        }`}
+                    >
+                      {link.children.map((child) => (
+                        <Link
+                          key={child.label}
+                          href={child.href}
+                          onClick={() => handleLinkClick(child.label)}
+                          className={`group flex items-center text-sm font-medium transition-all duration-300 border-b border-blue-800/30 pb-2 ${activeLink === child.label
+                              ? "text-[#25aae1] border-[#25aae1]/50"
+                              : "hover:text-[#25aae1]"
+                            }`}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.label}
+                    href={link.href!}
+                    onClick={() => handleLinkClick(link.label)}
+                    className={`group flex items-center text-lg font-medium transition-all duration-300 border-b border-blue-800/30 pb-3 ${activeLink === link.label
+                        ? "text-[#25aae1] border-[#25aae1]/50"
+                        : "hover:text-[#25aae1]"
+                      }`}
+                  >
                     {link.label}
-                  </span>
-                </Link>
-              ))}
-            </nav>
-
-            {/* Bottom actions with enhanced style */}
-            <div className="mt-auto pb-8 flex flex-col space-y-5">
-              <Link
-                href="/cart"
-                className="flex items-center space-x-3 text-white p-3 rounded-lg bg-white/5 hover:bg-[#25aae1]/10 transition-all duration-300 group"
-              >
-                <ShoppingCartIcon className="w-5 h-5 group-hover:text-[#25aae1] transition-colors duration-300" />
-                <span className="group-hover:text-[#25aae1] transition-colors duration-300">
-                  Cart {cartItems.length > 0 && (
-                    <span className="inline-flex items-center justify-center bg-[#25aae1] text-white text-xs rounded-full w-5 h-5 ml-2">
-                      {cartItems.length}
-                    </span>
-                  )}
-                </span>
-              </Link>
-
-              {authUser ? (
-                <button
-                  onClick={handleLogout}
-                  className="flex items-center justify-center space-x-3 text-white p-3 rounded-lg border border-white/10 hover:border-[#25aae1]/30 hover:bg-[#25aae1]/10 transition-all duration-300 group"
-                >
-                  <span className="group-hover:text-[#25aae1] transition-colors duration-300">Logout</span>
-                </button>
-              ) : (
-                <Link
-                  href="/login"
-                  className="flex items-center justify-center space-x-3 text-white p-3 rounded-lg border border-white/10 hover:border-[#25aae1]/30 hover:bg-[#25aae1]/10 transition-all duration-300 group"
-                >
-                  <UserIcon className="w-5 h-5 mr-2 group-hover:text-[#25aae1] transition-colors duration-300" />
-                  <span className="group-hover:text-[#25aae1] transition-colors duration-300">Login</span>
-                </Link>
+                  </Link>
+                )
               )}
-            </div>
+            </nav>
           </div>
         </div>
-
-        {/* Overlay for mobile menu with fade animation */}
-        {isMenuOpen && (
-          <div
-            className="fixed inset-0 bg-black bg-opacity-0 animate-fadeIn z-30 md:hidden"
-            onClick={() => setIsMenuOpen(false)}
-            style={{
-              animation: "fadeIn 0.3s ease-out forwards"
-            }}
-          ></div>
-        )}
       </div>
-
-      {/* Add global keyframe animations */}
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 0.6; }
-        }
-        
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.1); opacity: 0.8; }
-        }
-      `}</style>
     </header>
   );
 };

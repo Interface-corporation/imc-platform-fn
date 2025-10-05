@@ -93,9 +93,8 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({
     // Calculate form completion progress
     useEffect(() => {
         const fields = Object.entries(values);
-        
-        const completedFields = fields.filter(([_, value]) => value.trim() !== '').length;
-
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const completedFields = fields.filter(([_key, value]) => value.trim() !== '').length;
         const progress = (completedFields / fields.length) * 100;
         setFormProgress(progress);
     }, [values]);

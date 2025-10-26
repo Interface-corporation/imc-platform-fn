@@ -2,7 +2,7 @@
 
 import { Globe, Package, Wrench, Activity, Droplet, Car,  Truck, Monitor, Cpu, Megaphone, PenTool, Brain } from "lucide-react";
 import { Code, ShoppingCart, Flower2, Hotel, Home } from 'lucide-react';
-
+import { Eye,  Navigation, Type, Shield } from "lucide-react";
 import { ReactNode } from "react";
 
 // 🎨 Color definitions
@@ -273,6 +273,119 @@ export const TechServiceCardData: CardFeature[] = [
     }
   }
 ];
+
+// smart glass service cards data
+export const SmartEyeGlassCardData: CardFeature[] = [
+  {
+    title: "Smart Eye Glasses",
+    icon: <Eye className="h-8 w-8" />,
+    color: "pink",
+    badge: "Assistive",
+    description:
+      "AI-powered smart glasses designed to empower visually impaired individuals with real-time object recognition, text reading, and voice-guided navigation.",
+    features: [
+      "Real-time object detection",
+      "Voice-based assistance",
+      "Lightweight wearable design",
+      "AI-driven accessibility"
+    ],
+    cta: {
+      text: "Discover the Device",
+      link: "/smartGlass"
+    }
+  },
+  {
+    title: "Object Recognition & Awareness",
+    icon: <Brain className="h-8 w-8" />,
+    color: "blue",
+    badge: "Intelligent",
+    description:
+      "Utilizes computer vision and AI to identify objects, people, and surroundings, helping users understand and interact safely with their environment.",
+    features: [
+      "AI-powered object detection",
+      "Scene understanding",
+      "Environmental alerts",
+      "Audio-based feedback"
+    ],
+    cta: {
+      text: "See in Action",
+      link: "/smartGlass"
+    }
+  },
+  {
+    title: "Text Reading & OCR Assistance",
+    icon: <Type className="h-8 w-8" />,
+    color: "green",
+    badge: "Accessible",
+    description:
+      "Reads printed or handwritten text aloud using advanced OCR technology, giving users access to books, signs, and documents instantly.",
+    features: [
+      "Optical character recognition (OCR)",
+      "Multilingual text support",
+      "Natural voice output",
+      "Offline reading capability"
+    ],
+    cta: {
+      text: "Try Text Reader",
+      link: "/smartGlass"
+    }
+  },
+  {
+    title: "Navigation & Obstacle Detection",
+    icon: <Navigation className="h-8 w-8" />,
+    color: "pink",
+    badge: "Guided",
+    description:
+      "Enables smooth movement and independence through obstacle detection, real-time navigation assistance, and safe path guidance.",
+    features: [
+      "Ultrasonic obstacle detection",
+      "GPS navigation integration",
+      "Voice-guided directions",
+      "Real-time motion alerts"
+    ],
+    cta: {
+      text: "Explore Navigation",
+      link: "/smartGlass"
+    }
+  },
+  {
+    title: "AI & IoT Integration",
+    icon: <Cpu className="h-8 w-8" />,
+    color: "blue",
+    badge: "Connected",
+    description:
+      "Combines AI and IoT technology to collect, analyze, and respond to environmental data for adaptive performance and user personalization.",
+    features: [
+      "IoT sensor data processing",
+      "Adaptive learning algorithms",
+      "Cloud-based monitoring",
+      "Seamless device updates"
+    ],
+    cta: {
+      text: "Learn More",
+      link: "/smartGlass"
+    }
+  },
+  {
+    title: "Privacy & Data Security",
+    icon: <Shield className="h-8 w-8" />,
+    color: "green",
+    badge: "Secure",
+    description:
+      "Ensures user privacy and secure data handling through encrypted communication and transparent data management practices.",
+    features: [
+      "Encrypted data storage",
+      "Secure AI processing",
+      "User consent controls",
+      "Compliance with data standards"
+    ],
+    cta: {
+      text: "View Security Policy",
+      link: "/smartGlass"
+    }
+  }
+];
+
 // Wellness service cards data
 export const WellnessCardData = [
   {

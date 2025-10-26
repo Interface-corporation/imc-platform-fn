@@ -26,8 +26,9 @@ const navLinks: NavLink[] = [
     children: [
       { label: "Logistic & Ticketing", href: "/" },
       { label: "Online Shopping", href: "/landingPage" },
-      { label: "Auto Space", href: "/autospace" },
+      { label: "Smart Glass", href: "/smartGlass" },
       { label: "Technology", href: "/technology" },
+      { label: "Auto Space", href: "/autospace" },
       { label: "Relax Conner", href: "/relax" },
     ],
   },

@@ -1,7 +1,15 @@
-import { ShoppingBag, Car, Gift, Armchair, Waves, Flame } from 'lucide-react';
+import { ShoppingBag, Car, Gift, Armchair, Waves, Flame, Glasses } from 'lucide-react';
 import { Slide } from '@/types/hero';
 
 export const slides: Slide[] = [
+
+    {
+        watchImage: "/products/seg1/seg4.jpeg",
+        text: "Experience Vision Beyond Sight with Smart Eye Glass",
+        subText: "AI-powered wearable that helps visually impaired individuals navigate, read, and interact with the world independently.",
+        bgColor: "from-blue-900 to-blue-700",
+        icon: <Glasses className="w-6 h-6" />, // Smart Glass / Vision icon
+    },
   
     {
         watchImage: "/cover/massage_chair_1_1-removebg-preview.png",

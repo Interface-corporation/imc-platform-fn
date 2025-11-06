@@ -15,6 +15,13 @@ import ms3_3 from "../public/products/massageChair3/massageChair33.jpg";
 import ms3_4 from "../public/products/massageChair3/massageChair34.jpg";
 import ms3_5 from "../public/products/massageChair3/massageChair35.jpg";
 import ms3_6 from "../public/products/massageChair3/massageChair36.jpg";
+
+import ms4_1 from "../public/products/massageChair4/papa1.jpeg";  
+import ms4_2 from "../public/products/massageChair4/papa2.jpeg";  
+import ms4_3 from "../public/products/massageChair4/papa3.jpeg";  
+import ms4_4 from "../public/products/massageChair4/alern.jpeg";  
+import ms4_5 from "../public/products/massageChair4/alern2.jpeg"; 
+
 import jz1_1 from "../public/products/Jacuzzi1/Jacuzzi11.jpg";
 import jz1_2 from "../public/products/Jacuzzi1/Jacuzzi12.jpg";
 import jz1_3 from "../public/products/Jacuzzi1/Jacuzzi13.jpg";
@@ -42,6 +49,13 @@ import sauna2_1 from "../public/products/sauna2/sauna21.jpg";
 import sauna2_2 from "../public/products/sauna2/sauna22.jpg";
 import sauna2_3 from "../public/products/sauna2/sauna23.jpg";
 import sauna2_4 from "../public/products/sauna2/sauna24.jpg";
+
+import seg1_1 from "../public/products/seg1/seg1.jpeg";
+import seg1_2 from "../public/products/seg1/seg2.jpeg";
+import seg1_3 from "../public/products/seg1/seg3.jpeg";
+import seg1_4 from "../public/products/seg1/seg4.jpeg";
+import seg1_5 from "../public/products/seg1/seg5.jpeg";
+import seg1_6 from "../public/products/seg1/seg6.jpeg";
 
 import sauna3_1 from "../public/products/sauna3/sauna31.jpg";
 import sauna3_2 from "../public/products/sauna3/sauna32.jpg";
@@ -82,12 +96,82 @@ export const products: Product[] = [
     stock: 5,
   },
   {
+    id: 17,
+    name: "Premium Massage chair with Zero gravity",
+    description:
+      "RELX Massage Chair Full Body Massage Chair 【Massage Chair Full Body】12 modes, 5 techniques, 32 airbag points all over the body, 3 levels of airbag pressure, compressing shoulders, arms, feet and buttocks, help relieve body pain. Far infrared heat therapy for the back is best for occasional strains and chronic painful strains.",
+    price: "2700",
+    originalPrice: "3199",
+    images: [ms4_1.src, ms4_2.src, ms4_3.src, ms4_4.src, ms4_5.src],
+    rating: 4.8,
+
+    reviews: 101,
+    type: "buy",
+    colors: ["#A4D549", "#2196F3", "#E91E63", "#9C27B0", "#FF5722"],
+    features: [
+      "Active Noise Cancellation",
+      "Transparency mode",
+      "Spatial audio with dynamic head tracking",
+      "20 hours of listening time",
+      "Comfortable mesh canopy",
+    ],
+    specifications: {
+      "Battery Life": "Up to 20 hours",
+      "Bluetooth Version": "5.0",
+      "Noise Cancellation": "Active Noise Cancellation (ANC)",
+      Weight: "384.8g",
+      "Charging Time": "2 hours",
+      Warranty: "1 year",
+    },
+    stock: 5,
+  },
+  {
+    id: 18,
+    name: "Smart Eye Glass for Visually Impaired",
+    description:
+      "The Smart Eye Glass (SEG) is an AI-powered assistive wearable device designed to help visually impaired individuals navigate safely, recognize objects, and read printed text through real-time audio feedback. Equipped with advanced sensors, camera, and voice assistant integration, SEG empowers users to experience the world with greater independence and confidence.",
+    price: "150",
+    originalPrice: "200",
+    images: [
+      seg1_4.src,
+      seg1_1.src,
+      seg1_2.src,
+      seg1_3.src,
+
+      seg1_5.src,
+      seg1_6.src,
+    ],
+    rating: 4.9,
+    reviews: 243,
+    type: "buy",
+    colors: ["#A4D549", "#2196F3", "#E91E63", "#9C27B0", "#FF5722"],
+    features: [
+      "AI-powered object and obstacle recognition",
+      "Text-to-speech reading for printed materials",
+      "Real-time navigation and route guidance",
+      "Lightweight ergonomic frame with long battery life",
+      "Voice assistant and Bluetooth connectivity",
+    ],
+    specifications: {
+      Camera: "HD 1080p wide-angle camera with AI recognition",
+      Processor: "Quad-core AI chip optimized for vision tasks",
+      Connectivity: "Bluetooth 5.2, Wi-Fi",
+      "Battery Life": "Up to 8 hours of continuous use",
+      Charging: "USB-C fast charging (1.5 hrs full charge)",
+      "Audio Output": "Bone conduction speakers",
+      Weight: "85g",
+      Compatibility: "Android & iOS",
+      Warranty: "1 year limited warranty",
+    },
+    stock: 12,
+  },
+  {
     id: 2,
     name: "Greystone Deluxe PureSpa",
     description:
       "Greystone Deluxe PureSpa Bubble Massage Spa Set Outdoor Inflatable Portable Hot Tub, Includes Energy Efficient Spa Cover, Saltwater System Ready, 6 Person, 85in x 28in",
-    price: "800",
-    originalPrice: "950",
+    price: "1273",
+    originalPrice: "1500",
     images: [
       jz1_1.src,
       jz1_2.src,
@@ -223,8 +307,8 @@ export const products: Product[] = [
     name: "Steam Sauna Box",
     description:
       "Portable Steam Sauna Box for Home, Personal Sauna Tent for Full Body Spa with 4L Steamer Generator,Sauna Room for Indoor,70.8”x31.5”x31.5”.",
-    price: "559",
-    originalPrice: "700",
+    price: "879",
+    originalPrice: "970",
     images: [
       sauna1_1.src,
       sauna1_2.src,
@@ -594,8 +678,6 @@ export const products: Product[] = [
     },
     stock: 15,
   },
-
-  
 
   // ... other products
 ];

@@ -1,7 +1,8 @@
 import { CartItem } from '@/states/cartSlice';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ShoppingBag, Package } from 'lucide-react';
+import { ShoppingBag, Package, Phone } from 'lucide-react';
+
 
 interface PaymentSummaryProps {
     items: CartItem[];
@@ -85,8 +86,20 @@ export default function PaymentSummary({ items }: PaymentSummaryProps) {
             >
                 <Package className="w-5 h-5 text-primary" />
                 <p className="text-sm text-gray-600">
-                    Estimated delivery: <span className="font-medium">3-5 business days</span>
-                </p>
+                    Estimated delivery: <span className="font-medium">3-5 business days,</span>
+                </p> 
+              
+            </motion.div>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+                className="mt-8 p-4 bg-gray-50 rounded-xl flex items-center space-x-3"
+            > 
+            <Phone className="w-5 h-5" />
+            <p className="text-sm text-gray-600">
+                Contact the Vendor: <span className="font-medium">+250 782 290 301</span>
+            </p>
             </motion.div>
         </motion.div>
     );

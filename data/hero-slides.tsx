@@ -4,7 +4,7 @@ import { Slide } from '@/types/hero';
 export const slides: Slide[] = [
 
     {
-        watchImage: "/products/seg1/seg4.jpeg",
+        watchImage: "/products/seg2/segIVPro5.jpg",
         text: "Experience Vision Beyond Sight with Smart Eye Glass",
         subText: "AI-powered wearable that helps visually impaired individuals navigate, read, and interact with the world independently.",
         bgColor: "from-blue-900 to-blue-700",

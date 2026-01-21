@@ -37,6 +37,11 @@ import jz2_5 from "../public/products/Jacuzzi2/Jacuzzi25.jpg";
 import jz2_6 from "../public/products/Jacuzzi2/Jacuzzi26.jpg";
 import jz2_7 from "../public/products/Jacuzzi2/Jacuzzi27.jpg";
 import jz2_8 from "../public/products/Jacuzzi2/Jacuzzi28.jpg";
+
+import jz3_1 from "../public/products/Jacuzzi3/Jacuzzi31.jpg";
+
+
+
 import sauna1_1 from "../public/products/sauna1/sauna11.jpg";
 import sauna1_2 from "../public/products/sauna1/sauna12.jpg";
 import sauna1_3 from "../public/products/sauna1/sauna13.jpg";
@@ -46,14 +51,23 @@ import sauna1_6 from "../public/products/sauna1/sauna16.jpg";
 import sauna1_7 from "../public/products/sauna1/sauna17.jpg";
 
 import sauna2_1 from "../public/products/sauna2/sauna21.jpg";
-import sauna2_2 from "../public/products/sauna2/sauna22.jpg";
+import sauna2_2 from "../public/products/sauna2/sauna22.jpg"; 
 import sauna2_3 from "../public/products/sauna2/sauna23.jpg";
 import sauna2_4 from "../public/products/sauna2/sauna24.jpg";
+
+import sauna4_1 from "../public/products/sauna4/sauna41.jpg";
+import sauna4_2 from "../public/products/sauna4/sauna42.jpg";
 
 import seg1_1 from "../public/products/seg1/seg1.jpeg";
 import seg1_2 from "../public/products/seg1/seg2.jpeg";
 import seg1_3 from "../public/products/seg1/seg3.jpeg";
 import seg1_4 from "../public/products/seg1/seg4.jpeg";
+
+import segIVPro2_1 from "../public/products/seg2/segIVPro1.jpg";
+import segIVPro2_2 from "../public/products/seg2/segIVPro2.jpg";
+import segIVPro2_3 from "../public/products/seg2/segIVPro3.jpg";
+import segIVPro2_4 from "../public/products/seg2/segIVPro4.jpg";
+import segIVPro2_5 from "../public/products/seg2/segIVPro5.jpg";
 
 
 import sauna3_1 from "../public/products/sauna3/sauna31.jpg";
@@ -79,6 +93,238 @@ import container from "../public/products/container/container.jpeg";
 import { Product } from "@/types/product";
 
 export const products: Product[] = [
+  {
+    id: 26,
+    name: "INTERFACE Vision Pro",
+    description:
+      "The Smart Eye Glass (SEG) is an AI-powered assistive wearable device designed to help visually impaired individuals navigate safely, recognize objects, and read printed text through real-time audio feedback. Equipped with advanced sensors, camera, and voice assistant integration, SEG empowers users to experience the world with greater independence and confidence.",
+    price: "267",
+    originalPrice: "370",
+    images: [
+      segIVPro2_5.src,
+      segIVPro2_1.src,
+      segIVPro2_2.src,
+      segIVPro2_3.src,
+      segIVPro2_4.src,
+    ],
+    rating: 4.9,
+    reviews: 243,
+    type: "buy",
+    colors: ["#A4D549", "#2196F3", "#E91E63", "#9C27B0", "#FF5722"],
+    features: [
+      "AI-powered object and obstacle recognition",
+      "Text-to-speech reading for printed materials",
+      "Real-time navigation and route guidance",
+      "Lightweight ergonomic frame with long battery life",
+      "Voice assistant and Bluetooth connectivity",
+    ],
+    specifications: {
+      Camera: "HD 1080p wide-angle camera with AI recognition",
+      Processor: "Quad-core AI chip optimized for vision tasks",
+      Connectivity: "Bluetooth 5.2, Wi-Fi",
+      "Battery Life": "Up to 8 hours of continuous use",
+      Charging: "USB-C fast charging (1.5 hrs full charge)",
+      "Audio Output": "Bone conduction speakers",
+      Weight: "85g",
+      Compatibility: "Android & iOS",
+      Warranty: "1 year limited warranty",
+    },
+    stock: 12,
+  },
+  {
+    id: 1,
+    name: "Massage chair Zero gravity",
+    description:
+      "RELX Massage Chair Full Body Massage Chair 【Massage Chair Full Body】12 modes, 5 techniques, 32 airbag points all over the body, 3 levels of airbag pressure, compressing shoulders, arms, feet and buttocks, help relieve body pain. Far infrared heat therapy for the back is best for occasional strains and chronic painful strains.",
+    price: "2800",
+    originalPrice: "3199",
+    images: [ms1_1.src, ms1_2.src, ms1_3.src, ms1_4.src, ms1_5.src],
+    rating: 4.8,
+    reviews: 101,
+    type: "buy",
+    colors: ["#A4D549", "#2196F3", "#E91E63", "#9C27B0", "#FF5722"],
+    features: [
+      "Active Noise Cancellation",
+      "Transparency mode",
+      "Spatial audio with dynamic head tracking",
+      "20 hours of listening time",
+      "Comfortable mesh canopy",
+    ],
+    specifications: {
+      "Battery Life": "Up to 20 hours",
+      "Bluetooth Version": "5.0",
+      "Noise Cancellation": "Active Noise Cancellation (ANC)",
+      Weight: "384.8g",
+      "Charging Time": "2 hours",
+      Warranty: "1 year",
+    },
+    stock: 5,
+  },
+  {
+    id: 17,
+    name: "Premium Massage chair with Zero gravity",
+    description:
+      "RELX Massage Chair Full Body Massage Chair 【Massage Chair Full Body】12 modes, 5 techniques, 32 airbag points all over the body, 3 levels of airbag pressure, compressing shoulders, arms, feet and buttocks, help relieve body pain. Far infrared heat therapy for the back is best for occasional strains and chronic painful strains.",
+    price: "2700",
+    originalPrice: "3199",
+    images: [ms4_1.src, ms4_2.src, ms4_3.src, ms4_4.src, ms4_5.src],
+    rating: 4.8,
+
+    reviews: 101,
+    type: "buy",
+    colors: ["#A4D549", "#2196F3", "#E91E63", "#9C27B0", "#FF5722"],
+    features: [
+      "Active Noise Cancellation",
+      "Transparency mode",
+      "Spatial audio with dynamic head tracking",
+      "20 hours of listening time",
+      "Comfortable mesh canopy",
+    ],
+    specifications: {
+      "Battery Life": "Up to 20 hours",
+      "Bluetooth Version": "5.0",
+      "Noise Cancellation": "Active Noise Cancellation (ANC)",
+      Weight: "384.8g",
+      "Charging Time": "2 hours",
+      Warranty: "1 year",
+    },
+    stock: 5,
+  },
+  {
+    id: 27,
+    name: "portable Luxury Jacuzzi Spa Tub ",
+    description:
+      "Greystone Deluxe PureSpa Bubble Massage Spa Set Outdoor Inflatable Portable Hot Tub, Includes Energy Efficient Spa Cover, Saltwater System Ready, 6 Person, 85in x 28in",
+    price: "1313",
+    originalPrice: "1500",
+    images: [jz3_1.src, jz3_1.src, jz3_1.src, jz3_1.src],
+    rating: 4.8,
+    type: "buy",
+    reviews: 101,
+    colors: ["#A4D549", "#2196F3", "#E91E63", "#9C27B0", "#FF5722"],
+    features: [
+      "HARD WATER TREATMENT SYSTEM ",
+      "HEATED AIR BUBBLE TECHNOLOGY",
+      "Spatial audio with dynamic head tracking",
+      "ENERGY EFFICIENT SPA COVER ",
+      "Comfortable mesh canopy",
+    ],
+    specifications: {
+      Commodation: "Designed to fit up to 6 people",
+      Dimensions: "85 x 28 and inner dimensions: 65 x 28;",
+      "Noise Cancellation": "Active Noise Cancellation (ANC)",
+      "water capacity": "290 gallons",
+      "Charging Time": "2 hours",
+      "water temperature": "68-104 degrees Fahrenheit",
+    },
+    stock: 15,
+  },
+  {
+    id: 28,
+    name: "Portable Steam Sauna Box",
+    description:
+      "Portable Steam Sauna Box for Home, Personal Sauna Tent for Full Body Spa with 4L Steamer Generator,Sauna Room for Indoor,70.8”x31.5”x31.5”.",
+    price: "879",
+    originalPrice: "970",
+    images: [sauna4_1.src, sauna4_2.src],
+    rating: 4.8,
+    reviews: 101,
+    type: "buy",
+    colors: ["#A4D549", "#2196F3", "#E91E63", "#9C27B0", "#FF5722"],
+    features: [
+      "Premium Quality",
+      "suitable for adults of different sizes",
+      "4L Large Capacity Steam Generator",
+      "9 levels temperature adjustment",
+      "Thoughtful Design",
+      "Portable &Easy to Assemble ",
+    ],
+    specifications: {
+      Acommodation: "1 person",
+      Temperature: "91°F-131°F ",
+      "Power consumption": "1200W high-power ",
+      Weight: "13.8g",
+      Dimession: " 2.6’ x 2.6’ x 5.9’",
+      Warranty: "1 year",
+    },
+    stock: 20,
+  },
+  {
+    id: 6,
+    name: "Steam Sauna Box",
+    description:
+      "Portable Steam Sauna Box for Home, Personal Sauna Tent for Full Body Spa with 4L Steamer Generator,Sauna Room for Indoor,70.8”x31.5”x31.5”.",
+    price: "879",
+    originalPrice: "970",
+    images: [
+      sauna1_1.src,
+      sauna1_2.src,
+      sauna1_3.src,
+      sauna1_4.src,
+      sauna1_5.src,
+      sauna1_6.src,
+      sauna1_7.src,
+    ],
+    rating: 4.8,
+    reviews: 101,
+    type: "buy",
+    colors: ["#A4D549", "#2196F3", "#E91E63", "#9C27B0", "#FF5722"],
+    features: [
+      "Premium Quality",
+      "suitable for adults of different sizes",
+      "4L Large Capacity Steam Generator",
+      "9 levels temperature adjustment",
+      "Thoughtful Design",
+      "Portable &Easy to Assemble ",
+    ],
+    specifications: {
+      Acommodation: "1 person",
+      Temperature: "91°F-131°F ",
+      "Power consumption": "1200W high-power ",
+      Weight: "13.8g",
+      Dimession: " 2.6’ x 2.6’ x 5.9’",
+      Warranty: "1 year",
+    },
+    stock: 15,
+  },
+  {
+    id: 2,
+    name: "Greystone Deluxe PureSpa",
+    description:
+      "Greystone Deluxe PureSpa Bubble Massage Spa Set Outdoor Inflatable Portable Hot Tub, Includes Energy Efficient Spa Cover, Saltwater System Ready, 6 Person, 85in x 28in",
+    price: "1273",
+    originalPrice: "1500",
+    images: [
+      jz1_1.src,
+      jz1_2.src,
+      jz1_3.src,
+      jz1_4.src,
+      jz1_5.src,
+      jz1_6.src,
+      jz1_7.src,
+    ],
+    rating: 4.8,
+    type: "buy",
+    reviews: 101,
+    colors: ["#A4D549", "#2196F3", "#E91E63", "#9C27B0", "#FF5722"],
+    features: [
+      "HARD WATER TREATMENT SYSTEM ",
+      "HEATED AIR BUBBLE TECHNOLOGY",
+      "Spatial audio with dynamic head tracking",
+      "ENERGY EFFICIENT SPA COVER ",
+      "Comfortable mesh canopy",
+    ],
+    specifications: {
+      Commodation: "Designed to fit up to 6 people",
+      Dimensions: "85 x 28 and inner dimensions: 65 x 28;",
+      "Noise Cancellation": "Active Noise Cancellation (ANC)",
+      "water capacity": "290 gallons",
+      "Charging Time": "2 hours",
+      "water temperature": "68-104 degrees Fahrenheit",
+    },
+    stock: 15,
+  },
+
   {
     id: 20,
     name: "2008 Toyota Land Cruiser GXR V8 4WD",
@@ -121,6 +367,7 @@ export const products: Product[] = [
     },
     stock: 1,
   },
+
   {
     id: 21,
     name: "Tajima Multi-Head Commercial Embroidery Machine",
@@ -251,65 +498,6 @@ export const products: Product[] = [
     },
     stock: 1,
   },
-  {
-    id: 1,
-    name: "Massage chair Zero gravity",
-    description:
-      "RELX Massage Chair Full Body Massage Chair 【Massage Chair Full Body】12 modes, 5 techniques, 32 airbag points all over the body, 3 levels of airbag pressure, compressing shoulders, arms, feet and buttocks, help relieve body pain. Far infrared heat therapy for the back is best for occasional strains and chronic painful strains.",
-    price: "2500",
-    originalPrice: "3199",
-    images: [ms1_1.src, ms1_2.src, ms1_3.src, ms1_4.src, ms1_5.src],
-    rating: 4.8,
-    reviews: 101,
-    type: "buy",
-    colors: ["#A4D549", "#2196F3", "#E91E63", "#9C27B0", "#FF5722"],
-    features: [
-      "Active Noise Cancellation",
-      "Transparency mode",
-      "Spatial audio with dynamic head tracking",
-      "20 hours of listening time",
-      "Comfortable mesh canopy",
-    ],
-    specifications: {
-      "Battery Life": "Up to 20 hours",
-      "Bluetooth Version": "5.0",
-      "Noise Cancellation": "Active Noise Cancellation (ANC)",
-      Weight: "384.8g",
-      "Charging Time": "2 hours",
-      Warranty: "1 year",
-    },
-    stock: 5,
-  },
-  {
-    id: 17,
-    name: "Premium Massage chair with Zero gravity",
-    description:
-      "RELX Massage Chair Full Body Massage Chair 【Massage Chair Full Body】12 modes, 5 techniques, 32 airbag points all over the body, 3 levels of airbag pressure, compressing shoulders, arms, feet and buttocks, help relieve body pain. Far infrared heat therapy for the back is best for occasional strains and chronic painful strains.",
-    price: "2700",
-    originalPrice: "3199",
-    images: [ms4_1.src, ms4_2.src, ms4_3.src, ms4_4.src, ms4_5.src],
-    rating: 4.8,
-
-    reviews: 101,
-    type: "buy",
-    colors: ["#A4D549", "#2196F3", "#E91E63", "#9C27B0", "#FF5722"],
-    features: [
-      "Active Noise Cancellation",
-      "Transparency mode",
-      "Spatial audio with dynamic head tracking",
-      "20 hours of listening time",
-      "Comfortable mesh canopy",
-    ],
-    specifications: {
-      "Battery Life": "Up to 20 hours",
-      "Bluetooth Version": "5.0",
-      "Noise Cancellation": "Active Noise Cancellation (ANC)",
-      Weight: "384.8g",
-      "Charging Time": "2 hours",
-      Warranty: "1 year",
-    },
-    stock: 5,
-  },
 
   {
     id: 18,
@@ -318,14 +506,7 @@ export const products: Product[] = [
       "The Smart Eye Glass (SEG) is an AI-powered assistive wearable device designed to help visually impaired individuals navigate safely, recognize objects, and read printed text through real-time audio feedback. Equipped with advanced sensors, camera, and voice assistant integration, SEG empowers users to experience the world with greater independence and confidence.",
     price: "150",
     originalPrice: "200",
-    images: [
-      seg1_4.src,
-      seg1_1.src,
-      seg1_2.src,
-      seg1_3.src,
-
-      
-    ],
+    images: [seg1_4.src, seg1_1.src, seg1_2.src, seg1_3.src],
     rating: 4.9,
     reviews: 243,
     type: "buy",
@@ -435,43 +616,6 @@ export const products: Product[] = [
     },
     stock: 1,
   },
-  {
-    id: 2,
-    name: "Greystone Deluxe PureSpa",
-    description:
-      "Greystone Deluxe PureSpa Bubble Massage Spa Set Outdoor Inflatable Portable Hot Tub, Includes Energy Efficient Spa Cover, Saltwater System Ready, 6 Person, 85in x 28in",
-    price: "1273",
-    originalPrice: "1500",
-    images: [
-      jz1_1.src,
-      jz1_2.src,
-      jz1_3.src,
-      jz1_4.src,
-      jz1_5.src,
-      jz1_6.src,
-      jz1_7.src,
-    ],
-    rating: 4.8,
-    type: "buy",
-    reviews: 101,
-    colors: ["#A4D549", "#2196F3", "#E91E63", "#9C27B0", "#FF5722"],
-    features: [
-      "HARD WATER TREATMENT SYSTEM ",
-      "HEATED AIR BUBBLE TECHNOLOGY",
-      "Spatial audio with dynamic head tracking",
-      "ENERGY EFFICIENT SPA COVER ",
-      "Comfortable mesh canopy",
-    ],
-    specifications: {
-      Commodation: "Designed to fit up to 6 people",
-      Dimensions: "85 x 28 and inner dimensions: 65 x 28;",
-      "Noise Cancellation": "Active Noise Cancellation (ANC)",
-      "water capacity": "290 gallons",
-      "Charging Time": "2 hours",
-      "water temperature": "68-104 degrees Fahrenheit",
-    },
-    stock: 15,
-  },
 
   {
     id: 3,
@@ -573,44 +717,6 @@ export const products: Product[] = [
     stock: 3,
   },
 
-  {
-    id: 6,
-    name: "Steam Sauna Box",
-    description:
-      "Portable Steam Sauna Box for Home, Personal Sauna Tent for Full Body Spa with 4L Steamer Generator,Sauna Room for Indoor,70.8”x31.5”x31.5”.",
-    price: "879",
-    originalPrice: "970",
-    images: [
-      sauna1_1.src,
-      sauna1_2.src,
-      sauna1_3.src,
-      sauna1_4.src,
-      sauna1_5.src,
-      sauna1_6.src,
-      sauna1_7.src,
-    ],
-    rating: 4.8,
-    reviews: 101,
-    type: "buy",
-    colors: ["#A4D549", "#2196F3", "#E91E63", "#9C27B0", "#FF5722"],
-    features: [
-      "Premium Quality",
-      "suitable for adults of different sizes",
-      "4L Large Capacity Steam Generator",
-      "9 levels temperature adjustment",
-      "Thoughtful Design",
-      "Portable &Easy to Assemble ",
-    ],
-    specifications: {
-      Acommodation: "1 person",
-      Temperature: "91°F-131°F ",
-      "Power consumption": "1200W high-power ",
-      Weight: "13.8g",
-      Dimession: " 2.6’ x 2.6’ x 5.9’",
-      Warranty: "1 year",
-    },
-    stock: 15,
-  },
   {
     id: 7,
     name: "Personal Spa Sauna",
@@ -882,36 +988,7 @@ export const products: Product[] = [
     },
     stock: 15,
   },
-  {
-    id: 15,
-    name: "Personal Spa Sauna",
-    description:
-      "Smartmak Full Body Home Steam Sauna Kit, Portable Lightweight Personal Spa Saunas, 2L&900W Steam Generator with Protection & Remote Control, Foldable Chair Included for Relaxation-BlackGrey",
-    price: "90",
-    originalPrice: "130",
-    images: [sauna2_1.src, sauna2_2.src, sauna2_3.src, sauna2_4.src],
-    rating: 4.8,
-    reviews: 101,
-    type: "rent",
-    colors: ["#A4D549", "#2196F3", "#E91E63", "#9C27B0", "#FF5722"],
-    features: [
-      "Premium Quality",
-      "suitable for adults of different sizes",
-      "4L Large Capacity Steam Generator",
-      "9 levels temperature adjustment",
-      "Thoughtful Design",
-      "Portable &Easy to Assemble ",
-    ],
-    specifications: {
-      Acommodation: "1 person",
-      Temperature: "91°F-131°F ",
-      "Power consumption": "500W high-power ",
-      Weight: "4.8g",
-      Dimession: " 2.6’ x 2.6’ x 5.9’",
-      Warranty: "1 year",
-    },
-    stock: 15,
-  },
+
   {
     id: 16,
     name: "Two person Sauna Box",
